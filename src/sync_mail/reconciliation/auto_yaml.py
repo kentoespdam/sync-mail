@@ -1,121 +1,118 @@
-from typing import List, Dict, Any
-from sync_mail.config.schema import MappingDocument, ColumnMapping
 import os
 from ruamel.yaml import YAML
 from ruamel.yaml.comments import CommentedMap, CommentedSeq
+from sync_mail.config.schema import MappingDocument, ColumnMapping
+from typing import List, Dict, Any
 
-def generate_mapping(source_meta: List[Dict[str, Any]], 
-                     target_meta: List[Dict[str, Any]], 
-                     source_table: str, 
-                     target_table: str) -> MappingDocument:
+def generate_mapping(
+    source_meta: List[Dict[str, Any]], 
+    target_meta: List[Dict[str, Any]], 
+    source_table: str, 
+    target_table: str
+) -> MappingDocument:
     """
-    Generates a MappingDocument based on source and target metadata.
-    
-    Logic:
-    - Identical name & full type -> NONE
-    - Identical name & different type -> CAST (with ACTION_REQUIRED)
-    - Target only -> INJECT_DEFAULT (with ACTION_REQUIRED)
-    - Source only -> Recorded in unmapped_source_columns
+    Reconciles source and target metadata to generate a MappingDocument.
     """
-    source_cols = {col['COLUMN_NAME']: col for col in source_meta}
-    target_cols = target_meta # ORDINAL_POSITION order is preserved
+    source_cols = {c["COLUMN_NAME"]: c for c in source_meta}
     
     mappings = []
-    mapped_source_cols = set()
+    mapped_source_names = set()
     
-    for t_col in target_cols:
-        name = t_col['COLUMN_NAME']
-        t_full_type = t_col['COLUMN_TYPE']
+    for t_meta in target_meta:
+        t_name = t_meta["COLUMN_NAME"]
+        t_type = t_meta["DATA_TYPE"]
         
-        if name in source_cols:
-            s_col = source_cols[name]
-            s_full_type = s_col['COLUMN_TYPE']
-            mapped_source_cols.add(name)
+        if t_name in source_cols:
+            s_meta = source_cols[t_name]
+            s_type = s_meta["DATA_TYPE"]
+            mapped_source_names.add(t_name)
             
-            if s_full_type == t_full_type:
+            if s_type == t_type:
                 mappings.append(ColumnMapping(
-                    target_column=name,
-                    source_column=name,
-                    transformation_type="NONE",
-                    _source_type=s_full_type,
-                    _target_type=t_full_type
+                    target_column=t_name,
+                    source_column=t_name,
+                    transformation_type="NONE"
                 ))
             else:
-                # Type mismatch, e.g. ENUM to VARCHAR
+                # Type mismatch, e.g., enum -> varchar
                 mappings.append(ColumnMapping(
-                    target_column=name,
-                    source_column=name,
+                    target_column=t_name,
+                    source_column=t_name,
                     transformation_type="CAST",
-                    cast_target=t_full_type,
-                    _source_type=s_full_type,
-                    _target_type=t_full_type
+                    cast_target=t_type.upper(),
+                    comment=f"CAST: {s_type} -> {t_type} | ACTION_REQUIRED: Verify mapping"
                 ))
         else:
-            # Column only in target
+            # Target column missing in source
             mappings.append(ColumnMapping(
-                target_column=name,
-                source_column=None,
+                target_column=t_name,
                 transformation_type="INJECT_DEFAULT",
                 default_value="ACTION_REQUIRED",
-                _target_type=t_full_type
+                comment="ACTION_REQUIRED: Column missing in source"
             ))
             
-    unmapped_source = [col for col in source_cols if col not in mapped_source_cols]
+    unmapped_source = [s for s in source_cols if s not in mapped_source_names]
     
     return MappingDocument(
         source_table=source_table,
         target_table=target_table,
+        batch_size=10000,
         mappings=mappings,
         unmapped_source_columns=unmapped_source
     )
 
-def save_mapping_to_yaml(doc: MappingDocument, output_dir: str = "mappings") -> str:
+def write_mapping_yaml(doc: MappingDocument, output_path: str):
     """
-    Saves MappingDocument to a YAML file using ruamel.yaml to preserve comments and order.
+    Writes a MappingDocument to a YAML file with comments using ruamel.yaml.
     """
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir, exist_ok=True)
-        
-    filename = f"{doc.source_table}_to_{doc.target_table}.yaml"
-    filepath = os.path.join(output_dir, filename)
-    
     yaml = YAML()
     yaml.indent(mapping=2, sequence=4, offset=2)
-    yaml.width = 4096
     
     data = CommentedMap()
-    data['source_table'] = doc.source_table
-    data['target_table'] = doc.target_table
-    data['batch_size'] = doc.batch_size
+    data["migration_job"] = CommentedMap({
+        "source_table": doc.source_table,
+        "target_table": doc.target_table,
+        "batch_size": doc.batch_size
+    })
     
-    mappings_list = CommentedSeq()
+    mappings_seq = CommentedSeq()
     for m in doc.mappings:
         m_map = CommentedMap()
-        m_map['target_column'] = m.target_column
-        m_map['source_column'] = m.source_column
-        m_map['transformation_type'] = m.transformation_type
-        
-        # Add context comment before each mapping
-        if m.transformation_type == "NONE":
-            m_map.yaml_set_start_comment(f"NONE: {m._source_type}")
-        elif m.transformation_type == "CAST":
-            m_map['cast_target'] = m.cast_target
-            m_map.yaml_set_start_comment(f"CAST: {m._source_type} -> {m._target_type}")
-            m_map.yaml_add_eol_comment("ACTION_REQUIRED: verify mapping", key='transformation_type')
-        elif m.transformation_type == "INJECT_DEFAULT":
-            m_map['default_value'] = m.default_value
-            m_map.yaml_set_start_comment(f"INJECT_DEFAULT: target is {m._target_type}")
-            m_map.yaml_add_eol_comment("ACTION_REQUIRED: provide value", key='default_value')
+        if m.source_column:
+            m_map["source_column"] = m.source_column
+        else:
+            m_map["source_column"] = None
             
-        mappings_list.append(m_map)
+        m_map["target_column"] = m.target_column
+        m_map["transformation_type"] = m.transformation_type
         
-    data['mappings'] = mappings_list
+        if m.transformation_type == "CAST":
+            m_map["cast_target"] = m.cast_target
+        elif m.transformation_type == "INJECT_DEFAULT":
+            m_map["default_value"] = m.default_value
+            
+        mappings_seq.append(m_map)
+        if m.comment:
+            mappings_seq.yaml_add_eol_comment(m.comment, len(mappings_seq) - 1)
+            
+    data["migration_job"]["mappings"] = mappings_seq
     
-    with open(filepath, 'w') as f:
-        yaml.dump(data, f)
+    # Add unmapped source columns as comments at the end
+    if doc.unmapped_source_columns:
+        data.yaml_set_comment_before_after_key("migration_job", after="\n# UNMAPPED SOURCE COLUMNS:")
+        for col in doc.unmapped_source_columns:
+            # Since ruamel.yaml doesn't have a direct "add comment at the very end" easily via data
+            # we'll just add it to the unmapped_source_columns key if we wanted to show them.
+            # But the plan says "catat sebagai komentar di YAML".
+            pass
+            
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    with open(output_path, "w") as f:
+        # Add header comment
+        f.write("# Auto-generated mapping template\n")
         if doc.unmapped_source_columns:
-            f.write("\n# UNMAPPED SOURCE COLUMNS:\n")
-            for col in sorted(doc.unmapped_source_columns):
+            f.write("# UNMAPPED SOURCE COLUMNS:\n")
+            for col in doc.unmapped_source_columns:
                 f.write(f"# - {col}\n")
-                
-    return filepath
+            f.write("\n")
+        yaml.dump(data, f)

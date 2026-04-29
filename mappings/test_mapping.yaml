@@ -1,0 +1,24 @@
+# Auto-generated mapping template
+# UNMAPPED SOURCE COLUMNS:
+# - extra_data
+
+migration_job:
+
+  # # UNMAPPED SOURCE COLUMNS:
+  source_table: t_legacy
+  target_table: t_optimized
+  batch_size: 10000
+  mappings:
+    - source_column: id
+      target_column: id
+      transformation_type: NONE
+    -  # CAST: enum -> varchar | ACTION_REQUIRED: Verify mapping
+      source_column: status
+      target_column: status
+      transformation_type: CAST
+      cast_target: VARCHAR
+    - # ACTION_REQUIRED: Column missing in source
+      source_column:
+      target_column: migrated_at
+      transformation_type: INJECT_DEFAULT
+      default_value: ACTION_REQUIRED

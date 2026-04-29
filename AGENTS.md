@@ -12,6 +12,17 @@ bd close <id>         # Complete work
 bd dolt push          # Push beads data to remote
 ```
 
+## Python / UV
+
+This project uses **`uv`** for Python package and environment management. Always prefer `uv` over `python` for execution.
+
+```bash
+uv run <command> # Run a command in the project environment
+uv pip install <package> # Install packages
+uv sync # Sync dependencies
+uv add <package> # Add a dependency
+```
+
 ## Non-Interactive Shell Commands
 
 **ALWAYS use non-interactive flags** with file operations to avoid hanging on confirmation prompts.

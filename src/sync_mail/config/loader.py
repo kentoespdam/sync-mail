@@ -1,75 +1,54 @@
 import os
 from ruamel.yaml import YAML
-from ruamel.yaml.error import YAMLError
 from sync_mail.config.schema import MappingDocument, ColumnMapping
-from sync_mail.config.validator import validate
-from sync_mail.errors.exceptions import MappingError
+from sync_mail.config.validator import validate_mapping
+from sync_mail.errors import MappingError
 
 def load_mapping(path: str) -> MappingDocument:
     """
-    Loads a YAML mapping file into a MappingDocument dataclass and validates it.
-    
-    Args:
-        path: Path to the YAML file.
-        
-    Returns:
-        A validated MappingDocument.
-        
-    Raises:
-        MappingError: If the file is missing, corrupted, or fails validation.
+    Loads a YAML mapping file, parses it into a MappingDocument, and validates it.
     """
     if not os.path.exists(path):
-        raise MappingError(f"Mapping file tidak ditemukan: {path}")
-        
-    yaml = YAML(typ='rt')
-    try:
-        with open(path, 'r') as f:
-            data = yaml.load(f)
-    except YAMLError as e:
-        raise MappingError(f"Gagal memparsing file YAML {path}: {str(e)}")
-    except Exception as e:
-        raise MappingError(f"Terjadi kesalahan saat membaca {path}: {str(e)}")
-        
-    if not data:
-        raise MappingError(f"Mapping file {path} kosong.")
+        raise MappingError(f"Mapping file not found: {path}")
 
+    yaml = YAML(typ="safe") # Use safe mode for loading unless round-trip is needed for editing
+    
     try:
-        doc_line = data.lc.line + 1 if hasattr(data, 'lc') else None
-        
+        with open(path, "r", encoding="utf-8") as f:
+            raw_data = yaml.load(f)
+    except Exception as e:
+        raise MappingError(f"Failed to parse YAML file '{path}': {str(e)}") from e
+
+    if not raw_data or "migration_job" not in raw_data:
+        raise MappingError(f"Invalid mapping structure in '{path}': missing 'migration_job' key.")
+
+    job_data = raw_data["migration_job"]
+    
+    try:
         mappings = []
-        raw_mappings = data.get('mappings', [])
-        
-        for i, m_data in enumerate(raw_mappings):
-            # Get line number for this mapping element
-            # In CommentedSeq, we can check lc for the index
-            m_line = None
-            if hasattr(raw_mappings, 'lc'):
-                m_line = raw_mappings.lc.item(i)[0] + 1
-            
+        for m in job_data.get("mappings", []):
             mappings.append(ColumnMapping(
-                target_column=m_data.get('target_column'),
-                source_column=m_data.get('source_column'),
-                transformation_type=m_data.get('transformation_type', 'NONE'),
-                cast_target=m_data.get('cast_target'),
-                default_value=m_data.get('default_value'),
-                _line_no=m_line
+                target_column=m.get("target_column"),
+                transformation_type=m.get("transformation_type", "NONE"),
+                source_column=m.get("source_column"),
+                cast_target=m.get("cast_target"),
+                default_value=m.get("default_value")
             ))
             
         doc = MappingDocument(
-            source_table=data.get('source_table'),
-            target_table=data.get('target_table'),
-            mappings=mappings,
-            batch_size=data.get('batch_size', 10000),
-            unmapped_source_columns=[], # Optional, usually not in YAML for loading
-            _line_no=doc_line
+            source_table=job_data.get("source_table"),
+            target_table=job_data.get("target_table"),
+            batch_size=job_data.get("batch_size", 10000),
+            mappings=mappings
         )
         
-        # Validate before returning
-        validate(doc)
+        # Immediate validation
+        validate_mapping(doc)
         
         return doc
         
+    except MappingError:
+        # Re-raise MappingErrors from validator
+        raise
     except Exception as e:
-        if isinstance(e, MappingError):
-            raise e
-        raise MappingError(f"Gagal memproses struktur mapping di {path}: {str(e)}")
+        raise MappingError(f"Error populating mapping structure from '{path}': {str(e)}") from e

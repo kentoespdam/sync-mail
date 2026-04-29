@@ -1,5 +1,3 @@
-# src/sync_mail/db/connection.py
-
 import pymysql
 import pymysql.cursors
 from contextlib import contextmanager
@@ -25,15 +23,12 @@ def connect(role: str, dsn_params: Dict[str, Any]) -> pymysql.connections.Connec
     if role not in ["source", "target"]:
         raise ValueError(f"Invalid role: {role}. Must be 'source' or 'target'.")
 
-    # Required parameters with sensible defaults
     host = dsn_params.get("host", "localhost")
     port = int(dsn_params.get("port", 3306))
     user = dsn_params.get("user")
     password = dsn_params.get("password")
     database = dsn_params.get("database")
 
-    # Connection arguments
-    # SSDictCursor is mandatory for low-memory footprint (server-side cursor)
     connect_args = {
         "host": host,
         "port": port,
@@ -41,15 +36,15 @@ def connect(role: str, dsn_params: Dict[str, Any]) -> pymysql.connections.Connec
         "password": password,
         "database": database,
         "charset": "utf8mb4",
-        "cursorclass": pymysql.cursors.SSDictCursor,
+        "cursorclass": pymysql.cursors.SSDictCursor, # Server-side cursor for low memory
         "autocommit": False,
-        # SET SESSION sql_log_off=1 to disable query logging on server side if privileges allow.
+        # Try to disable session logging to avoid SQL exposure in server logs
         "init_command": "SET SESSION sql_log_off=1",
     }
 
     try:
         conn = pymysql.connect(**connect_args)
-        logger.debug(f"Established {role} database connection to {host}:{port}/{database}")
+        logger.debug(f"Connected to {role} database ({host}:{port}/{database})")
         return conn
     except pymysql.MySQLError as e:
         context = {
@@ -58,13 +53,12 @@ def connect(role: str, dsn_params: Dict[str, Any]) -> pymysql.connections.Connec
             "port": port,
             "database": database,
         }
-        # Wrap into domain exception
         raise ConnectionError(f"Failed to connect to {role} database: {str(e)}", context=context) from e
 
 @contextmanager
 def connection_scope(role: str, dsn_params: Dict[str, Any]) -> Generator[pymysql.connections.Connection, None, None]:
     """
-    Context manager to ensure database connection is closed properly.
+    Context manager for database connection lifecycle.
     """
     conn = connect(role, dsn_params)
     try:
@@ -76,24 +70,21 @@ def connection_scope(role: str, dsn_params: Dict[str, Any]) -> Generator[pymysql
 @contextmanager
 def transaction(conn: pymysql.connections.Connection) -> Generator[None, None, None]:
     """
-    Context manager for atomic transactions on the database.
+    Context manager for atomic transactions.
+    Ensures BEGIN is sent at start, COMMIT on success, and ROLLBACK on error.
     """
     try:
-        # Explicitly start a transaction if needed, though autocommit=False already does this.
         with conn.cursor() as cursor:
             cursor.execute("BEGIN")
         yield
         conn.commit()
-        logger.debug("Transaction committed.")
     except Exception:
         conn.rollback()
-        logger.debug("Transaction rolled back.")
         raise
 
 def create_db_engine(dsn_params: Dict[str, Any]) -> Engine:
     """
-    Creates a SQLAlchemy engine configured for MariaDB with server-side cursors.
-    Useful for introspection and other SQLAlchemy-based tasks.
+    Creates a SQLAlchemy engine for introspection with low-memory settings.
     """
     user = dsn_params.get("user")
     password = dsn_params.get("password")
@@ -103,7 +94,7 @@ def create_db_engine(dsn_params: Dict[str, Any]) -> Engine:
 
     db_url = f"mysql+pymysql://{user}:{password}@{host}:{port}/{database}"
 
-    engine = create_engine(
+    return create_engine(
         db_url,
         poolclass=NullPool,
         connect_args={
@@ -113,4 +104,3 @@ def create_db_engine(dsn_params: Dict[str, Any]) -> Engine:
         },
         echo=False
     )
-    return engine

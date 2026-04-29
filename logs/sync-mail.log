@@ -1,0 +1,1 @@
+2026-04-29 15:15:05,521 - ERROR - [test:25] - [Batch: B-001] [PK: 100] - This is an ERROR message (should be in stdout and file)

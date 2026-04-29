@@ -1,65 +1,55 @@
-from typing import List, Set
 from sync_mail.config.schema import MappingDocument, ColumnMapping
-from sync_mail.errors.exceptions import MappingError
+from sync_mail.errors import MappingError
+from typing import List
 
-def validate(mapping_doc: MappingDocument) -> None:
+def validate_mapping(doc: MappingDocument) -> None:
     """
-    Validates a MappingDocument for semantic correctness.
-    Raises MappingError with all violations if any are found.
+    Validates a MappingDocument against business and structural rules.
+    Collects all errors and raises a single MappingError if any violations are found.
     """
     errors = []
-    
-    # (g) source_table and target_table not empty
-    if not mapping_doc.source_table:
-        errors.append(f"{_fmt_line(mapping_doc)} 'source_table' tidak boleh kosong.")
-    if not mapping_doc.target_table:
-        errors.append(f"{_fmt_line(mapping_doc)} 'target_table' tidak boleh kosong.")
-        
-    # (d) batch_size in range 5,000 - 15,000
-    if not (5000 <= mapping_doc.batch_size <= 15000):
-        errors.append(f"{_fmt_line(mapping_doc)} 'batch_size' ({mapping_doc.batch_size}) di luar rentang valid 5.000 - 15.000.")
-        
+
+    # (g) Basic metadata
+    if not doc.source_table:
+        errors.append("Source table name cannot be empty.")
+    if not doc.target_table:
+        errors.append("Target table name cannot be empty.")
+
+    # (d) batch_size check
+    if not (5000 <= doc.batch_size <= 15000):
+        errors.append(f"batch_size ({doc.batch_size}) must be between 5,000 and 15,000 as per performance requirements.")
+
     # (e) Duplicate target_column
-    seen_targets: Set[str] = set()
-    
-    for i, mapping in enumerate(mapping_doc.mappings):
-        # (f) Check for ACTION_REQUIRED
-        if _has_action_required(mapping):
-            errors.append(f"{_fmt_line(mapping)} Kolom '{mapping.target_column}' masih mengandung 'ACTION_REQUIRED'.")
-            
-        # (e) Duplication check
-        if mapping.target_column in seen_targets:
-            errors.append(f"{_fmt_line(mapping)} Duplikasi target_column: '{mapping.target_column}'.")
-        seen_targets.add(mapping.target_column)
+    target_columns = [m.target_column for m in doc.mappings]
+    duplicates = [c for c in set(target_columns) if target_columns.count(c) > 1]
+    if duplicates:
+        errors.append(f"Duplicate target columns found: {', '.join(duplicates)}")
+
+    # (f) Check for ACTION_REQUIRED in any non-comment field
+    def check_action_required(val, context_msg):
+        if isinstance(val, str) and "ACTION_REQUIRED" in val:
+            errors.append(f"Placeholder 'ACTION_REQUIRED' remains in {context_msg}.")
+
+    for m in doc.mappings:
+        col_ctx = f"column mapping for '{m.target_column}'"
+        
+        # Check specific fields for placeholders
+        check_action_required(m.source_column, f"source_column of {col_ctx}")
+        check_action_required(m.cast_target, f"cast_target of {col_ctx}")
+        check_action_required(m.default_value, f"default_value of {col_ctx}")
         
         # (a) CAST must have cast_target
-        if mapping.transformation_type == "CAST" and not mapping.cast_target:
-            errors.append(f"{_fmt_line(mapping)} Kolom '{mapping.target_column}' (CAST) wajib punya 'cast_target'.")
+        if m.transformation_type == "CAST" and not m.cast_target:
+            errors.append(f"Transformation CAST for '{m.target_column}' requires a 'cast_target'.")
             
         # (b) INJECT_DEFAULT must have default_value
-        if mapping.transformation_type == "INJECT_DEFAULT" and mapping.default_value is None:
-             errors.append(f"{_fmt_line(mapping)} Kolom '{mapping.target_column}' (INJECT_DEFAULT) wajib punya 'default_value'.")
-             
+        if m.transformation_type == "INJECT_DEFAULT" and m.default_value is None:
+            errors.append(f"Transformation INJECT_DEFAULT for '{m.target_column}' requires a 'default_value'.")
+            
         # (c) NONE must have source_column
-        if mapping.transformation_type == "NONE" and not mapping.source_column:
-             errors.append(f"{_fmt_line(mapping)} Kolom '{mapping.target_column}' (NONE) wajib punya 'source_column'.")
+        if m.transformation_type == "NONE" and not m.source_column:
+            errors.append(f"Transformation NONE for '{m.target_column}' requires a 'source_column'.")
 
     if errors:
-        msg = "Mapping document tidak valid:\n- " + "\n- ".join(errors)
-        raise MappingError(msg)
-
-def _fmt_line(obj: any) -> str:
-    """Helper to format line number prefix if available."""
-    line = getattr(obj, "_line_no", None)
-    return f"Baris {line}:" if line is not None else ""
-
-def _has_action_required(mapping: ColumnMapping) -> bool:
-    """Checks if any field contains 'ACTION_REQUIRED'."""
-    marker = "ACTION_REQUIRED"
-    fields = [
-        mapping.target_column,
-        mapping.source_column,
-        mapping.cast_target,
-        mapping.default_value
-    ]
-    return any(marker in str(f) for f in fields if f is not None)
+        error_msg = "Mapping document validation failed:\n" + "\n".join(f"- {e}" for e in errors)
+        raise MappingError(error_msg, context={"errors": errors})

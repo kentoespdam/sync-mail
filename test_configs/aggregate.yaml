@@ -1,0 +1,12 @@
+
+migration_job:
+  source_table: ""
+  target_table: t_optimized
+  batch_size: 100
+  mappings:
+    - source_column: id
+      target_column: id
+      transformation_type: NONE
+    - source_column: id
+      target_column: id
+      transformation_type: NONE

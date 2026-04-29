@@ -1,0 +1,17 @@
+
+migration_job:
+  source_table: t_legacy
+  target_table: t_optimized
+  batch_size: 10000
+  mappings:
+    - source_column: id
+      target_column: id
+      transformation_type: NONE
+    - source_column: status
+      target_column: status
+      transformation_type: CAST
+      cast_target: VARCHAR
+    - source_column: null
+      target_column: migrated_at
+      transformation_type: INJECT_DEFAULT
+      default_value: "2024-01-01"

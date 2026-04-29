@@ -1,60 +1,63 @@
 import logging
+import os
 import sys
 from logging.handlers import RotatingFileHandler
 from typing import Optional
 
-# Define log formats
-CONCISE_FORMAT = "%(asctime)s - %(levelname)s - %(message)s" # Basic format for stdout
-DETAILED_FORMAT = "%(asctime)s - %(levelname)s - %(name)s:%(lineno)d - %(message)s" # More detailed for file
+# Formats
+CONCISE_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
+DETAILED_FORMAT = "%(asctime)s - %(levelname)s - [%(name)s:%(lineno)d] - [Batch: %(batch_id)s] [PK: %(primary_key)s] - %(message)s"
+
+class ContextFormatter(logging.Formatter):
+    """
+    Custom formatter that ensures 'batch_id' and 'primary_key' exist in the record
+    to avoid KeyErrors when using them in the format string.
+    """
+    def format(self, record):
+        if not hasattr(record, "batch_id"):
+            record.batch_id = "N/A"
+        if not hasattr(record, "primary_key"):
+            record.primary_key = "N/A"
+        return super().format(record)
 
 def configure_logging(level: str = "INFO", log_dir: str = "logs"):
     """
-    Configures the root logger with StreamHandler and RotatingFileHandler.
-
+    Configures the root logger with STDOUT (INFO) and RotatingFileHandler (ERROR).
+    
     Args:
-        level (str): The minimum logging level for the root logger (e.g., "INFO", "DEBUG").
-        log_dir (str): The directory where log files will be stored.
+        level (str): Default logging level for the root logger.
+        log_dir (str): Directory where log files will be stored.
     """
-    # Ensure the log directory exists
-    import os
     os.makedirs(log_dir, exist_ok=True)
-
+    
     root_logger = logging.getLogger()
     root_logger.setLevel(level)
-
-    # Prevent adding handlers multiple times if called more than once
+    
+    # Clear existing handlers to avoid duplicates
     if root_logger.hasHandlers():
         root_logger.handlers.clear()
-
-    # 1. StreamHandler to STDOUT
-    stream_handler = logging.StreamHandler(sys.stdout)
-    stream_handler.setLevel(logging.INFO) # As per plan, STDOUT is INFO level
-    formatter = logging.Formatter(CONCISE_FORMAT)
-    stream_handler.setFormatter(formatter)
-    root_logger.addHandler(stream_handler)
-
-    # 2. RotatingFileHandler to file
-    log_file_path = os.path.join(log_dir, "sync-mail.log")
+        
+    # 1. StreamHandler to STDOUT (INFO)
+    stdout_handler = logging.StreamHandler(sys.stdout)
+    stdout_handler.setLevel(logging.INFO)
+    stdout_handler.setFormatter(logging.Formatter(CONCISE_FORMAT))
+    root_logger.addHandler(stdout_handler)
+    
+    # 2. RotatingFileHandler to logs/sync-mail.log (ERROR)
+    log_file = os.path.join(log_dir, "sync-mail.log")
     file_handler = RotatingFileHandler(
-        log_file_path,
-        maxBytes=50 * 1024 * 1024,  # 50 MB
+        log_file,
+        maxBytes=50 * 1024 * 1024, # 50 MB
         backupCount=5,
         encoding="utf-8"
     )
-    file_handler.setLevel(logging.ERROR) # As per plan, file is ERROR level
-    formatter = logging.Formatter(DETAILED_FORMAT) # Detailed format for file logs
-    file_handler.setFormatter(formatter)
+    file_handler.setLevel(logging.ERROR)
+    file_handler.setFormatter(ContextFormatter(DETAILED_FORMAT))
     root_logger.addHandler(file_handler)
+    
+    # Contract: No SQL text should be logged by default.
+    # We set sqlalchemy and pymysql loggers to WARNING to avoid query noise.
+    logging.getLogger("sqlalchemy.engine").setLevel(logging.WARNING)
+    logging.getLogger("pymysql").setLevel(logging.WARNING)
 
-    # Important: Avoid logging SQL queries. Loggers within specific modules
-    # (e.g., db module) should be configured to filter out SQL.
-    # For the root logger, we rely on the user of the API to not log sensitive data.
-    # If a specific logger for DB queries is created, it can be configured here.
-
-# Example of how to get a logger (use a specific logger for modules)
-# logger = logging.getLogger(__name__)
-
-# Example usage (would be called once at application startup):
-# configure_logging(level="DEBUG", log_dir="logs")
-# logger.info("Application started.")
-# logger.error("This is an error message.")
+    root_logger.debug(f"Logging configured. STDOUT: INFO, File: ERROR ({log_file})")
