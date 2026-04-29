@@ -638,9 +638,9 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/tui/widgets/progress.py",
       "source_location": "L33",
-      "id": "widgets_progress_rationale_33",
       "community": 5,
-      "norm_label": "overall progress for a batch of jobs."
+      "norm_label": "overall progress for a batch of jobs.",
+      "id": "widgets_progress_rationale_33"
     },
     {
       "label": "inspect.py",
@@ -827,9 +827,9 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L16",
-      "id": "screens_migrate_rationale_16",
       "community": 1,
-      "norm_label": "screen for monitoring migration job (single or batch)."
+      "norm_label": "screen for monitoring migration job (single or batch).",
+      "id": "screens_migrate_rationale_16"
     },
     {
       "label": "introspect.py",
@@ -1052,18 +1052,18 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/reconciliation/auto_yaml.py",
       "source_location": "L138",
-      "id": "reconciliation_auto_yaml_rationale_138",
       "community": 2,
-      "norm_label": "performs topological sort on tables based on foreign key relationships."
+      "norm_label": "performs topological sort on tables based on foreign key relationships.",
+      "id": "reconciliation_auto_yaml_rationale_138"
     },
     {
       "label": "Generates mapping files for all tables in the source schema.     Returns list of",
       "file_type": "rationale",
       "source_file": "src/sync_mail/reconciliation/auto_yaml.py",
       "source_location": "L174",
-      "id": "reconciliation_auto_yaml_rationale_174",
       "community": 2,
-      "norm_label": "generates mapping files for all tables in the source schema.     returns list of"
+      "norm_label": "generates mapping files for all tables in the source schema.     returns list of",
+      "id": "reconciliation_auto_yaml_rationale_174"
     },
     {
       "label": "etl_pipeline.py",
@@ -1493,9 +1493,9 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/pipeline/orchestrator.py",
       "source_location": "L200",
-      "id": "pipeline_orchestrator_rationale_200",
       "community": 1,
-      "norm_label": "executes multiple migrationjobs sequentially."
+      "norm_label": "executes multiple migrationjobs sequentially.",
+      "id": "pipeline_orchestrator_rationale_200"
     },
     {
       "label": "exceptions.py",
@@ -1925,63 +1925,63 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L16",
-      "id": "observability_events_rationale_16",
       "community": 0,
-      "norm_label": "a migration event with a type and a structured payload."
+      "norm_label": "a migration event with a type and a structured payload.",
+      "id": "observability_events_rationale_16"
     },
     {
       "label": "A thread-safe event bus for communication between worker threads and the UI.",
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L22",
-      "id": "observability_events_rationale_22",
       "community": 6,
-      "norm_label": "a thread-safe event bus for communication between worker threads and the ui."
+      "norm_label": "a thread-safe event bus for communication between worker threads and the ui.",
+      "id": "observability_events_rationale_22"
     },
     {
       "label": "Internal loop to process and dispatch events from the queue.",
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L34",
-      "id": "observability_events_rationale_34",
       "community": 6,
-      "norm_label": "internal loop to process and dispatch events from the queue."
+      "norm_label": "internal loop to process and dispatch events from the queue.",
+      "id": "observability_events_rationale_34"
     },
     {
       "label": "Starts the background dispatch thread.",
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L56",
-      "id": "observability_events_rationale_56",
       "community": 6,
-      "norm_label": "starts the background dispatch thread."
+      "norm_label": "starts the background dispatch thread.",
+      "id": "observability_events_rationale_56"
     },
     {
       "label": "Stops the background dispatch thread.",
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L68",
-      "id": "observability_events_rationale_68",
       "community": 6,
-      "norm_label": "stops the background dispatch thread."
+      "norm_label": "stops the background dispatch thread.",
+      "id": "observability_events_rationale_68"
     },
     {
       "label": "Publishes an event to the bus.",
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L74",
-      "id": "observability_events_rationale_74",
       "community": 0,
-      "norm_label": "publishes an event to the bus."
+      "norm_label": "publishes an event to the bus.",
+      "id": "observability_events_rationale_74"
     },
     {
       "label": "Subscribes a callback handler to receive events.",
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L80",
-      "id": "observability_events_rationale_80",
       "community": 6,
-      "norm_label": "subscribes a callback handler to receive events."
+      "norm_label": "subscribes a callback handler to receive events.",
+      "id": "observability_events_rationale_80"
     },
     {
       "label": "__init__.py",
@@ -2231,18 +2231,18 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/db/introspect.py",
       "source_location": "L43",
-      "id": "db_introspect_rationale_43",
       "community": 2,
-      "norm_label": "retrieves all table names in a schema."
+      "norm_label": "retrieves all table names in a schema.",
+      "id": "db_introspect_rationale_43"
     },
     {
       "label": "Retrieves all foreign key relationships in a schema.     Returns list of {'table",
       "file_type": "rationale",
       "source_file": "src/sync_mail/db/introspect.py",
       "source_location": "L58",
-      "id": "db_introspect_rationale_58",
       "community": 0,
-      "norm_label": "retrieves all foreign key relationships in a schema.     returns list of {'table"
+      "norm_label": "retrieves all foreign key relationships in a schema.     returns list of {'table",
+      "id": "db_introspect_rationale_58"
     },
     {
       "label": "__init__.py",
@@ -4153,11 +4153,11 @@
       "source_file": "src/sync_mail/pipeline/orchestrator.py",
       "source_location": "L8",
       "weight": 0.8,
-      "_src": "pipeline_orchestrator_jobbatch",
-      "_tgt": "state_checkpoint_checkpoint",
+      "_src": "state_checkpoint_checkpoint",
+      "_tgt": "pipeline_orchestrator_jobbatch",
+      "confidence_score": 0.5,
       "source": "state_checkpoint_checkpoint",
-      "target": "pipeline_orchestrator_jobbatch",
-      "confidence_score": 0.5
+      "target": "pipeline_orchestrator_jobbatch"
     },
     {
       "relation": "uses",
@@ -4213,11 +4213,11 @@
       "source_file": "src/sync_mail/pipeline/orchestrator.py",
       "source_location": "L8",
       "weight": 0.8,
-      "_src": "pipeline_orchestrator_rationale_200",
-      "_tgt": "state_checkpoint_checkpoint",
+      "_src": "state_checkpoint_checkpoint",
+      "_tgt": "pipeline_orchestrator_rationale_200",
+      "confidence_score": 0.5,
       "source": "state_checkpoint_checkpoint",
-      "target": "pipeline_orchestrator_rationale_200",
-      "confidence_score": 0.5
+      "target": "pipeline_orchestrator_rationale_200"
     },
     {
       "relation": "uses",
@@ -5029,11 +5029,11 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L13",
       "weight": 0.8,
-      "_src": "screens_migrate_rationale_16",
-      "_tgt": "widgets_log_panel_logpanel",
+      "_src": "widgets_log_panel_logpanel",
+      "_tgt": "screens_migrate_rationale_16",
+      "confidence_score": 0.5,
       "source": "widgets_log_panel_logpanel",
-      "target": "screens_migrate_rationale_16",
-      "confidence_score": 0.5
+      "target": "screens_migrate_rationale_16"
     },
     {
       "relation": "calls",
@@ -5221,11 +5221,11 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L12",
       "weight": 0.8,
-      "_src": "screens_migrate_rationale_16",
-      "_tgt": "widgets_progress_migrationprogress",
+      "_src": "widgets_progress_migrationprogress",
+      "_tgt": "screens_migrate_rationale_16",
+      "confidence_score": 0.5,
       "source": "widgets_progress_migrationprogress",
-      "target": "screens_migrate_rationale_16",
-      "confidence_score": 0.5
+      "target": "screens_migrate_rationale_16"
     },
     {
       "relation": "calls",
@@ -5413,11 +5413,11 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L12",
       "weight": 0.8,
-      "_src": "screens_migrate_migratescreen",
-      "_tgt": "widgets_progress_batchprogress",
+      "_src": "widgets_progress_batchprogress",
+      "_tgt": "screens_migrate_migratescreen",
+      "confidence_score": 0.5,
       "source": "widgets_progress_batchprogress",
-      "target": "screens_migrate_migratescreen",
-      "confidence_score": 0.5
+      "target": "screens_migrate_migratescreen"
     },
     {
       "relation": "uses",
@@ -5425,11 +5425,11 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L12",
       "weight": 0.8,
-      "_src": "screens_migrate_rationale_16",
-      "_tgt": "widgets_progress_batchprogress",
+      "_src": "widgets_progress_batchprogress",
+      "_tgt": "screens_migrate_rationale_16",
+      "confidence_score": 0.5,
       "source": "widgets_progress_batchprogress",
-      "target": "screens_migrate_rationale_16",
-      "confidence_score": 0.5
+      "target": "screens_migrate_rationale_16"
     },
     {
       "relation": "calls",
@@ -5438,8 +5438,8 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L33",
       "weight": 1.0,
-      "_src": "screens_migrate_migratescreen_compose",
-      "_tgt": "widgets_progress_batchprogress",
+      "_src": "widgets_progress_batchprogress",
+      "_tgt": "screens_migrate_migratescreen_compose",
       "source": "widgets_progress_batchprogress",
       "target": "screens_migrate_migratescreen_compose"
     },
@@ -5787,9 +5787,9 @@
       "weight": 0.8,
       "_src": "screens_migrate_migratescreen",
       "_tgt": "pipeline_orchestrator_jobbatch",
+      "confidence_score": 0.5,
       "source": "screens_migrate_migratescreen",
-      "target": "pipeline_orchestrator_jobbatch",
-      "confidence_score": 0.5
+      "target": "pipeline_orchestrator_jobbatch"
     },
     {
       "relation": "uses",
@@ -5919,9 +5919,9 @@
       "weight": 0.8,
       "_src": "screens_migrate_rationale_16",
       "_tgt": "pipeline_orchestrator_migrationjob",
+      "confidence_score": 0.5,
       "source": "screens_migrate_rationale_16",
-      "target": "pipeline_orchestrator_migrationjob",
-      "confidence_score": 0.5
+      "target": "pipeline_orchestrator_migrationjob"
     },
     {
       "relation": "uses",
@@ -5931,9 +5931,9 @@
       "weight": 0.8,
       "_src": "screens_migrate_rationale_16",
       "_tgt": "pipeline_orchestrator_jobbatch",
+      "confidence_score": 0.5,
       "source": "screens_migrate_rationale_16",
-      "target": "pipeline_orchestrator_jobbatch",
-      "confidence_score": 0.5
+      "target": "pipeline_orchestrator_jobbatch"
     },
     {
       "relation": "uses",
@@ -5943,9 +5943,9 @@
       "weight": 0.8,
       "_src": "screens_migrate_rationale_16",
       "_tgt": "observability_events_event",
+      "confidence_score": 0.5,
       "source": "screens_migrate_rationale_16",
-      "target": "observability_events_event",
-      "confidence_score": 0.5
+      "target": "observability_events_event"
     },
     {
       "relation": "uses",
@@ -5955,9 +5955,9 @@
       "weight": 0.8,
       "_src": "screens_migrate_rationale_16",
       "_tgt": "observability_events_eventtype",
+      "confidence_score": 0.5,
       "source": "screens_migrate_rationale_16",
-      "target": "observability_events_eventtype",
-      "confidence_score": 0.5
+      "target": "observability_events_eventtype"
     },
     {
       "relation": "contains",
@@ -6519,9 +6519,9 @@
       "weight": 0.8,
       "_src": "reconciliation_auto_yaml_rationale_138",
       "_tgt": "config_schema_mappingdocument",
+      "confidence_score": 0.5,
       "source": "reconciliation_auto_yaml_rationale_138",
-      "target": "config_schema_mappingdocument",
-      "confidence_score": 0.5
+      "target": "config_schema_mappingdocument"
     },
     {
       "relation": "uses",
@@ -6531,9 +6531,9 @@
       "weight": 0.8,
       "_src": "reconciliation_auto_yaml_rationale_138",
       "_tgt": "config_schema_columnmapping",
+      "confidence_score": 0.5,
       "source": "reconciliation_auto_yaml_rationale_138",
-      "target": "config_schema_columnmapping",
-      "confidence_score": 0.5
+      "target": "config_schema_columnmapping"
     },
     {
       "relation": "uses",
@@ -6543,9 +6543,9 @@
       "weight": 0.8,
       "_src": "reconciliation_auto_yaml_rationale_174",
       "_tgt": "config_schema_mappingdocument",
+      "confidence_score": 0.5,
       "source": "reconciliation_auto_yaml_rationale_174",
-      "target": "config_schema_mappingdocument",
-      "confidence_score": 0.5
+      "target": "config_schema_mappingdocument"
     },
     {
       "relation": "uses",
@@ -6555,9 +6555,9 @@
       "weight": 0.8,
       "_src": "reconciliation_auto_yaml_rationale_174",
       "_tgt": "config_schema_columnmapping",
+      "confidence_score": 0.5,
       "source": "reconciliation_auto_yaml_rationale_174",
-      "target": "config_schema_columnmapping",
-      "confidence_score": 0.5
+      "target": "config_schema_columnmapping"
     },
     {
       "relation": "contains",
@@ -7741,8 +7741,8 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L9",
       "weight": 0.8,
-      "_src": "screens_migrate_rationale_15",
-      "_tgt": "pipeline_orchestrator_migrationjob",
+      "_src": "pipeline_orchestrator_migrationjob",
+      "_tgt": "screens_migrate_rationale_15",
       "confidence_score": 0.5,
       "source": "pipeline_orchestrator_migrationjob",
       "target": "screens_migrate_rationale_15"
@@ -8007,9 +8007,9 @@
       "weight": 0.8,
       "_src": "pipeline_orchestrator_jobbatch",
       "_tgt": "observability_metrics_throughputcalculator",
+      "confidence_score": 0.5,
       "source": "pipeline_orchestrator_jobbatch",
-      "target": "observability_metrics_throughputcalculator",
-      "confidence_score": 0.5
+      "target": "observability_metrics_throughputcalculator"
     },
     {
       "relation": "calls",
@@ -8042,8 +8042,8 @@
       "source_file": "tests/test_orchestrator.py",
       "source_location": "L72",
       "weight": 1.0,
-      "_src": "tests_test_orchestrator_test_run_success",
-      "_tgt": "pipeline_orchestrator_jobbatch_run",
+      "_src": "pipeline_orchestrator_jobbatch_run",
+      "_tgt": "tests_test_orchestrator_test_run_success",
       "source": "pipeline_orchestrator_jobbatch_run",
       "target": "tests_test_orchestrator_test_run_success"
     },
@@ -8054,8 +8054,8 @@
       "source_file": "tests/test_orchestrator.py",
       "source_location": "L108",
       "weight": 1.0,
-      "_src": "tests_test_orchestrator_test_run_resume_mismatch",
-      "_tgt": "pipeline_orchestrator_jobbatch_run",
+      "_src": "pipeline_orchestrator_jobbatch_run",
+      "_tgt": "tests_test_orchestrator_test_run_resume_mismatch",
       "source": "pipeline_orchestrator_jobbatch_run",
       "target": "tests_test_orchestrator_test_run_resume_mismatch"
     },
@@ -8115,9 +8115,9 @@
       "weight": 0.8,
       "_src": "pipeline_orchestrator_rationale_200",
       "_tgt": "observability_metrics_throughputcalculator",
+      "confidence_score": 0.5,
       "source": "pipeline_orchestrator_rationale_200",
-      "target": "observability_metrics_throughputcalculator",
-      "confidence_score": 0.5
+      "target": "observability_metrics_throughputcalculator"
     },
     {
       "relation": "contains",
@@ -8462,8 +8462,8 @@
       "source_file": "src/sync_mail/db/introspect.py",
       "source_location": "L52",
       "weight": 1.0,
-      "_src": "db_introspect_list_tables",
-      "_tgt": "errors_exceptions_introspectionerror",
+      "_src": "errors_exceptions_introspectionerror",
+      "_tgt": "db_introspect_list_tables",
       "source": "errors_exceptions_introspectionerror",
       "target": "db_introspect_list_tables"
     },
@@ -8474,8 +8474,8 @@
       "source_file": "src/sync_mail/db/introspect.py",
       "source_location": "L74",
       "weight": 1.0,
-      "_src": "db_introspect_get_foreign_keys",
-      "_tgt": "errors_exceptions_introspectionerror",
+      "_src": "errors_exceptions_introspectionerror",
+      "_tgt": "db_introspect_get_foreign_keys",
       "source": "errors_exceptions_introspectionerror",
       "target": "db_introspect_get_foreign_keys"
     },
@@ -9181,8 +9181,8 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L10",
       "weight": 0.8,
-      "_src": "screens_migrate_rationale_15",
-      "_tgt": "observability_events_eventtype",
+      "_src": "observability_events_eventtype",
+      "_tgt": "screens_migrate_rationale_15",
       "confidence_score": 0.5,
       "source": "observability_events_eventtype",
       "target": "screens_migrate_rationale_15"
@@ -9229,8 +9229,8 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L10",
       "weight": 0.8,
-      "_src": "screens_migrate_rationale_15",
-      "_tgt": "observability_events_event",
+      "_src": "observability_events_event",
+      "_tgt": "screens_migrate_rationale_15",
       "confidence_score": 0.5,
       "source": "observability_events_event",
       "target": "screens_migrate_rationale_15"
