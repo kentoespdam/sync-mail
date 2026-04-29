@@ -4505,8 +4505,8 @@
       "source_file": "tests/smoke_tui.py",
       "source_location": "L10",
       "weight": 1.0,
-      "_src": "tests_smoke_tui_test_imports",
-      "_tgt": "tui_app_syncmailapp",
+      "_src": "tui_app_syncmailapp",
+      "_tgt": "tests_smoke_tui_test_imports",
       "source": "tui_app_syncmailapp",
       "target": "tests_smoke_tui_test_imports"
     },
