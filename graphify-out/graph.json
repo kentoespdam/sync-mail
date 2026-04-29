@@ -161,7 +161,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/mapping.py",
       "source_location": "L13",
-      "community": 1,
+      "community": 0,
       "norm_label": "handles loading and validating yaml mapping configurations.",
       "id": "sync_mail_mapping_rationale_13"
     },
@@ -170,7 +170,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/mapping.py",
       "source_location": "L23",
-      "community": 1,
+      "community": 0,
       "norm_label": "loads and validates the yaml mapping configuration from the specified path.",
       "id": "sync_mail_mapping_rationale_23"
     },
@@ -189,7 +189,7 @@
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L1",
       "id": "src_sync_mail_state_checkpoint_py",
-      "community": 2,
+      "community": 7,
       "norm_label": "checkpoint.py"
     },
     {
@@ -198,7 +198,7 @@
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L13",
       "id": "state_checkpoint_checkpoint",
-      "community": 2,
+      "community": 7,
       "norm_label": "checkpoint"
     },
     {
@@ -207,7 +207,7 @@
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L19",
       "id": "state_checkpoint_checkpoint_init",
-      "community": 2,
+      "community": 7,
       "norm_label": ".__init__()"
     },
     {
@@ -216,7 +216,7 @@
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L29",
       "id": "state_checkpoint_checkpoint_acquire_lock",
-      "community": 2,
+      "community": 7,
       "norm_label": ".acquire_lock()"
     },
     {
@@ -225,7 +225,7 @@
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L57",
       "id": "state_checkpoint_checkpoint_release_lock",
-      "community": 2,
+      "community": 7,
       "norm_label": ".release_lock()"
     },
     {
@@ -234,7 +234,7 @@
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L68",
       "id": "state_checkpoint_checkpoint_load",
-      "community": 2,
+      "community": 9,
       "norm_label": ".load()"
     },
     {
@@ -243,7 +243,7 @@
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L102",
       "id": "state_checkpoint_checkpoint_save",
-      "community": 2,
+      "community": 7,
       "norm_label": ".save()"
     },
     {
@@ -252,7 +252,7 @@
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L155",
       "id": "state_checkpoint_checkpoint_mark_completed",
-      "community": 2,
+      "community": 7,
       "norm_label": ".mark_completed()"
     },
     {
@@ -261,7 +261,7 @@
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L167",
       "id": "state_checkpoint_checkpoint_mark_aborted",
-      "community": 2,
+      "community": 7,
       "norm_label": ".mark_aborted()"
     },
     {
@@ -270,7 +270,7 @@
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L180",
       "id": "state_checkpoint_checkpoint_del",
-      "community": 2,
+      "community": 7,
       "norm_label": ".__del__()"
     },
     {
@@ -278,7 +278,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L14",
-      "community": 2,
+      "community": 7,
       "norm_label": "manages migration state persistence and process locking.     uses an atomic writ",
       "id": "state_checkpoint_rationale_14"
     },
@@ -287,7 +287,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L30",
-      "community": 2,
+      "community": 7,
       "norm_label": "acquires an exclusive lock on the lock file to prevent multiple processes",
       "id": "state_checkpoint_rationale_30"
     },
@@ -296,7 +296,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L58",
-      "community": 2,
+      "community": 7,
       "norm_label": "releases the process lock.",
       "id": "state_checkpoint_rationale_58"
     },
@@ -305,7 +305,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L69",
-      "community": 2,
+      "community": 9,
       "norm_label": "loads the state from the json file.         returns an empty dict if the file do",
       "id": "state_checkpoint_rationale_69"
     },
@@ -314,7 +314,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L113",
-      "community": 2,
+      "community": 7,
       "norm_label": "saves the state atomically using a temporary file and os.replace().",
       "id": "state_checkpoint_rationale_113"
     },
@@ -323,7 +323,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L156",
-      "community": 2,
+      "community": 7,
       "norm_label": "marks the job as completed.",
       "id": "state_checkpoint_rationale_156"
     },
@@ -332,7 +332,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L168",
-      "community": 2,
+      "community": 7,
       "norm_label": "marks the job as aborted with a reason.",
       "id": "state_checkpoint_rationale_168"
     },
@@ -414,7 +414,7 @@
       "source_file": "src/sync_mail/tui/widgets/log_panel.py",
       "source_location": "L1",
       "id": "src_sync_mail_tui_widgets_log_panel_py",
-      "community": 11,
+      "community": 3,
       "norm_label": "log_panel.py"
     },
     {
@@ -423,7 +423,7 @@
       "source_file": "src/sync_mail/tui/widgets/log_panel.py",
       "source_location": "L4",
       "id": "widgets_log_panel_logpanel",
-      "community": 11,
+      "community": 3,
       "norm_label": "logpanel"
     },
     {
@@ -432,7 +432,7 @@
       "source_file": "",
       "source_location": "",
       "id": "richlog",
-      "community": 11,
+      "community": 3,
       "norm_label": "richlog"
     },
     {
@@ -441,7 +441,7 @@
       "source_file": "src/sync_mail/tui/widgets/log_panel.py",
       "source_location": "L11",
       "id": "widgets_log_panel_logpanel_action_clear",
-      "community": 11,
+      "community": 3,
       "norm_label": ".action_clear()"
     },
     {
@@ -450,7 +450,7 @@
       "source_file": "src/sync_mail/tui/widgets/log_panel.py",
       "source_location": "L14",
       "id": "widgets_log_panel_logpanel_write_info",
-      "community": 11,
+      "community": 3,
       "norm_label": ".write_info()"
     },
     {
@@ -459,7 +459,7 @@
       "source_file": "src/sync_mail/tui/widgets/log_panel.py",
       "source_location": "L17",
       "id": "widgets_log_panel_logpanel_write_error",
-      "community": 11,
+      "community": 3,
       "norm_label": ".write_error()"
     },
     {
@@ -468,7 +468,7 @@
       "source_file": "src/sync_mail/tui/widgets/log_panel.py",
       "source_location": "L20",
       "id": "widgets_log_panel_logpanel_write_success",
-      "community": 11,
+      "community": 3,
       "norm_label": ".write_success()"
     },
     {
@@ -476,7 +476,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/tui/widgets/log_panel.py",
       "source_location": "L5",
-      "community": 11,
+      "community": 3,
       "norm_label": "custom richlog with bindings and auto-scroll.",
       "id": "widgets_log_panel_rationale_5"
     },
@@ -486,7 +486,7 @@
       "source_file": "src/sync_mail/tui/widgets/progress.py",
       "source_location": "L1",
       "id": "src_sync_mail_tui_widgets_progress_py",
-      "community": 7,
+      "community": 3,
       "norm_label": "progress.py"
     },
     {
@@ -495,7 +495,7 @@
       "source_file": "src/sync_mail/tui/widgets/progress.py",
       "source_location": "L6",
       "id": "widgets_progress_migrationprogress",
-      "community": 7,
+      "community": 3,
       "norm_label": "migrationprogress"
     },
     {
@@ -504,7 +504,7 @@
       "source_file": "",
       "source_location": "",
       "id": "vertical",
-      "community": 7,
+      "community": 3,
       "norm_label": "vertical"
     },
     {
@@ -513,7 +513,7 @@
       "source_file": "src/sync_mail/tui/widgets/progress.py",
       "source_location": "L14",
       "id": "widgets_progress_migrationprogress_compose",
-      "community": 7,
+      "community": 3,
       "norm_label": ".compose()"
     },
     {
@@ -522,7 +522,7 @@
       "source_file": "src/sync_mail/tui/widgets/progress.py",
       "source_location": "L20",
       "id": "widgets_progress_migrationprogress_watch_total_rows",
-      "community": 7,
+      "community": 3,
       "norm_label": ".watch_total_rows()"
     },
     {
@@ -531,7 +531,7 @@
       "source_file": "src/sync_mail/tui/widgets/progress.py",
       "source_location": "L23",
       "id": "widgets_progress_migrationprogress_watch_rows_done",
-      "community": 7,
+      "community": 3,
       "norm_label": ".watch_rows_done()"
     },
     {
@@ -540,7 +540,7 @@
       "source_file": "src/sync_mail/tui/widgets/progress.py",
       "source_location": "L26",
       "id": "widgets_progress_migrationprogress_watch_throughput",
-      "community": 7,
+      "community": 3,
       "norm_label": ".watch_throughput()"
     },
     {
@@ -549,7 +549,7 @@
       "source_file": "src/sync_mail/tui/widgets/progress.py",
       "source_location": "L29",
       "id": "widgets_progress_migrationprogress_watch_eta",
-      "community": 7,
+      "community": 3,
       "norm_label": ".watch_eta()"
     },
     {
@@ -558,7 +558,7 @@
       "source_file": "src/sync_mail/tui/widgets/progress.py",
       "source_location": "L32",
       "id": "widgets_progress_batchprogress",
-      "community": 7,
+      "community": 3,
       "norm_label": "batchprogress"
     },
     {
@@ -567,7 +567,7 @@
       "source_file": "src/sync_mail/tui/widgets/progress.py",
       "source_location": "L40",
       "id": "widgets_progress_batchprogress_compose",
-      "community": 7,
+      "community": 3,
       "norm_label": ".compose()"
     },
     {
@@ -576,7 +576,7 @@
       "source_file": "src/sync_mail/tui/widgets/progress.py",
       "source_location": "L48",
       "id": "widgets_progress_batchprogress_watch_total_jobs",
-      "community": 7,
+      "community": 3,
       "norm_label": ".watch_total_jobs()"
     },
     {
@@ -585,7 +585,7 @@
       "source_file": "src/sync_mail/tui/widgets/progress.py",
       "source_location": "L52",
       "id": "widgets_progress_batchprogress_watch_current_index",
-      "community": 7,
+      "community": 3,
       "norm_label": ".watch_current_index()"
     },
     {
@@ -594,7 +594,7 @@
       "source_file": "src/sync_mail/tui/widgets/progress.py",
       "source_location": "L56",
       "id": "widgets_progress_batchprogress_watch_success_count",
-      "community": 7,
+      "community": 3,
       "norm_label": ".watch_success_count()"
     },
     {
@@ -603,7 +603,7 @@
       "source_file": "src/sync_mail/tui/widgets/progress.py",
       "source_location": "L59",
       "id": "widgets_progress_batchprogress_watch_failure_count",
-      "community": 7,
+      "community": 3,
       "norm_label": ".watch_failure_count()"
     },
     {
@@ -612,7 +612,7 @@
       "source_file": "src/sync_mail/tui/widgets/progress.py",
       "source_location": "L62",
       "id": "widgets_progress_batchprogress_watch_current_job_name",
-      "community": 7,
+      "community": 3,
       "norm_label": ".watch_current_job_name()"
     },
     {
@@ -621,7 +621,7 @@
       "source_file": "src/sync_mail/tui/widgets/progress.py",
       "source_location": "L65",
       "id": "widgets_progress_batchprogress_update_label",
-      "community": 7,
+      "community": 3,
       "norm_label": "._update_label()"
     },
     {
@@ -629,7 +629,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/tui/widgets/progress.py",
       "source_location": "L7",
-      "community": 7,
+      "community": 3,
       "norm_label": "combined progress bar and metrics widget.",
       "id": "widgets_progress_rationale_7"
     },
@@ -638,7 +638,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/tui/widgets/progress.py",
       "source_location": "L33",
-      "community": 7,
+      "community": 3,
       "norm_label": "overall progress for a batch of jobs.",
       "id": "widgets_progress_rationale_33"
     },
@@ -675,7 +675,7 @@
       "source_file": "src/sync_mail/tui/screens/inspect.py",
       "source_location": "L12",
       "id": "screens_inspect_inspectscreen_compose",
-      "community": 7,
+      "community": 3,
       "norm_label": ".compose()"
     },
     {
@@ -729,7 +729,7 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L1",
       "id": "src_sync_mail_tui_screens_migrate_py",
-      "community": 3,
+      "community": 2,
       "norm_label": "migrate.py"
     },
     {
@@ -738,7 +738,7 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L15",
       "id": "screens_migrate_migratescreen",
-      "community": 3,
+      "community": 2,
       "norm_label": "migratescreen"
     },
     {
@@ -747,7 +747,7 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L18",
       "id": "screens_migrate_migratescreen_compose",
-      "community": 7,
+      "community": 3,
       "norm_label": ".compose()"
     },
     {
@@ -765,7 +765,7 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L48",
       "id": "screens_migrate_migratescreen_on_event",
-      "community": 3,
+      "community": 2,
       "norm_label": ".on_event()"
     },
     {
@@ -774,7 +774,7 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L51",
       "id": "screens_migrate_migratescreen_handle_event_ui",
-      "community": 11,
+      "community": 3,
       "norm_label": ".handle_event_ui()"
     },
     {
@@ -783,7 +783,7 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L98",
       "id": "screens_migrate_migratescreen_on_button_pressed",
-      "community": 3,
+      "community": 2,
       "norm_label": ".on_button_pressed()"
     },
     {
@@ -792,7 +792,7 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L113",
       "id": "screens_migrate_migratescreen_start_process",
-      "community": 3,
+      "community": 2,
       "norm_label": ".start_process()"
     },
     {
@@ -801,7 +801,7 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L157",
       "id": "screens_migrate_run_single_worker",
-      "community": 3,
+      "community": 2,
       "norm_label": "run_single_worker()"
     },
     {
@@ -810,7 +810,7 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L166",
       "id": "screens_migrate_run_batch_worker",
-      "community": 3,
+      "community": 2,
       "norm_label": "run_batch_worker()"
     },
     {
@@ -819,7 +819,7 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L174",
       "id": "screens_migrate_migratescreen_show_finish",
-      "community": 3,
+      "community": 2,
       "norm_label": "._show_finish()"
     },
     {
@@ -827,7 +827,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L16",
-      "community": 3,
+      "community": 2,
       "norm_label": "screen for monitoring migration job (single or batch).",
       "id": "screens_migrate_rationale_16"
     },
@@ -855,7 +855,7 @@
       "source_file": "src/sync_mail/tui/screens/introspect.py",
       "source_location": "L16",
       "id": "screens_introspect_introspectscreen_compose",
-      "community": 4,
+      "community": 3,
       "norm_label": ".compose()"
     },
     {
@@ -954,7 +954,7 @@
       "source_file": "src/sync_mail/tui/screens/menu.py",
       "source_location": "L9",
       "id": "screens_menu_menuscreen_compose",
-      "community": 7,
+      "community": 5,
       "norm_label": ".compose()"
     },
     {
@@ -1332,7 +1332,7 @@
       "source_file": "src/sync_mail/pipeline/loader.py",
       "source_location": "L68",
       "id": "pipeline_loader_load",
-      "community": 2,
+      "community": 7,
       "norm_label": "load()"
     },
     {
@@ -1367,7 +1367,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/pipeline/loader.py",
       "source_location": "L69",
-      "community": 2,
+      "community": 7,
       "norm_label": "functional wrapper for loader.load for cases where a persistent loader instance",
       "id": "pipeline_loader_rationale_69"
     },
@@ -1377,7 +1377,7 @@
       "source_file": "src/sync_mail/pipeline/orchestrator.py",
       "source_location": "L1",
       "id": "src_sync_mail_pipeline_orchestrator_py",
-      "community": 3,
+      "community": 2,
       "norm_label": "orchestrator.py"
     },
     {
@@ -1386,7 +1386,7 @@
       "source_file": "src/sync_mail/pipeline/orchestrator.py",
       "source_location": "L15",
       "id": "pipeline_orchestrator_migrationjob",
-      "community": 3,
+      "community": 2,
       "norm_label": "migrationjob"
     },
     {
@@ -1395,7 +1395,7 @@
       "source_file": "src/sync_mail/pipeline/orchestrator.py",
       "source_location": "L20",
       "id": "pipeline_orchestrator_migrationjob_init",
-      "community": 3,
+      "community": 2,
       "norm_label": ".__init__()"
     },
     {
@@ -1404,7 +1404,7 @@
       "source_file": "src/sync_mail/pipeline/orchestrator.py",
       "source_location": "L36",
       "id": "pipeline_orchestrator_migrationjob_setup_signals",
-      "community": 3,
+      "community": 2,
       "norm_label": "._setup_signals()"
     },
     {
@@ -1413,7 +1413,7 @@
       "source_file": "src/sync_mail/pipeline/orchestrator.py",
       "source_location": "L45",
       "id": "pipeline_orchestrator_migrationjob_restore_signals",
-      "community": 3,
+      "community": 2,
       "norm_label": "._restore_signals()"
     },
     {
@@ -1431,7 +1431,7 @@
       "source_file": "src/sync_mail/pipeline/orchestrator.py",
       "source_location": "L199",
       "id": "pipeline_orchestrator_jobbatch",
-      "community": 3,
+      "community": 2,
       "norm_label": "jobbatch"
     },
     {
@@ -1440,7 +1440,7 @@
       "source_file": "src/sync_mail/pipeline/orchestrator.py",
       "source_location": "L203",
       "id": "pipeline_orchestrator_jobbatch_init",
-      "community": 3,
+      "community": 2,
       "norm_label": ".__init__()"
     },
     {
@@ -1449,7 +1449,7 @@
       "source_file": "src/sync_mail/pipeline/orchestrator.py",
       "source_location": "L207",
       "id": "pipeline_orchestrator_jobbatch_run",
-      "community": 3,
+      "community": 2,
       "norm_label": ".run()"
     },
     {
@@ -1457,7 +1457,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/pipeline/orchestrator.py",
       "source_location": "L16",
-      "community": 3,
+      "community": 2,
       "norm_label": "orchestrates the end-to-end migration process.     handles loading mapping, chec",
       "id": "pipeline_orchestrator_rationale_16"
     },
@@ -1466,7 +1466,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/pipeline/orchestrator.py",
       "source_location": "L37",
-      "community": 3,
+      "community": 2,
       "norm_label": "registers signal handlers for graceful shutdown.",
       "id": "pipeline_orchestrator_rationale_37"
     },
@@ -1475,7 +1475,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/pipeline/orchestrator.py",
       "source_location": "L46",
-      "community": 3,
+      "community": 2,
       "norm_label": "restores original signal handlers.",
       "id": "pipeline_orchestrator_rationale_46"
     },
@@ -1493,7 +1493,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/pipeline/orchestrator.py",
       "source_location": "L200",
-      "community": 3,
+      "community": 2,
       "norm_label": "executes multiple migrationjobs sequentially.",
       "id": "pipeline_orchestrator_rationale_200"
     },
@@ -1503,7 +1503,7 @@
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L1",
       "id": "src_sync_mail_errors_exceptions_py",
-      "community": 0,
+      "community": 9,
       "norm_label": "exceptions.py"
     },
     {
@@ -1512,7 +1512,7 @@
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L3",
       "id": "errors_exceptions_migrationerror",
-      "community": 0,
+      "community": 9,
       "norm_label": "migrationerror"
     },
     {
@@ -1530,7 +1530,7 @@
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L8",
       "id": "errors_exceptions_migrationerror_init",
-      "community": 0,
+      "community": 9,
       "norm_label": ".__init__()"
     },
     {
@@ -1548,7 +1548,7 @@
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L16",
       "id": "errors_exceptions_connectionerror",
-      "community": 0,
+      "community": 9,
       "norm_label": "connectionerror"
     },
     {
@@ -1566,7 +1566,7 @@
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L24",
       "id": "errors_exceptions_batchfailederror",
-      "community": 0,
+      "community": 9,
       "norm_label": "batchfailederror"
     },
     {
@@ -1575,7 +1575,7 @@
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L28",
       "id": "errors_exceptions_resumeerror",
-      "community": 2,
+      "community": 9,
       "norm_label": "resumeerror"
     },
     {
@@ -1583,7 +1583,7 @@
       "file_type": "rationale",
       "source_file": "errors/exceptions.py",
       "source_location": "L4",
-      "community": 0,
+      "community": 9,
       "norm_label": "base exception for all migration-related errors.",
       "id": "errors_exceptions_rationale_4"
     },
@@ -1601,7 +1601,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L17",
-      "community": 0,
+      "community": 9,
       "norm_label": "raised when database connection fails (source or target).",
       "id": "errors_exceptions_rationale_17"
     },
@@ -1619,7 +1619,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L25",
-      "community": 0,
+      "community": 9,
       "norm_label": "raised when a data batch transaction fails to commit.",
       "id": "errors_exceptions_rationale_25"
     },
@@ -1628,7 +1628,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L29",
-      "community": 2,
+      "community": 9,
       "norm_label": "raised when resuming from a checkpoint fails (e.g., corrupt state.json).",
       "id": "errors_exceptions_rationale_29"
     },
@@ -1638,7 +1638,7 @@
       "source_file": "src/sync_mail/errors/__init__.py",
       "source_location": "L1",
       "id": "src_sync_mail_errors_init_py",
-      "community": 0,
+      "community": 9,
       "norm_label": "__init__.py"
     },
     {
@@ -1656,7 +1656,7 @@
       "source_file": "src/sync_mail/config/loader.py",
       "source_location": "L1",
       "id": "src_sync_mail_config_loader_py",
-      "community": 10,
+      "community": 11,
       "norm_label": "loader.py"
     },
     {
@@ -1665,7 +1665,7 @@
       "source_file": "src/sync_mail/config/loader.py",
       "source_location": "L7",
       "id": "config_loader_load_mapping",
-      "community": 10,
+      "community": 11,
       "norm_label": "load_mapping()"
     },
     {
@@ -1673,7 +1673,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/config/loader.py",
       "source_location": "L8",
-      "community": 10,
+      "community": 11,
       "norm_label": "loads a yaml mapping file, parses it into a mappingdocument, and validates it.",
       "id": "config_loader_rationale_8"
     },
@@ -1998,7 +1998,7 @@
       "source_file": "src/sync_mail/observability/metrics.py",
       "source_location": "L1",
       "id": "src_sync_mail_observability_metrics_py",
-      "community": 3,
+      "community": 2,
       "norm_label": "metrics.py"
     },
     {
@@ -2007,7 +2007,7 @@
       "source_file": "src/sync_mail/observability/metrics.py",
       "source_location": "L6",
       "id": "observability_metrics_throughputcalculator",
-      "community": 3,
+      "community": 2,
       "norm_label": "throughputcalculator"
     },
     {
@@ -2016,7 +2016,7 @@
       "source_file": "src/sync_mail/observability/metrics.py",
       "source_location": "L11",
       "id": "observability_metrics_throughputcalculator_init",
-      "community": 3,
+      "community": 2,
       "norm_label": ".__init__()"
     },
     {
@@ -2025,7 +2025,7 @@
       "source_file": "src/sync_mail/observability/metrics.py",
       "source_location": "L17",
       "id": "observability_metrics_throughputcalculator_record",
-      "community": 3,
+      "community": 2,
       "norm_label": ".record()"
     },
     {
@@ -2034,7 +2034,7 @@
       "source_file": "src/sync_mail/observability/metrics.py",
       "source_location": "L25",
       "id": "observability_metrics_throughputcalculator_current_rate",
-      "community": 3,
+      "community": 2,
       "norm_label": ".current_rate()"
     },
     {
@@ -2043,7 +2043,7 @@
       "source_file": "src/sync_mail/observability/metrics.py",
       "source_location": "L42",
       "id": "observability_metrics_throughputcalculator_average_rate",
-      "community": 3,
+      "community": 2,
       "norm_label": ".average_rate()"
     },
     {
@@ -2052,7 +2052,7 @@
       "source_file": "src/sync_mail/observability/metrics.py",
       "source_location": "L51",
       "id": "observability_metrics_compute_eta",
-      "community": 3,
+      "community": 2,
       "norm_label": "compute_eta()"
     },
     {
@@ -2060,7 +2060,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/metrics.py",
       "source_location": "L7",
-      "community": 3,
+      "community": 2,
       "norm_label": "calculates moving average throughput (rows/sec).     uses a sliding window of re",
       "id": "observability_metrics_rationale_7"
     },
@@ -2069,7 +2069,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/metrics.py",
       "source_location": "L18",
-      "community": 3,
+      "community": 2,
       "norm_label": "records a completed batch.",
       "id": "observability_metrics_rationale_18"
     },
@@ -2078,7 +2078,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/metrics.py",
       "source_location": "L26",
-      "community": 3,
+      "community": 2,
       "norm_label": "calculates rows per second based on the sliding window.",
       "id": "observability_metrics_rationale_26"
     },
@@ -2087,7 +2087,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/metrics.py",
       "source_location": "L43",
-      "community": 3,
+      "community": 2,
       "norm_label": "calculates rows per second since the start of the job.",
       "id": "observability_metrics_rationale_43"
     },
@@ -2096,7 +2096,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/metrics.py",
       "source_location": "L52",
-      "community": 3,
+      "community": 2,
       "norm_label": "computes estimated time of arrival based on remaining rows and throughput.",
       "id": "observability_metrics_rationale_52"
     },
@@ -2142,7 +2142,7 @@
       "source_file": "src/sync_mail/db/connection.py",
       "source_location": "L85",
       "id": "db_connection_create_db_engine",
-      "community": 0,
+      "community": 8,
       "norm_label": "create_db_engine()"
     },
     {
@@ -2177,7 +2177,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/db/connection.py",
       "source_location": "L86",
-      "community": 0,
+      "community": 8,
       "norm_label": "creates a sqlalchemy engine for introspection with low-memory settings.",
       "id": "db_connection_rationale_86"
     },
@@ -2187,7 +2187,7 @@
       "source_file": "src/sync_mail/db/introspect.py",
       "source_location": "L1",
       "id": "src_sync_mail_db_introspect_py",
-      "community": 4,
+      "community": 0,
       "norm_label": "introspect.py"
     },
     {
@@ -2205,7 +2205,7 @@
       "source_file": "src/sync_mail/db/introspect.py",
       "source_location": "L42",
       "id": "db_introspect_list_tables",
-      "community": 4,
+      "community": 0,
       "norm_label": "list_tables()"
     },
     {
@@ -2231,7 +2231,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/db/introspect.py",
       "source_location": "L43",
-      "community": 4,
+      "community": 0,
       "norm_label": "retrieves all table names in a schema.",
       "id": "db_introspect_rationale_43"
     },
@@ -2349,7 +2349,7 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L1",
       "id": "tests_test_checkpoint_py",
-      "community": 2,
+      "community": 7,
       "norm_label": "test_checkpoint.py"
     },
     {
@@ -2358,7 +2358,7 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L8",
       "id": "tests_test_checkpoint_test_checkpoint_save_load",
-      "community": 2,
+      "community": 7,
       "norm_label": "test_checkpoint_save_load()"
     },
     {
@@ -2367,7 +2367,7 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L27",
       "id": "tests_test_checkpoint_test_checkpoint_atomic_write",
-      "community": 2,
+      "community": 7,
       "norm_label": "test_checkpoint_atomic_write()"
     },
     {
@@ -2376,7 +2376,7 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L43",
       "id": "tests_test_checkpoint_test_checkpoint_corrupt_json",
-      "community": 2,
+      "community": 7,
       "norm_label": "test_checkpoint_corrupt_json()"
     },
     {
@@ -2385,7 +2385,7 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L55",
       "id": "tests_test_checkpoint_test_checkpoint_lock",
-      "community": 2,
+      "community": 7,
       "norm_label": "test_checkpoint_lock()"
     },
     {
@@ -2394,7 +2394,7 @@
       "source_file": "tests/test_mapping_loader.py",
       "source_location": "L1",
       "id": "tests_test_mapping_loader_py",
-      "community": 10,
+      "community": 11,
       "norm_label": "test_mapping_loader.py"
     },
     {
@@ -2403,7 +2403,7 @@
       "source_file": "tests/test_mapping_loader.py",
       "source_location": "L7",
       "id": "tests_test_mapping_loader_temp_yaml",
-      "community": 10,
+      "community": 11,
       "norm_label": "temp_yaml()"
     },
     {
@@ -2412,7 +2412,7 @@
       "source_file": "tests/test_mapping_loader.py",
       "source_location": "L14",
       "id": "tests_test_mapping_loader_test_load_valid_mapping",
-      "community": 10,
+      "community": 11,
       "norm_label": "test_load_valid_mapping()"
     },
     {
@@ -2421,7 +2421,7 @@
       "source_file": "tests/test_mapping_loader.py",
       "source_location": "L32",
       "id": "tests_test_mapping_loader_test_load_invalid_batch_size",
-      "community": 10,
+      "community": 11,
       "norm_label": "test_load_invalid_batch_size()"
     },
     {
@@ -2430,7 +2430,7 @@
       "source_file": "tests/test_mapping_loader.py",
       "source_location": "L46",
       "id": "tests_test_mapping_loader_test_load_missing_cast_target",
-      "community": 10,
+      "community": 11,
       "norm_label": "test_load_missing_cast_target()"
     },
     {
@@ -2439,7 +2439,7 @@
       "source_file": "tests/test_mapping_loader.py",
       "source_location": "L60",
       "id": "tests_test_mapping_loader_test_load_action_required_remaining",
-      "community": 10,
+      "community": 11,
       "norm_label": "test_load_action_required_remaining()"
     },
     {
@@ -2448,7 +2448,7 @@
       "source_file": "tests/test_mapping_loader.py",
       "source_location": "L74",
       "id": "tests_test_mapping_loader_test_load_duplicate_target",
-      "community": 10,
+      "community": 11,
       "norm_label": "test_load_duplicate_target()"
     },
     {
@@ -2457,7 +2457,7 @@
       "source_file": "tests/test_mapping_loader.py",
       "source_location": "L89",
       "id": "tests_test_mapping_loader_test_aggregate_errors",
-      "community": 10,
+      "community": 11,
       "norm_label": "test_aggregate_errors()"
     },
     {
@@ -2466,7 +2466,7 @@
       "source_file": "tests/test_mapping_loader.py",
       "source_location": "L107",
       "id": "tests_test_mapping_loader_test_error_line_numbers",
-      "community": 10,
+      "community": 11,
       "norm_label": "test_error_line_numbers()"
     },
     {
@@ -2484,7 +2484,7 @@
       "source_file": "tests/test_orchestrator.py",
       "source_location": "L11",
       "id": "tests_test_orchestrator_testorchestrator",
-      "community": 1,
+      "community": 2,
       "norm_label": "testorchestrator"
     },
     {
@@ -2493,7 +2493,7 @@
       "source_file": "tests/test_orchestrator.py",
       "source_location": "L12",
       "id": "tests_test_orchestrator_testorchestrator_setup",
-      "community": 1,
+      "community": 2,
       "norm_label": ".setup()"
     },
     {
@@ -2502,7 +2502,7 @@
       "source_file": "tests/test_orchestrator.py",
       "source_location": "L41",
       "id": "tests_test_orchestrator_testorchestrator_teardown",
-      "community": 1,
+      "community": 2,
       "norm_label": ".teardown()"
     },
     {
@@ -2632,30 +2632,12 @@
       "norm_label": "test_transform_cast_failure()"
     },
     {
-      "label": "smoke_tui.py",
-      "file_type": "code",
-      "source_file": "tests/smoke_tui.py",
-      "source_location": "L1",
-      "id": "tests_smoke_tui_py",
-      "community": 5,
-      "norm_label": "smoke_tui.py"
-    },
-    {
-      "label": "test_imports()",
-      "file_type": "code",
-      "source_file": "tests/smoke_tui.py",
-      "source_location": "L9",
-      "id": "tests_smoke_tui_test_imports",
-      "community": 5,
-      "norm_label": "test_imports()"
-    },
-    {
       "label": "test_pipeline.py",
       "file_type": "code",
       "source_file": "tests/test_pipeline.py",
       "source_location": "L1",
       "id": "tests_test_pipeline_py",
-      "community": 2,
+      "community": 1,
       "norm_label": "test_pipeline.py"
     },
     {
@@ -2700,7 +2682,7 @@
       "source_file": "tests/test_pipeline.py",
       "source_location": "L63",
       "id": "tests_test_pipeline_test_loader_success",
-      "community": 2,
+      "community": 1,
       "norm_label": "test_loader_success()"
     },
     {
@@ -2709,7 +2691,7 @@
       "source_file": "tests/test_pipeline.py",
       "source_location": "L83",
       "id": "tests_test_pipeline_test_loader_fail",
-      "community": 2,
+      "community": 0,
       "norm_label": "test_loader_fail()"
     },
     {
@@ -2722,11 +2704,38 @@
       "norm_label": ".test_extractor_generator()"
     },
     {
+      "label": "test_tui_smoke.py",
+      "file_type": "code",
+      "source_file": "tests/test_tui_smoke.py",
+      "source_location": "L1",
+      "id": "tests_test_tui_smoke_py",
+      "community": 5,
+      "norm_label": "test_tui_smoke.py"
+    },
+    {
+      "label": "test_app_initialization()",
+      "file_type": "code",
+      "source_file": "tests/test_tui_smoke.py",
+      "source_location": "L6",
+      "id": "tests_test_tui_smoke_test_app_initialization",
+      "community": 5,
+      "norm_label": "test_app_initialization()"
+    },
+    {
+      "label": "Smoke test to ensure the TUI app can be initialized and mounted     without CSS",
+      "file_type": "rationale",
+      "source_file": "tests/test_tui_smoke.py",
+      "source_location": "L7",
+      "community": 5,
+      "norm_label": "smoke test to ensure the tui app can be initialized and mounted     without css",
+      "id": "tests_test_tui_smoke_rationale_7"
+    },
+    {
       "label": "Fixture to provide a clean temporary state directory.",
       "file_type": "rationale",
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L11",
-      "community": 2,
+      "community": 7,
       "norm_label": "fixture to provide a clean temporary state directory.",
       "id": "tests_test_checkpoint_rationale_11"
     },
@@ -3099,7 +3108,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 10,
       "norm_label": "sync-mail",
       "id": "claude_sync_mail"
     },
@@ -3112,7 +3121,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 10,
       "norm_label": "mariadb",
       "id": "claude_mariadb"
     },
@@ -3125,7 +3134,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 10,
       "norm_label": "yaml-driven schema rules",
       "id": "claude_yaml_schema_rules"
     },
@@ -3138,7 +3147,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 10,
       "norm_label": "plan/prd.md",
       "id": "claude_prd_md"
     },
@@ -3165,7 +3174,7 @@
       "author": null,
       "contributor": null,
       "rationale": "To ensure low memory footprint when streaming millions of rows.",
-      "community": 9,
+      "community": 10,
       "norm_label": "server-side cursors",
       "id": "claude_server_side_cursors"
     },
@@ -3179,7 +3188,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Allows each chunk's references to drop so Python's GC can release RAM.",
-      "community": 9,
+      "community": 10,
       "norm_label": "generator-based streaming",
       "id": "claude_generator_streaming"
     },
@@ -3193,7 +3202,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Avoids the performance penalty of OFFSET which forces MariaDB to rescan prior rows.",
-      "community": 9,
+      "community": 10,
       "norm_label": "keyset pagination",
       "id": "claude_keyset_pagination"
     },
@@ -3207,7 +3216,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Uses executemany() with batch sizes of 5,000\u201315,000 tuned for max_allowed_packet.",
-      "community": 9,
+      "community": 10,
       "norm_label": "bulk insert",
       "id": "claude_bulk_insert"
     },
@@ -3221,7 +3230,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Ensures batch integrity and allows row-by-row fallback on failure.",
-      "community": 9,
+      "community": 10,
       "norm_label": "per-batch atomic transactions",
       "id": "claude_atomic_transactions"
     },
@@ -3235,7 +3244,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Persists last evaluated primary key to allow restart from exactly where it stopped.",
-      "community": 9,
+      "community": 10,
       "norm_label": "resume via state",
       "id": "claude_checkpoint_resume"
     },
@@ -3248,7 +3257,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 10,
       "norm_label": "beads",
       "id": "claude_beads"
     },
@@ -3261,7 +3270,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 10,
       "norm_label": "pymysql",
       "id": "claude_pymysql"
     },
@@ -3274,7 +3283,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 10,
       "norm_label": "sqlalchemy",
       "id": "claude_sqlalchemy"
     }
@@ -4709,16 +4718,28 @@
       "target": "screens_inspect_inspectscreen"
     },
     {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "tests/test_tui_smoke.py",
+      "source_location": "L2",
+      "weight": 0.8,
+      "_src": "tui_app_syncmailapp",
+      "_tgt": "tests_test_tui_smoke_rationale_7",
+      "confidence_score": 0.5,
+      "source": "tui_app_syncmailapp",
+      "target": "tests_test_tui_smoke_rationale_7"
+    },
+    {
       "relation": "calls",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
-      "source_file": "tests/smoke_tui.py",
-      "source_location": "L10",
+      "source_file": "tests/test_tui_smoke.py",
+      "source_location": "L11",
       "weight": 1.0,
       "_src": "tui_app_syncmailapp",
-      "_tgt": "tests_smoke_tui_test_imports",
+      "_tgt": "tests_test_tui_smoke_test_app_initialization",
       "source": "tui_app_syncmailapp",
-      "target": "tests_smoke_tui_test_imports"
+      "target": "tests_test_tui_smoke_test_app_initialization"
     },
     {
       "relation": "calls",
@@ -6099,6 +6120,18 @@
       "source": "screens_menu_menuscreen",
       "target": "screens_menu_rationale_7",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "tests/test_tui_smoke.py",
+      "source_location": "L3",
+      "weight": 0.8,
+      "_src": "screens_menu_menuscreen",
+      "_tgt": "tests_test_tui_smoke_rationale_7",
+      "confidence_score": 0.5,
+      "source": "screens_menu_menuscreen",
+      "target": "tests_test_tui_smoke_rationale_7"
     },
     {
       "relation": "contains",
@@ -10291,18 +10324,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "tests/smoke_tui.py",
-      "source_location": "L9",
-      "weight": 1.0,
-      "_src": "tests_smoke_tui_py",
-      "_tgt": "tests_smoke_tui_test_imports",
-      "source": "tests_smoke_tui_py",
-      "target": "tests_smoke_tui_test_imports",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "tests/test_pipeline.py",
       "source_location": "L13",
       "weight": 1.0,
@@ -10382,6 +10403,30 @@
       "_tgt": "tests_test_pipeline_testpipeline_test_extractor_generator",
       "source": "tests_test_pipeline_testpipeline",
       "target": "tests_test_pipeline_testpipeline_test_extractor_generator",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_tui_smoke.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "tests_test_tui_smoke_py",
+      "_tgt": "tests_test_tui_smoke_test_app_initialization",
+      "source": "tests_test_tui_smoke_py",
+      "target": "tests_test_tui_smoke_test_app_initialization",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_tui_smoke.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_src": "tests_test_tui_smoke_rationale_7",
+      "_tgt": "tests_test_tui_smoke_test_app_initialization",
+      "source": "tests_test_tui_smoke_test_app_initialization",
+      "target": "tests_test_tui_smoke_rationale_7",
       "confidence_score": 1.0
     },
     {

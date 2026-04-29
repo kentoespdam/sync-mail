@@ -59,12 +59,12 @@ class SyncMailApp(App):
     #metrics-grid Static {
         width: 1fr;
         content-align: center middle;
-        border: thin $primary;
+        border: solid $primary;
     }
 
     #log-panel {
         height: 1fr;
-        border: sunken $primary;
+        border: panel $primary;
         margin-top: 1;
     }
 
