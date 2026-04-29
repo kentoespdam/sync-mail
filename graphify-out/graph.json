@@ -1655,9 +1655,9 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L33",
-      "id": "errors_exceptions_rationale_33",
       "community": 4,
-      "norm_label": "raised when there are issues with general configuration files (e.g., connection."
+      "norm_label": "raised when there are issues with general configuration files (e.g., connection.",
+      "id": "errors_exceptions_rationale_33"
     },
     {
       "label": "__init__.py",
@@ -1745,54 +1745,54 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/config/connection.py",
       "source_location": "L14",
-      "id": "config_connection_rationale_14",
       "community": 8,
-      "norm_label": "resolves database connection configuration from yaml or interactive input.     f"
+      "norm_label": "resolves database connection configuration from yaml or interactive input.     f",
+      "id": "config_connection_rationale_14"
     },
     {
       "label": "Loads YAML and returns (data, status_string)",
       "file_type": "rationale",
       "source_file": "src/sync_mail/config/connection.py",
       "source_location": "L59",
-      "id": "config_connection_rationale_59",
       "community": 8,
-      "norm_label": "loads yaml and returns (data, status_string)"
+      "norm_label": "loads yaml and returns (data, status_string)",
+      "id": "config_connection_rationale_59"
     },
     {
       "label": "Prompts for missing fields in source and/or target blocks.",
       "file_type": "rationale",
       "source_file": "src/sync_mail/config/connection.py",
       "source_location": "L101",
-      "id": "config_connection_rationale_101",
       "community": 8,
-      "norm_label": "prompts for missing fields in source and/or target blocks."
+      "norm_label": "prompts for missing fields in source and/or target blocks.",
+      "id": "config_connection_rationale_101"
     },
     {
       "label": "Prompts for host, port, user, password, database.",
       "file_type": "rationale",
       "source_file": "src/sync_mail/config/connection.py",
       "source_location": "L130",
-      "id": "config_connection_rationale_130",
       "community": 8,
-      "norm_label": "prompts for host, port, user, password, database."
+      "norm_label": "prompts for host, port, user, password, database.",
+      "id": "config_connection_rationale_130"
     },
     {
       "label": "Temporarily disables stdout logging handler.",
       "file_type": "rationale",
       "source_file": "src/sync_mail/config/connection.py",
       "source_location": "L174",
-      "id": "config_connection_rationale_174",
       "community": 8,
-      "norm_label": "temporarily disables stdout logging handler."
+      "norm_label": "temporarily disables stdout logging handler.",
+      "id": "config_connection_rationale_174"
     },
     {
       "label": "Checks if the connection file is in .gitignore and warns if not.",
       "file_type": "rationale",
       "source_file": "src/sync_mail/config/connection.py",
       "source_location": "L190",
-      "id": "config_connection_rationale_190",
       "community": 8,
-      "norm_label": "checks if the connection file is in .gitignore and warns if not."
+      "norm_label": "checks if the connection file is in .gitignore and warns if not.",
+      "id": "config_connection_rationale_190"
     },
     {
       "label": "__init__.py",
@@ -7565,8 +7565,8 @@
       "source_file": "src/sync_mail/config/connection.py",
       "source_location": "L72",
       "weight": 1.0,
-      "_src": "config_connection_load_from_yaml",
-      "_tgt": "pipeline_loader_load",
+      "_src": "pipeline_loader_load",
+      "_tgt": "config_connection_load_from_yaml",
       "source": "pipeline_loader_load",
       "target": "config_connection_load_from_yaml"
     },
