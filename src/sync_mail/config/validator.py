@@ -14,6 +14,8 @@ def validate_mapping(doc: MappingDocument) -> None:
         errors.append("Source table name cannot be empty.")
     if not doc.target_table:
         errors.append("Target table name cannot be empty.")
+    if not doc.pk_column:
+        errors.append("Primary key column (pk_column) must be specified.")
 
     # (d) batch_size check
     if not (5000 <= doc.batch_size <= 15000):

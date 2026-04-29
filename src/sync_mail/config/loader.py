@@ -38,6 +38,7 @@ def load_mapping(path: str) -> MappingDocument:
         doc = MappingDocument(
             source_table=job_data.get("source_table"),
             target_table=job_data.get("target_table"),
+            pk_column=job_data.get("pk_column"),
             batch_size=job_data.get("batch_size", 10000),
             mappings=mappings
         )

@@ -9,7 +9,7 @@
       "source_file": "src/sync_mail/main.py",
       "source_location": "L1",
       "id": "src_sync_mail_main_py",
-      "community": 5,
+      "community": 8,
       "norm_label": "main.py"
     },
     {
@@ -18,7 +18,7 @@
       "source_file": "src/sync_mail/main.py",
       "source_location": "L3",
       "id": "sync_mail_main_main",
-      "community": 5,
+      "community": 8,
       "norm_label": "main()"
     },
     {
@@ -26,7 +26,7 @@
       "file_type": "rationale",
       "source_file": "main.py",
       "source_location": "L4",
-      "community": 5,
+      "community": 8,
       "norm_label": "main entry point for the sync-mail cli application.     launches the textual tui",
       "id": "sync_mail_main_rationale_4"
     },
@@ -36,7 +36,7 @@
       "source_file": "src/sync_mail/__init__.py",
       "source_location": "L1",
       "id": "src_sync_mail_init_py",
-      "community": 9,
+      "community": 11,
       "norm_label": "__init__.py"
     },
     {
@@ -45,7 +45,7 @@
       "source_file": "src/sync_mail/introspection.py",
       "source_location": "L1",
       "id": "src_sync_mail_introspection_py",
-      "community": 0,
+      "community": 2,
       "norm_label": "introspection.py"
     },
     {
@@ -54,7 +54,7 @@
       "source_file": "src/sync_mail/introspection.py",
       "source_location": "L13",
       "id": "sync_mail_introspection_get_table_schema",
-      "community": 0,
+      "community": 2,
       "norm_label": "get_table_schema()"
     },
     {
@@ -63,7 +63,7 @@
       "source_file": "src/sync_mail/introspection.py",
       "source_location": "L95",
       "id": "sync_mail_introspection_get_all_table_schemas",
-      "community": 0,
+      "community": 2,
       "norm_label": "get_all_table_schemas()"
     },
     {
@@ -72,7 +72,7 @@
       "source_file": "src/sync_mail/introspection.py",
       "source_location": "L137",
       "id": "sync_mail_introspection_map_sqlalchemy_type_to_yaml",
-      "community": 0,
+      "community": 2,
       "norm_label": "map_sqlalchemy_type_to_yaml()"
     },
     {
@@ -81,7 +81,7 @@
       "source_file": "src/sync_mail/introspection.py",
       "source_location": "L162",
       "id": "sync_mail_introspection_convert_schema_to_yaml",
-      "community": 0,
+      "community": 2,
       "norm_label": "convert_schema_to_yaml()"
     },
     {
@@ -89,7 +89,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/introspection.py",
       "source_location": "L14",
-      "community": 0,
+      "community": 2,
       "norm_label": "retrieves schema information for a specific table.      args:         engine (en",
       "id": "sync_mail_introspection_rationale_14"
     },
@@ -98,7 +98,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/introspection.py",
       "source_location": "L96",
-      "community": 0,
+      "community": 2,
       "norm_label": "retrieves schema information for all tables in a given schema.      args:",
       "id": "sync_mail_introspection_rationale_96"
     },
@@ -107,7 +107,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/introspection.py",
       "source_location": "L138",
-      "community": 0,
+      "community": 2,
       "norm_label": "maps sqlalchemy type string representations to a simplified yaml type string.",
       "id": "sync_mail_introspection_rationale_138"
     },
@@ -116,7 +116,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/introspection.py",
       "source_location": "L163",
-      "community": 0,
+      "community": 2,
       "norm_label": "converts introspected schema information into a yaml string format using ruamel.",
       "id": "sync_mail_introspection_rationale_163"
     },
@@ -126,7 +126,7 @@
       "source_file": "src/sync_mail/mapping.py",
       "source_location": "L1",
       "id": "src_sync_mail_mapping_py",
-      "community": 0,
+      "community": 3,
       "norm_label": "mapping.py"
     },
     {
@@ -135,7 +135,7 @@
       "source_file": "src/sync_mail/mapping.py",
       "source_location": "L10",
       "id": "sync_mail_mapping_mappingconfigloader",
-      "community": 0,
+      "community": 3,
       "norm_label": "mappingconfigloader"
     },
     {
@@ -144,7 +144,7 @@
       "source_file": "src/sync_mail/mapping.py",
       "source_location": "L14",
       "id": "sync_mail_mapping_mappingconfigloader_init",
-      "community": 0,
+      "community": 3,
       "norm_label": ".__init__()"
     },
     {
@@ -153,7 +153,7 @@
       "source_file": "src/sync_mail/mapping.py",
       "source_location": "L20",
       "id": "sync_mail_mapping_mappingconfigloader_load_mapping",
-      "community": 0,
+      "community": 2,
       "norm_label": ".load_mapping()"
     },
     {
@@ -161,7 +161,7 @@
       "file_type": "rationale",
       "source_file": "mapping.py",
       "source_location": "L11",
-      "community": 0,
+      "community": 3,
       "norm_label": "handles loading and validating yaml mapping configurations.",
       "id": "sync_mail_mapping_rationale_11"
     },
@@ -170,7 +170,7 @@
       "file_type": "rationale",
       "source_file": "mapping.py",
       "source_location": "L21",
-      "community": 0,
+      "community": 2,
       "norm_label": "loads and validates the yaml mapping configuration from the specified path.",
       "id": "sync_mail_mapping_rationale_21"
     },
@@ -180,7 +180,7 @@
       "source_file": "src/sync_mail/state/__init__.py",
       "source_location": "L1",
       "id": "src_sync_mail_state_init_py",
-      "community": 10,
+      "community": 12,
       "norm_label": "__init__.py"
     },
     {
@@ -189,7 +189,7 @@
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L1",
       "id": "src_sync_mail_state_checkpoint_py",
-      "community": 2,
+      "community": 1,
       "norm_label": "checkpoint.py"
     },
     {
@@ -198,7 +198,7 @@
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L13",
       "id": "state_checkpoint_checkpoint",
-      "community": 2,
+      "community": 1,
       "norm_label": "checkpoint"
     },
     {
@@ -207,7 +207,7 @@
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L19",
       "id": "state_checkpoint_checkpoint_init",
-      "community": 2,
+      "community": 1,
       "norm_label": ".__init__()"
     },
     {
@@ -216,7 +216,7 @@
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L29",
       "id": "state_checkpoint_checkpoint_acquire_lock",
-      "community": 2,
+      "community": 1,
       "norm_label": ".acquire_lock()"
     },
     {
@@ -225,7 +225,7 @@
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L57",
       "id": "state_checkpoint_checkpoint_release_lock",
-      "community": 2,
+      "community": 1,
       "norm_label": ".release_lock()"
     },
     {
@@ -234,7 +234,7 @@
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L68",
       "id": "state_checkpoint_checkpoint_load",
-      "community": 2,
+      "community": 1,
       "norm_label": ".load()"
     },
     {
@@ -243,7 +243,7 @@
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L102",
       "id": "state_checkpoint_checkpoint_save",
-      "community": 2,
+      "community": 1,
       "norm_label": ".save()"
     },
     {
@@ -252,7 +252,7 @@
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L155",
       "id": "state_checkpoint_checkpoint_mark_completed",
-      "community": 2,
+      "community": 1,
       "norm_label": ".mark_completed()"
     },
     {
@@ -261,7 +261,7 @@
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L167",
       "id": "state_checkpoint_checkpoint_mark_aborted",
-      "community": 2,
+      "community": 1,
       "norm_label": ".mark_aborted()"
     },
     {
@@ -270,7 +270,7 @@
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L180",
       "id": "state_checkpoint_checkpoint_del",
-      "community": 2,
+      "community": 1,
       "norm_label": ".__del__()"
     },
     {
@@ -278,7 +278,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L14",
-      "community": 2,
+      "community": 1,
       "norm_label": "manages migration state persistence and process locking.     uses an atomic writ",
       "id": "state_checkpoint_rationale_14"
     },
@@ -287,7 +287,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L30",
-      "community": 2,
+      "community": 1,
       "norm_label": "acquires an exclusive lock on the lock file to prevent multiple processes",
       "id": "state_checkpoint_rationale_30"
     },
@@ -296,7 +296,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L58",
-      "community": 2,
+      "community": 1,
       "norm_label": "releases the process lock.",
       "id": "state_checkpoint_rationale_58"
     },
@@ -305,7 +305,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L69",
-      "community": 2,
+      "community": 1,
       "norm_label": "loads the state from the json file.         returns an empty dict if the file do",
       "id": "state_checkpoint_rationale_69"
     },
@@ -314,7 +314,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L113",
-      "community": 2,
+      "community": 1,
       "norm_label": "saves the state atomically using a temporary file and os.replace().",
       "id": "state_checkpoint_rationale_113"
     },
@@ -323,7 +323,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L156",
-      "community": 2,
+      "community": 1,
       "norm_label": "marks the job as completed.",
       "id": "state_checkpoint_rationale_156"
     },
@@ -332,7 +332,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L168",
-      "community": 2,
+      "community": 1,
       "norm_label": "marks the job as aborted with a reason.",
       "id": "state_checkpoint_rationale_168"
     },
@@ -342,7 +342,7 @@
       "source_file": "src/sync_mail/tui/app.py",
       "source_location": "L1",
       "id": "src_sync_mail_tui_app_py",
-      "community": 5,
+      "community": 8,
       "norm_label": "app.py"
     },
     {
@@ -351,7 +351,7 @@
       "source_file": "src/sync_mail/tui/app.py",
       "source_location": "L4",
       "id": "tui_app_syncmailapp",
-      "community": 5,
+      "community": 8,
       "norm_label": "syncmailapp"
     },
     {
@@ -360,7 +360,7 @@
       "source_file": "",
       "source_location": "",
       "id": "app",
-      "community": 5,
+      "community": 8,
       "norm_label": "app"
     },
     {
@@ -369,7 +369,7 @@
       "source_file": "src/sync_mail/tui/app.py",
       "source_location": "L9",
       "id": "tui_app_syncmailapp_compose",
-      "community": 5,
+      "community": 8,
       "norm_label": ".compose()"
     },
     {
@@ -378,7 +378,7 @@
       "source_file": "src/sync_mail/tui/app.py",
       "source_location": "L15",
       "id": "tui_app_syncmailapp_action_toggle_dark",
-      "community": 5,
+      "community": 8,
       "norm_label": ".action_toggle_dark()"
     },
     {
@@ -386,7 +386,7 @@
       "file_type": "rationale",
       "source_file": "tui/app.py",
       "source_location": "L5",
-      "community": 5,
+      "community": 8,
       "norm_label": "a textual app to manage and monitor the sync-mail migration.",
       "id": "tui_app_rationale_5"
     },
@@ -395,7 +395,7 @@
       "file_type": "rationale",
       "source_file": "tui/app.py",
       "source_location": "L10",
-      "community": 5,
+      "community": 8,
       "norm_label": "create child widgets for the app.",
       "id": "tui_app_rationale_10"
     },
@@ -404,7 +404,7 @@
       "file_type": "rationale",
       "source_file": "tui/app.py",
       "source_location": "L16",
-      "community": 5,
+      "community": 8,
       "norm_label": "an action to toggle dark mode.",
       "id": "tui_app_rationale_16"
     },
@@ -414,7 +414,7 @@
       "source_file": "src/sync_mail/tui/__init__.py",
       "source_location": "L1",
       "id": "src_sync_mail_tui_init_py",
-      "community": 11,
+      "community": 13,
       "norm_label": "__init__.py"
     },
     {
@@ -423,7 +423,7 @@
       "source_file": "src/sync_mail/reconciliation/__init__.py",
       "source_location": "L1",
       "id": "src_sync_mail_reconciliation_init_py",
-      "community": 12,
+      "community": 14,
       "norm_label": "__init__.py"
     },
     {
@@ -432,7 +432,7 @@
       "source_file": "src/sync_mail/reconciliation/auto_yaml.py",
       "source_location": "L1",
       "id": "src_sync_mail_reconciliation_auto_yaml_py",
-      "community": 1,
+      "community": 0,
       "norm_label": "auto_yaml.py"
     },
     {
@@ -441,7 +441,7 @@
       "source_file": "src/sync_mail/reconciliation/auto_yaml.py",
       "source_location": "L7",
       "id": "reconciliation_auto_yaml_generate_mapping",
-      "community": 1,
+      "community": 0,
       "norm_label": "generate_mapping()"
     },
     {
@@ -450,7 +450,7 @@
       "source_file": "src/sync_mail/reconciliation/auto_yaml.py",
       "source_location": "L64",
       "id": "reconciliation_auto_yaml_write_mapping_yaml",
-      "community": 1,
+      "community": 0,
       "norm_label": "write_mapping_yaml()"
     },
     {
@@ -458,7 +458,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/reconciliation/auto_yaml.py",
       "source_location": "L13",
-      "community": 1,
+      "community": 0,
       "norm_label": "reconciles source and target metadata to generate a mappingdocument.",
       "id": "reconciliation_auto_yaml_rationale_13"
     },
@@ -467,7 +467,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/reconciliation/auto_yaml.py",
       "source_location": "L65",
-      "community": 1,
+      "community": 0,
       "norm_label": "writes a mappingdocument to a yaml file with comments using ruamel.yaml.",
       "id": "reconciliation_auto_yaml_rationale_65"
     },
@@ -477,7 +477,7 @@
       "source_file": "src/sync_mail/pipeline/etl_pipeline.py",
       "source_location": "L1",
       "id": "src_sync_mail_pipeline_etl_pipeline_py",
-      "community": 0,
+      "community": 3,
       "norm_label": "etl_pipeline.py"
     },
     {
@@ -486,7 +486,7 @@
       "source_file": "src/sync_mail/pipeline/etl_pipeline.py",
       "source_location": "L18",
       "id": "pipeline_etl_pipeline_etlpipeline",
-      "community": 0,
+      "community": 3,
       "norm_label": "etlpipeline"
     },
     {
@@ -495,7 +495,7 @@
       "source_file": "src/sync_mail/pipeline/etl_pipeline.py",
       "source_location": "L22",
       "id": "pipeline_etl_pipeline_etlpipeline_init",
-      "community": 0,
+      "community": 3,
       "norm_label": ".__init__()"
     },
     {
@@ -504,7 +504,7 @@
       "source_file": "src/sync_mail/pipeline/etl_pipeline.py",
       "source_location": "L41",
       "id": "pipeline_etl_pipeline_etlpipeline_initialize_components",
-      "community": 0,
+      "community": 3,
       "norm_label": "._initialize_components()"
     },
     {
@@ -513,7 +513,7 @@
       "source_file": "src/sync_mail/pipeline/etl_pipeline.py",
       "source_location": "L92",
       "id": "pipeline_etl_pipeline_etlpipeline_get_pk_column_name",
-      "community": 0,
+      "community": 3,
       "norm_label": "._get_pk_column_name()"
     },
     {
@@ -522,7 +522,7 @@
       "source_file": "src/sync_mail/pipeline/etl_pipeline.py",
       "source_location": "L105",
       "id": "pipeline_etl_pipeline_etlpipeline_extract_data",
-      "community": 0,
+      "community": 3,
       "norm_label": "._extract_data()"
     },
     {
@@ -531,7 +531,7 @@
       "source_file": "src/sync_mail/pipeline/etl_pipeline.py",
       "source_location": "L168",
       "id": "pipeline_etl_pipeline_etlpipeline_transform_row",
-      "community": 0,
+      "community": 3,
       "norm_label": "._transform_row()"
     },
     {
@@ -540,7 +540,7 @@
       "source_file": "src/sync_mail/pipeline/etl_pipeline.py",
       "source_location": "L199",
       "id": "pipeline_etl_pipeline_etlpipeline_load_data",
-      "community": 0,
+      "community": 3,
       "norm_label": "._load_data()"
     },
     {
@@ -549,7 +549,7 @@
       "source_file": "src/sync_mail/pipeline/etl_pipeline.py",
       "source_location": "L247",
       "id": "pipeline_etl_pipeline_etlpipeline_run_migration",
-      "community": 0,
+      "community": 3,
       "norm_label": ".run_migration()"
     },
     {
@@ -557,7 +557,7 @@
       "file_type": "rationale",
       "source_file": "pipeline/etl_pipeline.py",
       "source_location": "L19",
-      "community": 0,
+      "community": 3,
       "norm_label": "orchestrates the extract, transform, load (etl) process for data migration.",
       "id": "pipeline_etl_pipeline_rationale_19"
     },
@@ -566,7 +566,7 @@
       "file_type": "rationale",
       "source_file": "pipeline/etl_pipeline.py",
       "source_location": "L23",
-      "community": 0,
+      "community": 3,
       "norm_label": "initializes the etl pipeline with configuration.          args:             conf",
       "id": "pipeline_etl_pipeline_rationale_23"
     },
@@ -575,7 +575,7 @@
       "file_type": "rationale",
       "source_file": "pipeline/etl_pipeline.py",
       "source_location": "L42",
-      "community": 0,
+      "community": 3,
       "norm_label": "initializes the necessary components based on the pipeline configuration.",
       "id": "pipeline_etl_pipeline_rationale_42"
     },
@@ -584,7 +584,7 @@
       "file_type": "rationale",
       "source_file": "pipeline/etl_pipeline.py",
       "source_location": "L93",
-      "community": 0,
+      "community": 3,
       "norm_label": "helper to find the primary key column name for a table from mapping.",
       "id": "pipeline_etl_pipeline_rationale_93"
     },
@@ -593,7 +593,7 @@
       "file_type": "rationale",
       "source_file": "pipeline/etl_pipeline.py",
       "source_location": "L106",
-      "community": 0,
+      "community": 3,
       "norm_label": "extracts data from the source table, using server-side cursors and yielding rows",
       "id": "pipeline_etl_pipeline_rationale_106"
     },
@@ -602,7 +602,7 @@
       "file_type": "rationale",
       "source_file": "pipeline/etl_pipeline.py",
       "source_location": "L169",
-      "community": 0,
+      "community": 3,
       "norm_label": "transforms a single row based on the provided table mapping rules.",
       "id": "pipeline_etl_pipeline_rationale_169"
     },
@@ -611,7 +611,7 @@
       "file_type": "rationale",
       "source_file": "pipeline/etl_pipeline.py",
       "source_location": "L200",
-      "community": 0,
+      "community": 3,
       "norm_label": "loads a batch of transformed rows into the target table using sqlalchemy core's",
       "id": "pipeline_etl_pipeline_rationale_200"
     },
@@ -620,9 +620,63 @@
       "file_type": "rationale",
       "source_file": "pipeline/etl_pipeline.py",
       "source_location": "L248",
-      "community": 0,
+      "community": 3,
       "norm_label": "executes the full migration process: extract, transform, load for all tables.",
       "id": "pipeline_etl_pipeline_rationale_248"
+    },
+    {
+      "label": "transformer.py",
+      "file_type": "code",
+      "source_file": "src/sync_mail/pipeline/transformer.py",
+      "source_location": "L1",
+      "id": "src_sync_mail_pipeline_transformer_py",
+      "community": 0,
+      "norm_label": "transformer.py"
+    },
+    {
+      "label": "transform()",
+      "file_type": "code",
+      "source_file": "src/sync_mail/pipeline/transformer.py",
+      "source_location": "L9",
+      "id": "pipeline_transformer_transform",
+      "community": 0,
+      "norm_label": "transform()"
+    },
+    {
+      "label": "Transforms a list of source rows into a list of tuples ready for target insertio",
+      "file_type": "rationale",
+      "source_file": "src/sync_mail/pipeline/transformer.py",
+      "source_location": "L10",
+      "id": "pipeline_transformer_rationale_10",
+      "community": 0,
+      "norm_label": "transforms a list of source rows into a list of tuples ready for target insertio"
+    },
+    {
+      "label": "extractor.py",
+      "file_type": "code",
+      "source_file": "src/sync_mail/pipeline/extractor.py",
+      "source_location": "L1",
+      "id": "src_sync_mail_pipeline_extractor_py",
+      "community": 0,
+      "norm_label": "extractor.py"
+    },
+    {
+      "label": "extract()",
+      "file_type": "code",
+      "source_file": "src/sync_mail/pipeline/extractor.py",
+      "source_location": "L8",
+      "id": "pipeline_extractor_extract",
+      "community": 0,
+      "norm_label": "extract()"
+    },
+    {
+      "label": "Extracts data from the source table using keyset pagination and streaming.",
+      "file_type": "rationale",
+      "source_file": "src/sync_mail/pipeline/extractor.py",
+      "source_location": "L13",
+      "id": "pipeline_extractor_rationale_13",
+      "community": 0,
+      "norm_label": "extracts data from the source table using keyset pagination and streaming."
     },
     {
       "label": "__init__.py",
@@ -630,8 +684,98 @@
       "source_file": "src/sync_mail/pipeline/__init__.py",
       "source_location": "L1",
       "id": "src_sync_mail_pipeline_init_py",
-      "community": 13,
+      "community": 15,
       "norm_label": "__init__.py"
+    },
+    {
+      "label": "loader.py",
+      "file_type": "code",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L1",
+      "id": "src_sync_mail_pipeline_loader_py",
+      "community": 0,
+      "norm_label": "loader.py"
+    },
+    {
+      "label": "Loader",
+      "file_type": "code",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L10",
+      "id": "pipeline_loader_loader",
+      "community": 0,
+      "norm_label": "loader"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L15",
+      "id": "pipeline_loader_loader_init",
+      "community": 0,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": "._build_insert_sql()",
+      "file_type": "code",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L19",
+      "id": "pipeline_loader_loader_build_insert_sql",
+      "community": 0,
+      "norm_label": "._build_insert_sql()"
+    },
+    {
+      "label": ".load()",
+      "file_type": "code",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L33",
+      "id": "pipeline_loader_loader_load",
+      "community": 5,
+      "norm_label": ".load()"
+    },
+    {
+      "label": "load()",
+      "file_type": "code",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L68",
+      "id": "pipeline_loader_load",
+      "community": 1,
+      "norm_label": "load()"
+    },
+    {
+      "label": "Handles bulk loading of transformed data into the target table.     Caches the I",
+      "file_type": "rationale",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L11",
+      "id": "pipeline_loader_rationale_11",
+      "community": 0,
+      "norm_label": "handles bulk loading of transformed data into the target table.     caches the i"
+    },
+    {
+      "label": "Builds the parameterized INSERT statement once.",
+      "file_type": "rationale",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L20",
+      "id": "pipeline_loader_rationale_20",
+      "community": 0,
+      "norm_label": "builds the parameterized insert statement once."
+    },
+    {
+      "label": "Loads a batch of transformed rows into the target database.                  Arg",
+      "file_type": "rationale",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L34",
+      "id": "pipeline_loader_rationale_34",
+      "community": 5,
+      "norm_label": "loads a batch of transformed rows into the target database.                  arg"
+    },
+    {
+      "label": "Functional wrapper for Loader.load for cases where a persistent Loader instance",
+      "file_type": "rationale",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L69",
+      "id": "pipeline_loader_rationale_69",
+      "community": 1,
+      "norm_label": "functional wrapper for loader.load for cases where a persistent loader instance"
     },
     {
       "label": "exceptions.py",
@@ -639,7 +783,7 @@
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L1",
       "id": "src_sync_mail_errors_exceptions_py",
-      "community": 0,
+      "community": 9,
       "norm_label": "exceptions.py"
     },
     {
@@ -648,7 +792,7 @@
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L3",
       "id": "errors_exceptions_migrationerror",
-      "community": 0,
+      "community": 9,
       "norm_label": "migrationerror"
     },
     {
@@ -657,7 +801,7 @@
       "source_file": "",
       "source_location": "",
       "id": "exception",
-      "community": 0,
+      "community": 3,
       "norm_label": "exception"
     },
     {
@@ -666,7 +810,7 @@
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L8",
       "id": "errors_exceptions_migrationerror_init",
-      "community": 0,
+      "community": 9,
       "norm_label": ".__init__()"
     },
     {
@@ -675,7 +819,7 @@
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L12",
       "id": "errors_exceptions_mappingerror",
-      "community": 1,
+      "community": 0,
       "norm_label": "mappingerror"
     },
     {
@@ -684,7 +828,7 @@
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L16",
       "id": "errors_exceptions_connectionerror",
-      "community": 0,
+      "community": 9,
       "norm_label": "connectionerror"
     },
     {
@@ -693,7 +837,7 @@
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L20",
       "id": "errors_exceptions_introspectionerror",
-      "community": 0,
+      "community": 2,
       "norm_label": "introspectionerror"
     },
     {
@@ -702,7 +846,7 @@
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L24",
       "id": "errors_exceptions_batchfailederror",
-      "community": 0,
+      "community": 9,
       "norm_label": "batchfailederror"
     },
     {
@@ -711,7 +855,7 @@
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L28",
       "id": "errors_exceptions_resumeerror",
-      "community": 2,
+      "community": 1,
       "norm_label": "resumeerror"
     },
     {
@@ -719,7 +863,7 @@
       "file_type": "rationale",
       "source_file": "errors/exceptions.py",
       "source_location": "L4",
-      "community": 0,
+      "community": 9,
       "norm_label": "base exception for all migration-related errors.",
       "id": "errors_exceptions_rationale_4"
     },
@@ -728,7 +872,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L13",
-      "community": 1,
+      "community": 0,
       "norm_label": "raised when there are issues with yaml mapping configuration or validation.",
       "id": "errors_exceptions_rationale_13"
     },
@@ -737,7 +881,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L17",
-      "community": 0,
+      "community": 9,
       "norm_label": "raised when database connection fails (source or target).",
       "id": "errors_exceptions_rationale_17"
     },
@@ -746,7 +890,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L21",
-      "community": 0,
+      "community": 2,
       "norm_label": "raised when reading database schema from information_schema fails.",
       "id": "errors_exceptions_rationale_21"
     },
@@ -755,7 +899,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L25",
-      "community": 0,
+      "community": 9,
       "norm_label": "raised when a data batch transaction fails to commit.",
       "id": "errors_exceptions_rationale_25"
     },
@@ -764,7 +908,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L29",
-      "community": 2,
+      "community": 1,
       "norm_label": "raised when resuming from a checkpoint fails (e.g., corrupt state.json).",
       "id": "errors_exceptions_rationale_29"
     },
@@ -774,7 +918,7 @@
       "source_file": "src/sync_mail/errors/__init__.py",
       "source_location": "L1",
       "id": "src_sync_mail_errors_init_py",
-      "community": 0,
+      "community": 9,
       "norm_label": "__init__.py"
     },
     {
@@ -783,7 +927,7 @@
       "source_file": "src/sync_mail/config/__init__.py",
       "source_location": "L1",
       "id": "src_sync_mail_config_init_py",
-      "community": 14,
+      "community": 16,
       "norm_label": "__init__.py"
     },
     {
@@ -792,7 +936,7 @@
       "source_file": "src/sync_mail/config/loader.py",
       "source_location": "L1",
       "id": "src_sync_mail_config_loader_py",
-      "community": 1,
+      "community": 7,
       "norm_label": "loader.py"
     },
     {
@@ -801,7 +945,7 @@
       "source_file": "src/sync_mail/config/loader.py",
       "source_location": "L7",
       "id": "config_loader_load_mapping",
-      "community": 1,
+      "community": 7,
       "norm_label": "load_mapping()"
     },
     {
@@ -809,7 +953,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/config/loader.py",
       "source_location": "L8",
-      "community": 1,
+      "community": 7,
       "norm_label": "loads a yaml mapping file, parses it into a mappingdocument, and validates it.",
       "id": "config_loader_rationale_8"
     },
@@ -819,7 +963,7 @@
       "source_file": "src/sync_mail/config/validator.py",
       "source_location": "L1",
       "id": "src_sync_mail_config_validator_py",
-      "community": 1,
+      "community": 0,
       "norm_label": "validator.py"
     },
     {
@@ -828,7 +972,7 @@
       "source_file": "src/sync_mail/config/validator.py",
       "source_location": "L5",
       "id": "config_validator_validate_mapping",
-      "community": 1,
+      "community": 0,
       "norm_label": "validate_mapping()"
     },
     {
@@ -836,7 +980,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/config/validator.py",
       "source_location": "L6",
-      "community": 1,
+      "community": 0,
       "norm_label": "validates a mappingdocument for semantic correctness.     raises mappingerror wi",
       "id": "config_validator_rationale_6"
     },
@@ -846,7 +990,7 @@
       "source_file": "src/sync_mail/config/schema.py",
       "source_location": "L1",
       "id": "src_sync_mail_config_schema_py",
-      "community": 1,
+      "community": 0,
       "norm_label": "schema.py"
     },
     {
@@ -855,7 +999,7 @@
       "source_file": "src/sync_mail/config/schema.py",
       "source_location": "L7",
       "id": "config_schema_columnmapping",
-      "community": 1,
+      "community": 0,
       "norm_label": "columnmapping"
     },
     {
@@ -864,7 +1008,7 @@
       "source_file": "src/sync_mail/config/schema.py",
       "source_location": "L20",
       "id": "config_schema_mappingdocument",
-      "community": 1,
+      "community": 0,
       "norm_label": "mappingdocument"
     },
     {
@@ -872,7 +1016,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/config/schema.py",
       "source_location": "L8",
-      "community": 1,
+      "community": 0,
       "norm_label": "metadata for a single column mapping.",
       "id": "config_schema_rationale_8"
     },
@@ -881,7 +1025,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/config/schema.py",
       "source_location": "L21",
-      "community": 1,
+      "community": 0,
       "norm_label": "root configuration for a migration job between two tables.",
       "id": "config_schema_rationale_21"
     },
@@ -891,7 +1035,7 @@
       "source_file": "src/sync_mail/observability/logger.py",
       "source_location": "L1",
       "id": "src_sync_mail_observability_logger_py",
-      "community": 6,
+      "community": 4,
       "norm_label": "logger.py"
     },
     {
@@ -900,7 +1044,7 @@
       "source_file": "src/sync_mail/observability/logger.py",
       "source_location": "L11",
       "id": "observability_logger_contextformatter",
-      "community": 6,
+      "community": 4,
       "norm_label": "contextformatter"
     },
     {
@@ -909,7 +1053,7 @@
       "source_file": "src/sync_mail/observability/logger.py",
       "source_location": "L16",
       "id": "observability_logger_contextformatter_format",
-      "community": 6,
+      "community": 4,
       "norm_label": ".format()"
     },
     {
@@ -918,7 +1062,7 @@
       "source_file": "src/sync_mail/observability/logger.py",
       "source_location": "L23",
       "id": "observability_logger_configure_logging",
-      "community": 6,
+      "community": 4,
       "norm_label": "configure_logging()"
     },
     {
@@ -926,7 +1070,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/logger.py",
       "source_location": "L12",
-      "community": 6,
+      "community": 4,
       "norm_label": "custom formatter that ensures 'batch_id' and 'primary_key' exist in the record",
       "id": "observability_logger_rationale_12"
     },
@@ -935,7 +1079,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/logger.py",
       "source_location": "L24",
-      "community": 6,
+      "community": 4,
       "norm_label": "configures the root logger with stdout (info) and rotatingfilehandler (error).",
       "id": "observability_logger_rationale_24"
     },
@@ -945,7 +1089,7 @@
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L1",
       "id": "src_sync_mail_observability_events_py",
-      "community": 6,
+      "community": 4,
       "norm_label": "events.py"
     },
     {
@@ -954,7 +1098,7 @@
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L6",
       "id": "observability_events_eventtype",
-      "community": 6,
+      "community": 4,
       "norm_label": "eventtype"
     },
     {
@@ -963,7 +1107,7 @@
       "source_file": "",
       "source_location": "",
       "id": "enum",
-      "community": 6,
+      "community": 4,
       "norm_label": "enum"
     },
     {
@@ -972,7 +1116,7 @@
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L14",
       "id": "observability_events_event",
-      "community": 0,
+      "community": 2,
       "norm_label": "event"
     },
     {
@@ -981,7 +1125,7 @@
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L16",
       "id": "observability_events_event_init",
-      "community": 0,
+      "community": 2,
       "norm_label": ".__init__()"
     },
     {
@@ -990,7 +1134,7 @@
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L20",
       "id": "observability_events_eventbus",
-      "community": 7,
+      "community": 4,
       "norm_label": "eventbus"
     },
     {
@@ -999,7 +1143,7 @@
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L25",
       "id": "observability_events_eventbus_init",
-      "community": 7,
+      "community": 4,
       "norm_label": ".__init__()"
     },
     {
@@ -1008,7 +1152,7 @@
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L32",
       "id": "observability_events_eventbus_dispatch_loop",
-      "community": 7,
+      "community": 4,
       "norm_label": "._dispatch_loop()"
     },
     {
@@ -1017,7 +1161,7 @@
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L54",
       "id": "observability_events_eventbus_start",
-      "community": 7,
+      "community": 4,
       "norm_label": ".start()"
     },
     {
@@ -1026,7 +1170,7 @@
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L66",
       "id": "observability_events_eventbus_stop",
-      "community": 7,
+      "community": 4,
       "norm_label": ".stop()"
     },
     {
@@ -1035,7 +1179,7 @@
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L72",
       "id": "observability_events_eventbus_publish",
-      "community": 0,
+      "community": 2,
       "norm_label": ".publish()"
     },
     {
@@ -1044,7 +1188,7 @@
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L78",
       "id": "observability_events_eventbus_subscribe",
-      "community": 7,
+      "community": 4,
       "norm_label": ".subscribe()"
     },
     {
@@ -1052,7 +1196,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L7",
-      "community": 6,
+      "community": 4,
       "norm_label": "types of events that can be published to the eventbus.",
       "id": "observability_events_rationale_7"
     },
@@ -1061,7 +1205,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L15",
-      "community": 0,
+      "community": 2,
       "norm_label": "a migration event with a type and a structured payload.",
       "id": "observability_events_rationale_15"
     },
@@ -1070,7 +1214,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L21",
-      "community": 7,
+      "community": 4,
       "norm_label": "a thread-safe event bus for communication between worker threads and the ui.",
       "id": "observability_events_rationale_21"
     },
@@ -1079,7 +1223,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L33",
-      "community": 7,
+      "community": 4,
       "norm_label": "internal loop to process and dispatch events from the queue.",
       "id": "observability_events_rationale_33"
     },
@@ -1088,7 +1232,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L55",
-      "community": 7,
+      "community": 4,
       "norm_label": "starts the background dispatch thread.",
       "id": "observability_events_rationale_55"
     },
@@ -1097,7 +1241,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L67",
-      "community": 7,
+      "community": 4,
       "norm_label": "stops the background dispatch thread.",
       "id": "observability_events_rationale_67"
     },
@@ -1106,7 +1250,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L73",
-      "community": 0,
+      "community": 2,
       "norm_label": "publishes an event to the bus.",
       "id": "observability_events_rationale_73"
     },
@@ -1115,7 +1259,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/observability/events.py",
       "source_location": "L79",
-      "community": 7,
+      "community": 4,
       "norm_label": "subscribes a callback handler to receive events.",
       "id": "observability_events_rationale_79"
     },
@@ -1125,7 +1269,7 @@
       "source_file": "src/sync_mail/observability/__init__.py",
       "source_location": "L1",
       "id": "src_sync_mail_observability_init_py",
-      "community": 6,
+      "community": 4,
       "norm_label": "__init__.py"
     },
     {
@@ -1134,7 +1278,7 @@
       "source_file": "src/sync_mail/db/connection.py",
       "source_location": "L1",
       "id": "src_sync_mail_db_connection_py",
-      "community": 3,
+      "community": 5,
       "norm_label": "connection.py"
     },
     {
@@ -1143,7 +1287,7 @@
       "source_file": "src/sync_mail/db/connection.py",
       "source_location": "L12",
       "id": "db_connection_connect",
-      "community": 3,
+      "community": 5,
       "norm_label": "connect()"
     },
     {
@@ -1152,7 +1296,7 @@
       "source_file": "src/sync_mail/db/connection.py",
       "source_location": "L59",
       "id": "db_connection_connection_scope",
-      "community": 3,
+      "community": 5,
       "norm_label": "connection_scope()"
     },
     {
@@ -1161,7 +1305,7 @@
       "source_file": "src/sync_mail/db/connection.py",
       "source_location": "L71",
       "id": "db_connection_transaction",
-      "community": 3,
+      "community": 5,
       "norm_label": "transaction()"
     },
     {
@@ -1170,7 +1314,7 @@
       "source_file": "src/sync_mail/db/connection.py",
       "source_location": "L85",
       "id": "db_connection_create_db_engine",
-      "community": 0,
+      "community": 2,
       "norm_label": "create_db_engine()"
     },
     {
@@ -1178,7 +1322,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/db/connection.py",
       "source_location": "L13",
-      "community": 3,
+      "community": 5,
       "norm_label": "establishes a low-memory mariadb connection using ssdictcursor.          args:",
       "id": "db_connection_rationale_13"
     },
@@ -1187,7 +1331,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/db/connection.py",
       "source_location": "L60",
-      "community": 3,
+      "community": 5,
       "norm_label": "context manager for database connection lifecycle.",
       "id": "db_connection_rationale_60"
     },
@@ -1196,7 +1340,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/db/connection.py",
       "source_location": "L72",
-      "community": 3,
+      "community": 5,
       "norm_label": "context manager for atomic transactions.     ensures begin is sent at start, com",
       "id": "db_connection_rationale_72"
     },
@@ -1205,7 +1349,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/db/connection.py",
       "source_location": "L86",
-      "community": 0,
+      "community": 2,
       "norm_label": "creates a sqlalchemy engine for introspection with low-memory settings.",
       "id": "db_connection_rationale_86"
     },
@@ -1215,7 +1359,7 @@
       "source_file": "src/sync_mail/db/introspect.py",
       "source_location": "L1",
       "id": "src_sync_mail_db_introspect_py",
-      "community": 1,
+      "community": 2,
       "norm_label": "introspect.py"
     },
     {
@@ -1224,7 +1368,7 @@
       "source_file": "src/sync_mail/db/introspect.py",
       "source_location": "L5",
       "id": "db_introspect_describe_table",
-      "community": 1,
+      "community": 2,
       "norm_label": "describe_table()"
     },
     {
@@ -1232,7 +1376,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/db/introspect.py",
       "source_location": "L6",
-      "community": 1,
+      "community": 2,
       "norm_label": "introspects a table and returns its column metadata from information_schema.",
       "id": "db_introspect_rationale_6"
     },
@@ -1242,7 +1386,7 @@
       "source_file": "src/sync_mail/db/__init__.py",
       "source_location": "L1",
       "id": "src_sync_mail_db_init_py",
-      "community": 15,
+      "community": 17,
       "norm_label": "__init__.py"
     },
     {
@@ -1251,7 +1395,7 @@
       "source_file": "tests/test_db_connection.py",
       "source_location": "L1",
       "id": "tests_test_db_connection_py",
-      "community": 3,
+      "community": 5,
       "norm_label": "test_db_connection.py"
     },
     {
@@ -1260,7 +1404,7 @@
       "source_file": "tests/test_db_connection.py",
       "source_location": "L10",
       "id": "tests_test_db_connection_testdbconnection",
-      "community": 3,
+      "community": 5,
       "norm_label": "testdbconnection"
     },
     {
@@ -1269,7 +1413,7 @@
       "source_file": "tests/test_db_connection.py",
       "source_location": "L12",
       "id": "tests_test_db_connection_testdbconnection_setup",
-      "community": 3,
+      "community": 5,
       "norm_label": ".setup()"
     },
     {
@@ -1278,7 +1422,7 @@
       "source_file": "tests/test_db_connection.py",
       "source_location": "L22",
       "id": "tests_test_db_connection_test_connect_success",
-      "community": 3,
+      "community": 5,
       "norm_label": "test_connect_success()"
     },
     {
@@ -1287,7 +1431,7 @@
       "source_file": "tests/test_db_connection.py",
       "source_location": "L42",
       "id": "tests_test_db_connection_test_connect_failure_wraps_exception",
-      "community": 3,
+      "community": 5,
       "norm_label": "test_connect_failure_wraps_exception()"
     },
     {
@@ -1296,7 +1440,7 @@
       "source_file": "tests/test_db_connection.py",
       "source_location": "L52",
       "id": "tests_test_db_connection_test_connection_scope",
-      "community": 3,
+      "community": 5,
       "norm_label": "test_connection_scope()"
     },
     {
@@ -1305,7 +1449,7 @@
       "source_file": "tests/test_db_connection.py",
       "source_location": "L61",
       "id": "tests_test_db_connection_testdbconnection_test_transaction_commit",
-      "community": 3,
+      "community": 5,
       "norm_label": ".test_transaction_commit()"
     },
     {
@@ -1314,7 +1458,7 @@
       "source_file": "tests/test_db_connection.py",
       "source_location": "L72",
       "id": "tests_test_db_connection_testdbconnection_test_transaction_rollback_on_error",
-      "community": 3,
+      "community": 5,
       "norm_label": ".test_transaction_rollback_on_error()"
     },
     {
@@ -1323,7 +1467,7 @@
       "source_file": "tests/simulate_crash.py",
       "source_location": "L1",
       "id": "tests_simulate_crash_py",
-      "community": 8,
+      "community": 10,
       "norm_label": "simulate_crash.py"
     },
     {
@@ -1332,7 +1476,7 @@
       "source_file": "tests/simulate_crash.py",
       "source_location": "L8",
       "id": "tests_simulate_crash_run_crash_simulation",
-      "community": 8,
+      "community": 10,
       "norm_label": "run_crash_simulation()"
     },
     {
@@ -1341,7 +1485,7 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L1",
       "id": "tests_test_checkpoint_py",
-      "community": 2,
+      "community": 1,
       "norm_label": "test_checkpoint.py"
     },
     {
@@ -1350,7 +1494,7 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L10",
       "id": "tests_test_checkpoint_temp_state_dir",
-      "community": 2,
+      "community": 1,
       "norm_label": "temp_state_dir()"
     },
     {
@@ -1359,7 +1503,7 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L14",
       "id": "tests_test_checkpoint_test_load_non_existent",
-      "community": 2,
+      "community": 1,
       "norm_label": "test_load_non_existent()"
     },
     {
@@ -1368,7 +1512,7 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L19",
       "id": "tests_test_checkpoint_test_save_load_roundtrip",
-      "community": 2,
+      "community": 1,
       "norm_label": "test_save_load_roundtrip()"
     },
     {
@@ -1377,7 +1521,7 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L39",
       "id": "tests_test_checkpoint_test_mark_completed",
-      "community": 2,
+      "community": 1,
       "norm_label": "test_mark_completed()"
     },
     {
@@ -1386,7 +1530,7 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L56",
       "id": "tests_test_checkpoint_test_mark_aborted",
-      "community": 2,
+      "community": 1,
       "norm_label": "test_mark_aborted()"
     },
     {
@@ -1395,7 +1539,7 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L71",
       "id": "tests_test_checkpoint_test_corrupt_state_raises_resume_error",
-      "community": 2,
+      "community": 1,
       "norm_label": "test_corrupt_state_raises_resume_error()"
     },
     {
@@ -1404,7 +1548,7 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L81",
       "id": "tests_test_checkpoint_test_missing_fields_raises_resume_error",
-      "community": 2,
+      "community": 1,
       "norm_label": "test_missing_fields_raises_resume_error()"
     },
     {
@@ -1413,7 +1557,7 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L91",
       "id": "tests_test_checkpoint_test_lock_acquisition",
-      "community": 2,
+      "community": 1,
       "norm_label": "test_lock_acquisition()"
     },
     {
@@ -1422,7 +1566,7 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L105",
       "id": "tests_test_checkpoint_test_atomic_write_preserves_old_on_failure",
-      "community": 2,
+      "community": 1,
       "norm_label": "test_atomic_write_preserves_old_on_failure()"
     },
     {
@@ -1430,7 +1574,7 @@
       "file_type": "rationale",
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L11",
-      "community": 2,
+      "community": 1,
       "norm_label": "fixture to provide a clean temporary state directory.",
       "id": "tests_test_checkpoint_rationale_11"
     },
@@ -1440,7 +1584,7 @@
       "source_file": "tests/test_mapping_loader.py",
       "source_location": "L1",
       "id": "tests_test_mapping_loader_py",
-      "community": 1,
+      "community": 7,
       "norm_label": "test_mapping_loader.py"
     },
     {
@@ -1449,7 +1593,7 @@
       "source_file": "tests/test_mapping_loader.py",
       "source_location": "L7",
       "id": "tests_test_mapping_loader_temp_yaml",
-      "community": 1,
+      "community": 7,
       "norm_label": "temp_yaml()"
     },
     {
@@ -1458,7 +1602,7 @@
       "source_file": "tests/test_mapping_loader.py",
       "source_location": "L14",
       "id": "tests_test_mapping_loader_test_load_valid_mapping",
-      "community": 1,
+      "community": 7,
       "norm_label": "test_load_valid_mapping()"
     },
     {
@@ -1467,7 +1611,7 @@
       "source_file": "tests/test_mapping_loader.py",
       "source_location": "L32",
       "id": "tests_test_mapping_loader_test_load_invalid_batch_size",
-      "community": 1,
+      "community": 7,
       "norm_label": "test_load_invalid_batch_size()"
     },
     {
@@ -1476,7 +1620,7 @@
       "source_file": "tests/test_mapping_loader.py",
       "source_location": "L46",
       "id": "tests_test_mapping_loader_test_load_missing_cast_target",
-      "community": 1,
+      "community": 7,
       "norm_label": "test_load_missing_cast_target()"
     },
     {
@@ -1485,7 +1629,7 @@
       "source_file": "tests/test_mapping_loader.py",
       "source_location": "L60",
       "id": "tests_test_mapping_loader_test_load_action_required_remaining",
-      "community": 1,
+      "community": 7,
       "norm_label": "test_load_action_required_remaining()"
     },
     {
@@ -1494,7 +1638,7 @@
       "source_file": "tests/test_mapping_loader.py",
       "source_location": "L74",
       "id": "tests_test_mapping_loader_test_load_duplicate_target",
-      "community": 1,
+      "community": 7,
       "norm_label": "test_load_duplicate_target()"
     },
     {
@@ -1503,7 +1647,7 @@
       "source_file": "tests/test_mapping_loader.py",
       "source_location": "L89",
       "id": "tests_test_mapping_loader_test_aggregate_errors",
-      "community": 1,
+      "community": 7,
       "norm_label": "test_aggregate_errors()"
     },
     {
@@ -1512,7 +1656,7 @@
       "source_file": "tests/test_mapping_loader.py",
       "source_location": "L107",
       "id": "tests_test_mapping_loader_test_error_line_numbers",
-      "community": 1,
+      "community": 7,
       "norm_label": "test_error_line_numbers()"
     },
     {
@@ -1521,7 +1665,7 @@
       "source_file": "tests/test_introspection_auto_yaml.py",
       "source_location": "L1",
       "id": "tests_test_introspection_auto_yaml_py",
-      "community": 1,
+      "community": 0,
       "norm_label": "test_introspection_auto_yaml.py"
     },
     {
@@ -1530,7 +1674,7 @@
       "source_file": "tests/test_introspection_auto_yaml.py",
       "source_location": "L9",
       "id": "tests_test_introspection_auto_yaml_mock_conn",
-      "community": 1,
+      "community": 0,
       "norm_label": "mock_conn()"
     },
     {
@@ -1539,7 +1683,7 @@
       "source_file": "tests/test_introspection_auto_yaml.py",
       "source_location": "L15",
       "id": "tests_test_introspection_auto_yaml_test_describe_table_success",
-      "community": 1,
+      "community": 2,
       "norm_label": "test_describe_table_success()"
     },
     {
@@ -1548,7 +1692,7 @@
       "source_file": "tests/test_introspection_auto_yaml.py",
       "source_location": "L27",
       "id": "tests_test_introspection_auto_yaml_test_generate_mapping_scenarios",
-      "community": 1,
+      "community": 0,
       "norm_label": "test_generate_mapping_scenarios()"
     },
     {
@@ -1557,7 +1701,7 @@
       "source_file": "tests/test_introspection_auto_yaml.py",
       "source_location": "L65",
       "id": "tests_test_introspection_auto_yaml_test_save_mapping_to_yaml",
-      "community": 1,
+      "community": 0,
       "norm_label": "test_save_mapping_to_yaml()"
     },
     {
@@ -1566,15 +1710,87 @@
       "source_file": "tests/test_introspection_auto_yaml.py",
       "source_location": "L89",
       "id": "tests_test_introspection_auto_yaml_test_generate_mapping_identical",
-      "community": 1,
+      "community": 0,
       "norm_label": "test_generate_mapping_identical()"
+    },
+    {
+      "label": "test_pipeline.py",
+      "file_type": "code",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L1",
+      "id": "tests_test_pipeline_py",
+      "community": 0,
+      "norm_label": "test_pipeline.py"
+    },
+    {
+      "label": "TestPipeline",
+      "file_type": "code",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L13",
+      "id": "tests_test_pipeline_testpipeline",
+      "community": 0,
+      "norm_label": "testpipeline"
+    },
+    {
+      "label": ".setUp()",
+      "file_type": "code",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L14",
+      "id": "tests_test_pipeline_testpipeline_setup",
+      "community": 0,
+      "norm_label": ".setup()"
+    },
+    {
+      "label": ".test_transformer_success()",
+      "file_type": "code",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L31",
+      "id": "tests_test_pipeline_testpipeline_test_transformer_success",
+      "community": 0,
+      "norm_label": ".test_transformer_success()"
+    },
+    {
+      "label": ".test_transformer_cast_fail()",
+      "file_type": "code",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L56",
+      "id": "tests_test_pipeline_testpipeline_test_transformer_cast_fail",
+      "community": 0,
+      "norm_label": ".test_transformer_cast_fail()"
+    },
+    {
+      "label": "test_loader_success()",
+      "file_type": "code",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L63",
+      "id": "tests_test_pipeline_test_loader_success",
+      "community": 0,
+      "norm_label": "test_loader_success()"
+    },
+    {
+      "label": "test_loader_fail()",
+      "file_type": "code",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L83",
+      "id": "tests_test_pipeline_test_loader_fail",
+      "community": 3,
+      "norm_label": "test_loader_fail()"
+    },
+    {
+      "label": ".test_extractor_generator()",
+      "file_type": "code",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L93",
+      "id": "tests_test_pipeline_testpipeline_test_extractor_generator",
+      "community": 0,
+      "norm_label": ".test_extractor_generator()"
     },
     {
       "label": "Generates a MappingDocument based on source and target metadata.          Logic:",
       "file_type": "rationale",
       "source_file": "src/sync_mail/reconciliation/auto_yaml.py",
       "source_location": "L11",
-      "community": 1,
+      "community": 0,
       "norm_label": "generates a mappingdocument based on source and target metadata.          logic:",
       "id": "reconciliation_auto_yaml_rationale_11"
     },
@@ -1583,7 +1799,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/reconciliation/auto_yaml.py",
       "source_location": "L73",
-      "community": 1,
+      "community": 0,
       "norm_label": "saves mappingdocument to a yaml file using ruamel.yaml to preserve comments and",
       "id": "reconciliation_auto_yaml_rationale_73"
     },
@@ -1592,7 +1808,7 @@
       "file_type": "rationale",
       "source_file": "errors/exceptions.py",
       "source_location": "L10",
-      "community": 16,
+      "community": 18,
       "norm_label": "raised when there are issues with the yaml mapping configuration.",
       "id": "errors_exceptions_rationale_10"
     },
@@ -1601,7 +1817,7 @@
       "file_type": "rationale",
       "source_file": "errors/exceptions.py",
       "source_location": "L14",
-      "community": 17,
+      "community": 19,
       "norm_label": "raised when a database connection fails.",
       "id": "errors_exceptions_rationale_14"
     },
@@ -1610,7 +1826,7 @@
       "file_type": "rationale",
       "source_file": "errors/exceptions.py",
       "source_location": "L18",
-      "community": 18,
+      "community": 20,
       "norm_label": "raised when schema introspection fails.",
       "id": "errors_exceptions_rationale_18"
     },
@@ -1619,7 +1835,7 @@
       "file_type": "rationale",
       "source_file": "errors/exceptions.py",
       "source_location": "L22",
-      "community": 19,
+      "community": 21,
       "norm_label": "raised when a batch of data fails to commit.",
       "id": "errors_exceptions_rationale_22"
     },
@@ -1628,7 +1844,7 @@
       "file_type": "rationale",
       "source_file": "errors/exceptions.py",
       "source_location": "L26",
-      "community": 20,
+      "community": 22,
       "norm_label": "raised when resuming a migration fails due to state issues.",
       "id": "errors_exceptions_rationale_26"
     },
@@ -1637,7 +1853,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/config/loader.py",
       "source_location": "L9",
-      "community": 1,
+      "community": 0,
       "norm_label": "loads a yaml mapping file into a mappingdocument dataclass and validates it.",
       "id": "config_loader_rationale_9"
     },
@@ -1646,7 +1862,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/config/validator.py",
       "source_location": "L52",
-      "community": 1,
+      "community": 0,
       "norm_label": "helper to format line number prefix if available.",
       "id": "config_validator_rationale_52"
     },
@@ -1655,7 +1871,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/config/validator.py",
       "source_location": "L57",
-      "community": 1,
+      "community": 0,
       "norm_label": "checks if any field contains 'action_required'.",
       "id": "config_validator_rationale_57"
     },
@@ -1664,7 +1880,7 @@
       "file_type": "rationale",
       "source_file": "observability/logger.py",
       "source_location": "L11",
-      "community": 21,
+      "community": 23,
       "norm_label": "configures the root logger with streamhandler and rotatingfilehandler.      args",
       "id": "observability_logger_rationale_11"
     },
@@ -1673,7 +1889,7 @@
       "file_type": "rationale",
       "source_file": "observability/events.py",
       "source_location": "L13",
-      "community": 22,
+      "community": 24,
       "norm_label": "represents an event published by the migration engine.",
       "id": "observability_events_rationale_13"
     },
@@ -1682,7 +1898,7 @@
       "file_type": "rationale",
       "source_file": "observability/events.py",
       "source_location": "L19",
-      "community": 23,
+      "community": 25,
       "norm_label": "a minimal event bus for inter-module communication, especially between worker th",
       "id": "observability_events_rationale_19"
     },
@@ -1691,7 +1907,7 @@
       "file_type": "rationale",
       "source_file": "observability/events.py",
       "source_location": "L25",
-      "community": 24,
+      "community": 26,
       "norm_label": "publishes an event to the bus.         events are added to an internal queue to",
       "id": "observability_events_rationale_25"
     },
@@ -1700,7 +1916,7 @@
       "file_type": "rationale",
       "source_file": "observability/events.py",
       "source_location": "L41",
-      "community": 25,
+      "community": 27,
       "norm_label": "subscribes a handler function to receive events.         the handler function mu",
       "id": "observability_events_rationale_41"
     },
@@ -1709,7 +1925,7 @@
       "file_type": "rationale",
       "source_file": "observability/events.py",
       "source_location": "L50",
-      "community": 26,
+      "community": 28,
       "norm_label": "internal method to process events from the queue and dispatch to subscribers.",
       "id": "observability_events_rationale_50"
     },
@@ -1718,7 +1934,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/db/connection.py",
       "source_location": "L15",
-      "community": 27,
+      "community": 29,
       "norm_label": "establishes a low-memory mariadb connection using ssdictcursor.          args:",
       "id": "db_connection_rationale_15"
     },
@@ -1727,7 +1943,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/db/connection.py",
       "source_location": "L66",
-      "community": 28,
+      "community": 30,
       "norm_label": "context manager to ensure database connection is closed properly.",
       "id": "db_connection_rationale_66"
     },
@@ -1736,7 +1952,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/db/connection.py",
       "source_location": "L78",
-      "community": 29,
+      "community": 31,
       "norm_label": "context manager for atomic transactions on the database.",
       "id": "db_connection_rationale_78"
     },
@@ -1745,7 +1961,7 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/db/connection.py",
       "source_location": "L94",
-      "community": 30,
+      "community": 32,
       "norm_label": "creates a sqlalchemy engine configured for mariadb with server-side cursors.",
       "id": "db_connection_rationale_94"
     },
@@ -1754,7 +1970,7 @@
       "file_type": "rationale",
       "source_file": "introspection.py",
       "source_location": "L13",
-      "community": 31,
+      "community": 33,
       "norm_label": "retrieves schema information for a specific table.      args:         engine (en",
       "id": "sync_mail_introspection_rationale_13"
     },
@@ -1763,7 +1979,7 @@
       "file_type": "rationale",
       "source_file": "introspection.py",
       "source_location": "L95",
-      "community": 32,
+      "community": 34,
       "norm_label": "retrieves schema information for all tables in a given schema.      args:",
       "id": "sync_mail_introspection_rationale_95"
     },
@@ -1772,7 +1988,7 @@
       "file_type": "rationale",
       "source_file": "introspection.py",
       "source_location": "L137",
-      "community": 33,
+      "community": 35,
       "norm_label": "maps sqlalchemy type string representations to a simplified yaml type string.",
       "id": "sync_mail_introspection_rationale_137"
     },
@@ -1781,7 +1997,7 @@
       "file_type": "rationale",
       "source_file": "introspection.py",
       "source_location": "L162",
-      "community": 34,
+      "community": 36,
       "norm_label": "converts introspected schema information into a yaml string format using ruamel.",
       "id": "sync_mail_introspection_rationale_162"
     },
@@ -1790,7 +2006,7 @@
       "file_type": "rationale",
       "source_file": "db/connection.py",
       "source_location": "L17",
-      "community": 35,
+      "community": 37,
       "norm_label": "creates a sqlalchemy engine configured for mariadb with server-side cursors.",
       "id": "db_connection_rationale_17"
     },
@@ -1803,7 +2019,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 6,
       "norm_label": "sync-mail",
       "id": "claude_sync_mail"
     },
@@ -1816,7 +2032,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 6,
       "norm_label": "mariadb",
       "id": "claude_mariadb"
     },
@@ -1829,7 +2045,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 6,
       "norm_label": "yaml-driven schema rules",
       "id": "claude_yaml_schema_rules"
     },
@@ -1842,7 +2058,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 6,
       "norm_label": "plan/prd.md",
       "id": "claude_prd_md"
     },
@@ -1855,7 +2071,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 36,
+      "community": 38,
       "norm_label": "plan/extract-prd.md",
       "id": "claude_extract_prd_md"
     },
@@ -1869,7 +2085,7 @@
       "author": null,
       "contributor": null,
       "rationale": "To ensure low memory footprint when streaming millions of rows.",
-      "community": 4,
+      "community": 6,
       "norm_label": "server-side cursors",
       "id": "claude_server_side_cursors"
     },
@@ -1883,7 +2099,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Allows each chunk's references to drop so Python's GC can release RAM.",
-      "community": 4,
+      "community": 6,
       "norm_label": "generator-based streaming",
       "id": "claude_generator_streaming"
     },
@@ -1897,7 +2113,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Avoids the performance penalty of OFFSET which forces MariaDB to rescan prior rows.",
-      "community": 4,
+      "community": 6,
       "norm_label": "keyset pagination",
       "id": "claude_keyset_pagination"
     },
@@ -1911,7 +2127,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Uses executemany() with batch sizes of 5,000\u201315,000 tuned for max_allowed_packet.",
-      "community": 4,
+      "community": 6,
       "norm_label": "bulk insert",
       "id": "claude_bulk_insert"
     },
@@ -1925,7 +2141,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Ensures batch integrity and allows row-by-row fallback on failure.",
-      "community": 4,
+      "community": 6,
       "norm_label": "per-batch atomic transactions",
       "id": "claude_atomic_transactions"
     },
@@ -1939,7 +2155,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Persists last evaluated primary key to allow restart from exactly where it stopped.",
-      "community": 4,
+      "community": 6,
       "norm_label": "resume via state",
       "id": "claude_checkpoint_resume"
     },
@@ -1952,7 +2168,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 6,
       "norm_label": "beads",
       "id": "claude_beads"
     },
@@ -1965,7 +2181,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 6,
       "norm_label": "pymysql",
       "id": "claude_pymysql"
     },
@@ -1978,7 +2194,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 6,
       "norm_label": "sqlalchemy",
       "id": "claude_sqlalchemy"
     }
@@ -2487,6 +2703,18 @@
       "_tgt": "errors_exceptions_mappingerror",
       "source": "sync_mail_mapping_mappingconfigloader_load_mapping",
       "target": "errors_exceptions_mappingerror"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/sync_mail/mapping.py",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_src": "sync_mail_mapping_mappingconfigloader_load_mapping",
+      "_tgt": "pipeline_loader_load",
+      "source": "sync_mail_mapping_mappingconfigloader_load_mapping",
+      "target": "pipeline_loader_load"
     },
     {
       "relation": "calls",
@@ -3751,6 +3979,486 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src/sync_mail/pipeline/transformer.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "src_sync_mail_pipeline_transformer_py",
+      "_tgt": "pipeline_transformer_transform",
+      "source": "src_sync_mail_pipeline_transformer_py",
+      "target": "pipeline_transformer_transform",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/sync_mail/pipeline/transformer.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "pipeline_transformer_rationale_10",
+      "_tgt": "pipeline_transformer_transform",
+      "source": "pipeline_transformer_transform",
+      "target": "pipeline_transformer_rationale_10",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/sync_mail/pipeline/transformer.py",
+      "source_location": "L61",
+      "weight": 1.0,
+      "_src": "pipeline_transformer_transform",
+      "_tgt": "errors_exceptions_batchfailederror",
+      "source": "pipeline_transformer_transform",
+      "target": "errors_exceptions_batchfailederror"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_src": "tests_test_pipeline_testpipeline_test_transformer_success",
+      "_tgt": "pipeline_transformer_transform",
+      "source": "pipeline_transformer_transform",
+      "target": "tests_test_pipeline_testpipeline_test_transformer_success"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L59",
+      "weight": 1.0,
+      "_src": "tests_test_pipeline_testpipeline_test_transformer_cast_fail",
+      "_tgt": "pipeline_transformer_transform",
+      "source": "pipeline_transformer_transform",
+      "target": "tests_test_pipeline_testpipeline_test_transformer_cast_fail"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/sync_mail/pipeline/transformer.py",
+      "source_location": "L6",
+      "weight": 0.8,
+      "_src": "pipeline_transformer_rationale_10",
+      "_tgt": "config_schema_mappingdocument",
+      "source": "pipeline_transformer_rationale_10",
+      "target": "config_schema_mappingdocument",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/sync_mail/pipeline/extractor.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_src": "src_sync_mail_pipeline_extractor_py",
+      "_tgt": "pipeline_extractor_extract",
+      "source": "src_sync_mail_pipeline_extractor_py",
+      "target": "pipeline_extractor_extract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/sync_mail/pipeline/extractor.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "pipeline_extractor_rationale_13",
+      "_tgt": "pipeline_extractor_extract",
+      "source": "pipeline_extractor_extract",
+      "target": "pipeline_extractor_rationale_13",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L103",
+      "weight": 1.0,
+      "_src": "tests_test_pipeline_testpipeline_test_extractor_generator",
+      "_tgt": "pipeline_extractor_extract",
+      "source": "pipeline_extractor_extract",
+      "target": "tests_test_pipeline_testpipeline_test_extractor_generator"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/sync_mail/pipeline/extractor.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "_src": "pipeline_extractor_rationale_13",
+      "_tgt": "config_schema_mappingdocument",
+      "source": "pipeline_extractor_rationale_13",
+      "target": "config_schema_mappingdocument",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "src_sync_mail_pipeline_loader_py",
+      "_tgt": "pipeline_loader_loader",
+      "source": "src_sync_mail_pipeline_loader_py",
+      "target": "pipeline_loader_loader",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L68",
+      "weight": 1.0,
+      "_src": "src_sync_mail_pipeline_loader_py",
+      "_tgt": "pipeline_loader_load",
+      "source": "src_sync_mail_pipeline_loader_py",
+      "target": "pipeline_loader_load",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_src": "pipeline_loader_loader",
+      "_tgt": "pipeline_loader_loader_init",
+      "source": "pipeline_loader_loader",
+      "target": "pipeline_loader_loader_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_src": "pipeline_loader_loader",
+      "_tgt": "pipeline_loader_loader_build_insert_sql",
+      "source": "pipeline_loader_loader",
+      "target": "pipeline_loader_loader_build_insert_sql",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_src": "pipeline_loader_loader",
+      "_tgt": "pipeline_loader_loader_load",
+      "source": "pipeline_loader_loader",
+      "target": "pipeline_loader_loader_load",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L74",
+      "weight": 1.0,
+      "_src": "pipeline_loader_load",
+      "_tgt": "pipeline_loader_loader",
+      "source": "pipeline_loader_loader",
+      "target": "pipeline_loader_load",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "pipeline_loader_rationale_11",
+      "_tgt": "pipeline_loader_loader",
+      "source": "pipeline_loader_loader",
+      "target": "pipeline_loader_rationale_11",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "_src": "pipeline_loader_loader",
+      "_tgt": "config_schema_mappingdocument",
+      "source": "pipeline_loader_loader",
+      "target": "config_schema_mappingdocument",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "_src": "tests_test_pipeline_testpipeline",
+      "_tgt": "pipeline_loader_loader",
+      "source": "pipeline_loader_loader",
+      "target": "tests_test_pipeline_testpipeline",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L73",
+      "weight": 1.0,
+      "_src": "tests_test_pipeline_test_loader_success",
+      "_tgt": "pipeline_loader_loader",
+      "source": "pipeline_loader_loader",
+      "target": "tests_test_pipeline_test_loader_success"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_src": "pipeline_loader_loader_init",
+      "_tgt": "pipeline_loader_loader_build_insert_sql",
+      "source": "pipeline_loader_loader_init",
+      "target": "pipeline_loader_loader_build_insert_sql",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_src": "pipeline_loader_rationale_20",
+      "_tgt": "pipeline_loader_loader_build_insert_sql",
+      "source": "pipeline_loader_loader_build_insert_sql",
+      "target": "pipeline_loader_rationale_20",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_src": "pipeline_loader_rationale_34",
+      "_tgt": "pipeline_loader_loader_load",
+      "source": "pipeline_loader_loader_load",
+      "target": "pipeline_loader_rationale_34",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_src": "pipeline_loader_loader_load",
+      "_tgt": "db_connection_transaction",
+      "source": "pipeline_loader_loader_load",
+      "target": "db_connection_transaction"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L59",
+      "weight": 1.0,
+      "_src": "pipeline_loader_loader_load",
+      "_tgt": "errors_exceptions_batchfailederror",
+      "source": "pipeline_loader_loader_load",
+      "target": "errors_exceptions_batchfailederror"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L69",
+      "weight": 1.0,
+      "_src": "pipeline_loader_rationale_69",
+      "_tgt": "pipeline_loader_load",
+      "source": "pipeline_loader_load",
+      "target": "pipeline_loader_rationale_69",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/sync_mail/config/loader.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_src": "config_loader_load_mapping",
+      "_tgt": "pipeline_loader_load",
+      "source": "pipeline_loader_load",
+      "target": "config_loader_load_mapping"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_checkpoint.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_src": "tests_test_checkpoint_test_load_non_existent",
+      "_tgt": "pipeline_loader_load",
+      "source": "pipeline_loader_load",
+      "target": "tests_test_checkpoint_test_load_non_existent"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_checkpoint.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_src": "tests_test_checkpoint_test_save_load_roundtrip",
+      "_tgt": "pipeline_loader_load",
+      "source": "pipeline_loader_load",
+      "target": "tests_test_checkpoint_test_save_load_roundtrip"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_checkpoint.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_src": "tests_test_checkpoint_test_mark_completed",
+      "_tgt": "pipeline_loader_load",
+      "source": "pipeline_loader_load",
+      "target": "tests_test_checkpoint_test_mark_completed"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_checkpoint.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "_src": "tests_test_checkpoint_test_mark_aborted",
+      "_tgt": "pipeline_loader_load",
+      "source": "pipeline_loader_load",
+      "target": "tests_test_checkpoint_test_mark_aborted"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_checkpoint.py",
+      "source_location": "L78",
+      "weight": 1.0,
+      "_src": "tests_test_checkpoint_test_corrupt_state_raises_resume_error",
+      "_tgt": "pipeline_loader_load",
+      "source": "pipeline_loader_load",
+      "target": "tests_test_checkpoint_test_corrupt_state_raises_resume_error"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_checkpoint.py",
+      "source_location": "L88",
+      "weight": 1.0,
+      "_src": "tests_test_checkpoint_test_missing_fields_raises_resume_error",
+      "_tgt": "pipeline_loader_load",
+      "source": "pipeline_loader_load",
+      "target": "tests_test_checkpoint_test_missing_fields_raises_resume_error"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_checkpoint.py",
+      "source_location": "L120",
+      "weight": 1.0,
+      "_src": "tests_test_checkpoint_test_atomic_write_preserves_old_on_failure",
+      "_tgt": "pipeline_loader_load",
+      "source": "pipeline_loader_load",
+      "target": "tests_test_checkpoint_test_atomic_write_preserves_old_on_failure"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L74",
+      "weight": 1.0,
+      "_src": "tests_test_pipeline_test_loader_success",
+      "_tgt": "pipeline_loader_load",
+      "source": "pipeline_loader_load",
+      "target": "tests_test_pipeline_test_loader_success"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L91",
+      "weight": 1.0,
+      "_src": "tests_test_pipeline_test_loader_fail",
+      "_tgt": "pipeline_loader_load",
+      "source": "pipeline_loader_load",
+      "target": "tests_test_pipeline_test_loader_fail"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "_src": "pipeline_loader_rationale_11",
+      "_tgt": "config_schema_mappingdocument",
+      "source": "pipeline_loader_rationale_11",
+      "target": "config_schema_mappingdocument",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "_src": "pipeline_loader_rationale_20",
+      "_tgt": "config_schema_mappingdocument",
+      "source": "pipeline_loader_rationale_20",
+      "target": "config_schema_mappingdocument",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "_src": "pipeline_loader_rationale_34",
+      "_tgt": "config_schema_mappingdocument",
+      "source": "pipeline_loader_rationale_34",
+      "target": "config_schema_mappingdocument",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "src/sync_mail/pipeline/loader.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "_src": "pipeline_loader_rationale_69",
+      "_tgt": "config_schema_mappingdocument",
+      "source": "pipeline_loader_rationale_69",
+      "target": "config_schema_mappingdocument",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src/sync_mail/errors/exceptions.py",
       "source_location": "L3",
       "weight": 1.0,
@@ -3927,6 +4635,18 @@
       "source": "errors_exceptions_migrationerror",
       "target": "errors_exceptions_rationale_4",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "_src": "tests_test_pipeline_test_loader_fail",
+      "_tgt": "exception",
+      "source": "exception",
+      "target": "tests_test_pipeline_test_loader_fail"
     },
     {
       "relation": "rationale_for",
@@ -4349,6 +5069,18 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "tests_test_pipeline_testpipeline",
+      "_tgt": "config_schema_columnmapping",
+      "source": "config_schema_columnmapping",
+      "target": "tests_test_pipeline_testpipeline",
+      "confidence_score": 0.5
+    },
+    {
       "relation": "calls",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
@@ -4359,6 +5091,18 @@
       "_tgt": "tests_test_introspection_auto_yaml_test_save_mapping_to_yaml",
       "source": "config_schema_columnmapping",
       "target": "tests_test_introspection_auto_yaml_test_save_mapping_to_yaml"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_src": "tests_test_pipeline_testpipeline_setup",
+      "_tgt": "config_schema_columnmapping",
+      "source": "config_schema_columnmapping",
+      "target": "tests_test_pipeline_testpipeline_setup"
     },
     {
       "relation": "uses",
@@ -4433,6 +5177,18 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "tests_test_pipeline_testpipeline",
+      "_tgt": "config_schema_mappingdocument",
+      "source": "config_schema_mappingdocument",
+      "target": "tests_test_pipeline_testpipeline",
+      "confidence_score": 0.5
+    },
+    {
       "relation": "calls",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
@@ -4443,6 +5199,18 @@
       "_tgt": "tests_test_introspection_auto_yaml_test_save_mapping_to_yaml",
       "source": "config_schema_mappingdocument",
       "target": "tests_test_introspection_auto_yaml_test_save_mapping_to_yaml"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_src": "tests_test_pipeline_testpipeline_setup",
+      "_tgt": "config_schema_mappingdocument",
+      "source": "config_schema_mappingdocument",
+      "target": "tests_test_pipeline_testpipeline_setup"
     },
     {
       "relation": "uses",
@@ -5546,6 +6314,90 @@
       "_tgt": "tests_test_introspection_auto_yaml_test_generate_mapping_identical",
       "source": "tests_test_introspection_auto_yaml_py",
       "target": "tests_test_introspection_auto_yaml_test_generate_mapping_identical",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "tests_test_pipeline_py",
+      "_tgt": "tests_test_pipeline_testpipeline",
+      "source": "tests_test_pipeline_py",
+      "target": "tests_test_pipeline_testpipeline",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L63",
+      "weight": 1.0,
+      "_src": "tests_test_pipeline_py",
+      "_tgt": "tests_test_pipeline_test_loader_success",
+      "source": "tests_test_pipeline_py",
+      "target": "tests_test_pipeline_test_loader_success",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L83",
+      "weight": 1.0,
+      "_src": "tests_test_pipeline_py",
+      "_tgt": "tests_test_pipeline_test_loader_fail",
+      "source": "tests_test_pipeline_py",
+      "target": "tests_test_pipeline_test_loader_fail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_src": "tests_test_pipeline_testpipeline",
+      "_tgt": "tests_test_pipeline_testpipeline_setup",
+      "source": "tests_test_pipeline_testpipeline",
+      "target": "tests_test_pipeline_testpipeline_setup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_src": "tests_test_pipeline_testpipeline",
+      "_tgt": "tests_test_pipeline_testpipeline_test_transformer_success",
+      "source": "tests_test_pipeline_testpipeline",
+      "target": "tests_test_pipeline_testpipeline_test_transformer_success",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_src": "tests_test_pipeline_testpipeline",
+      "_tgt": "tests_test_pipeline_testpipeline_test_transformer_cast_fail",
+      "source": "tests_test_pipeline_testpipeline",
+      "target": "tests_test_pipeline_testpipeline_test_transformer_cast_fail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L93",
+      "weight": 1.0,
+      "_src": "tests_test_pipeline_testpipeline",
+      "_tgt": "tests_test_pipeline_testpipeline_test_extractor_generator",
+      "source": "tests_test_pipeline_testpipeline",
+      "target": "tests_test_pipeline_testpipeline_test_extractor_generator",
       "confidence_score": 1.0
     },
     {

@@ -23,6 +23,7 @@ class MappingDocument:
     """
     source_table: str
     target_table: str
+    pk_column: str
     batch_size: int = 10000
     mappings: List[ColumnMapping] = field(default_factory=list)
     unmapped_source_columns: List[str] = field(default_factory=list)
