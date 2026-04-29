@@ -278,63 +278,63 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L14",
-      "id": "state_checkpoint_rationale_14",
       "community": 2,
-      "norm_label": "manages migration state persistence and process locking.     uses an atomic writ"
+      "norm_label": "manages migration state persistence and process locking.     uses an atomic writ",
+      "id": "state_checkpoint_rationale_14"
     },
     {
       "label": "Acquires an exclusive lock on the lock file to prevent multiple processes",
       "file_type": "rationale",
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L30",
-      "id": "state_checkpoint_rationale_30",
       "community": 2,
-      "norm_label": "acquires an exclusive lock on the lock file to prevent multiple processes"
+      "norm_label": "acquires an exclusive lock on the lock file to prevent multiple processes",
+      "id": "state_checkpoint_rationale_30"
     },
     {
       "label": "Releases the process lock.",
       "file_type": "rationale",
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L58",
-      "id": "state_checkpoint_rationale_58",
       "community": 2,
-      "norm_label": "releases the process lock."
+      "norm_label": "releases the process lock.",
+      "id": "state_checkpoint_rationale_58"
     },
     {
       "label": "Loads the state from the JSON file.         Returns an empty dict if the file do",
       "file_type": "rationale",
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L69",
-      "id": "state_checkpoint_rationale_69",
       "community": 2,
-      "norm_label": "loads the state from the json file.         returns an empty dict if the file do"
+      "norm_label": "loads the state from the json file.         returns an empty dict if the file do",
+      "id": "state_checkpoint_rationale_69"
     },
     {
       "label": "Saves the state atomically using a temporary file and os.replace().",
       "file_type": "rationale",
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L113",
-      "id": "state_checkpoint_rationale_113",
       "community": 2,
-      "norm_label": "saves the state atomically using a temporary file and os.replace()."
+      "norm_label": "saves the state atomically using a temporary file and os.replace().",
+      "id": "state_checkpoint_rationale_113"
     },
     {
       "label": "Marks the job as completed.",
       "file_type": "rationale",
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L156",
-      "id": "state_checkpoint_rationale_156",
       "community": 2,
-      "norm_label": "marks the job as completed."
+      "norm_label": "marks the job as completed.",
+      "id": "state_checkpoint_rationale_156"
     },
     {
       "label": "Marks the job as aborted with a reason.",
       "file_type": "rationale",
       "source_file": "src/sync_mail/state/checkpoint.py",
       "source_location": "L168",
-      "id": "state_checkpoint_rationale_168",
       "community": 2,
-      "norm_label": "marks the job as aborted with a reason."
+      "norm_label": "marks the job as aborted with a reason.",
+      "id": "state_checkpoint_rationale_168"
     },
     {
       "label": "app.py",
@@ -1430,9 +1430,9 @@
       "file_type": "rationale",
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L11",
-      "id": "tests_test_checkpoint_rationale_11",
       "community": 2,
-      "norm_label": "fixture to provide a clean temporary state directory."
+      "norm_label": "fixture to provide a clean temporary state directory.",
+      "id": "tests_test_checkpoint_rationale_11"
     },
     {
       "label": "test_mapping_loader.py",
@@ -2638,11 +2638,11 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L6",
       "weight": 0.8,
-      "_src": "tests_test_checkpoint_rationale_11",
-      "_tgt": "state_checkpoint_checkpoint",
+      "_src": "state_checkpoint_checkpoint",
+      "_tgt": "tests_test_checkpoint_rationale_11",
+      "confidence_score": 0.5,
       "source": "state_checkpoint_checkpoint",
-      "target": "tests_test_checkpoint_rationale_11",
-      "confidence_score": 0.5
+      "target": "tests_test_checkpoint_rationale_11"
     },
     {
       "relation": "calls",
@@ -2651,8 +2651,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L15",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_load_non_existent",
-      "_tgt": "state_checkpoint_checkpoint",
+      "_src": "state_checkpoint_checkpoint",
+      "_tgt": "tests_test_checkpoint_test_load_non_existent",
       "source": "state_checkpoint_checkpoint",
       "target": "tests_test_checkpoint_test_load_non_existent"
     },
@@ -2663,8 +2663,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L20",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_save_load_roundtrip",
-      "_tgt": "state_checkpoint_checkpoint",
+      "_src": "state_checkpoint_checkpoint",
+      "_tgt": "tests_test_checkpoint_test_save_load_roundtrip",
       "source": "state_checkpoint_checkpoint",
       "target": "tests_test_checkpoint_test_save_load_roundtrip"
     },
@@ -2675,8 +2675,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L40",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_mark_completed",
-      "_tgt": "state_checkpoint_checkpoint",
+      "_src": "state_checkpoint_checkpoint",
+      "_tgt": "tests_test_checkpoint_test_mark_completed",
       "source": "state_checkpoint_checkpoint",
       "target": "tests_test_checkpoint_test_mark_completed"
     },
@@ -2687,8 +2687,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L57",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_mark_aborted",
-      "_tgt": "state_checkpoint_checkpoint",
+      "_src": "state_checkpoint_checkpoint",
+      "_tgt": "tests_test_checkpoint_test_mark_aborted",
       "source": "state_checkpoint_checkpoint",
       "target": "tests_test_checkpoint_test_mark_aborted"
     },
@@ -2699,8 +2699,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L72",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_corrupt_state_raises_resume_error",
-      "_tgt": "state_checkpoint_checkpoint",
+      "_src": "state_checkpoint_checkpoint",
+      "_tgt": "tests_test_checkpoint_test_corrupt_state_raises_resume_error",
       "source": "state_checkpoint_checkpoint",
       "target": "tests_test_checkpoint_test_corrupt_state_raises_resume_error"
     },
@@ -2711,8 +2711,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L82",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_missing_fields_raises_resume_error",
-      "_tgt": "state_checkpoint_checkpoint",
+      "_src": "state_checkpoint_checkpoint",
+      "_tgt": "tests_test_checkpoint_test_missing_fields_raises_resume_error",
       "source": "state_checkpoint_checkpoint",
       "target": "tests_test_checkpoint_test_missing_fields_raises_resume_error"
     },
@@ -2723,8 +2723,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L92",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_lock_acquisition",
-      "_tgt": "state_checkpoint_checkpoint",
+      "_src": "state_checkpoint_checkpoint",
+      "_tgt": "tests_test_checkpoint_test_lock_acquisition",
       "source": "state_checkpoint_checkpoint",
       "target": "tests_test_checkpoint_test_lock_acquisition"
     },
@@ -2735,8 +2735,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L106",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_atomic_write_preserves_old_on_failure",
-      "_tgt": "state_checkpoint_checkpoint",
+      "_src": "state_checkpoint_checkpoint",
+      "_tgt": "tests_test_checkpoint_test_atomic_write_preserves_old_on_failure",
       "source": "state_checkpoint_checkpoint",
       "target": "tests_test_checkpoint_test_atomic_write_preserves_old_on_failure"
     },
@@ -2771,8 +2771,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L93",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_lock_acquisition",
-      "_tgt": "state_checkpoint_checkpoint_acquire_lock",
+      "_src": "state_checkpoint_checkpoint_acquire_lock",
+      "_tgt": "tests_test_checkpoint_test_lock_acquisition",
       "source": "state_checkpoint_checkpoint_acquire_lock",
       "target": "tests_test_checkpoint_test_lock_acquisition"
     },
@@ -2807,8 +2807,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L100",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_lock_acquisition",
-      "_tgt": "state_checkpoint_checkpoint_release_lock",
+      "_src": "state_checkpoint_checkpoint_release_lock",
+      "_tgt": "tests_test_checkpoint_test_lock_acquisition",
       "source": "state_checkpoint_checkpoint_release_lock",
       "target": "tests_test_checkpoint_test_lock_acquisition"
     },
@@ -2843,8 +2843,8 @@
       "source_file": "src/sync_mail/config/loader.py",
       "source_location": "L18",
       "weight": 1.0,
-      "_src": "config_loader_load_mapping",
-      "_tgt": "state_checkpoint_checkpoint_load",
+      "_src": "state_checkpoint_checkpoint_load",
+      "_tgt": "config_loader_load_mapping",
       "source": "state_checkpoint_checkpoint_load",
       "target": "config_loader_load_mapping"
     },
@@ -2855,8 +2855,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L16",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_load_non_existent",
-      "_tgt": "state_checkpoint_checkpoint_load",
+      "_src": "state_checkpoint_checkpoint_load",
+      "_tgt": "tests_test_checkpoint_test_load_non_existent",
       "source": "state_checkpoint_checkpoint_load",
       "target": "tests_test_checkpoint_test_load_non_existent"
     },
@@ -2867,8 +2867,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L30",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_save_load_roundtrip",
-      "_tgt": "state_checkpoint_checkpoint_load",
+      "_src": "state_checkpoint_checkpoint_load",
+      "_tgt": "tests_test_checkpoint_test_save_load_roundtrip",
       "source": "state_checkpoint_checkpoint_load",
       "target": "tests_test_checkpoint_test_save_load_roundtrip"
     },
@@ -2879,8 +2879,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L51",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_mark_completed",
-      "_tgt": "state_checkpoint_checkpoint_load",
+      "_src": "state_checkpoint_checkpoint_load",
+      "_tgt": "tests_test_checkpoint_test_mark_completed",
       "source": "state_checkpoint_checkpoint_load",
       "target": "tests_test_checkpoint_test_mark_completed"
     },
@@ -2891,8 +2891,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L67",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_mark_aborted",
-      "_tgt": "state_checkpoint_checkpoint_load",
+      "_src": "state_checkpoint_checkpoint_load",
+      "_tgt": "tests_test_checkpoint_test_mark_aborted",
       "source": "state_checkpoint_checkpoint_load",
       "target": "tests_test_checkpoint_test_mark_aborted"
     },
@@ -2903,8 +2903,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L78",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_corrupt_state_raises_resume_error",
-      "_tgt": "state_checkpoint_checkpoint_load",
+      "_src": "state_checkpoint_checkpoint_load",
+      "_tgt": "tests_test_checkpoint_test_corrupt_state_raises_resume_error",
       "source": "state_checkpoint_checkpoint_load",
       "target": "tests_test_checkpoint_test_corrupt_state_raises_resume_error"
     },
@@ -2915,8 +2915,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L88",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_missing_fields_raises_resume_error",
-      "_tgt": "state_checkpoint_checkpoint_load",
+      "_src": "state_checkpoint_checkpoint_load",
+      "_tgt": "tests_test_checkpoint_test_missing_fields_raises_resume_error",
       "source": "state_checkpoint_checkpoint_load",
       "target": "tests_test_checkpoint_test_missing_fields_raises_resume_error"
     },
@@ -2927,8 +2927,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L120",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_atomic_write_preserves_old_on_failure",
-      "_tgt": "state_checkpoint_checkpoint_load",
+      "_src": "state_checkpoint_checkpoint_load",
+      "_tgt": "tests_test_checkpoint_test_atomic_write_preserves_old_on_failure",
       "source": "state_checkpoint_checkpoint_load",
       "target": "tests_test_checkpoint_test_atomic_write_preserves_old_on_failure"
     },
@@ -2987,8 +2987,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L21",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_save_load_roundtrip",
-      "_tgt": "state_checkpoint_checkpoint_save",
+      "_src": "state_checkpoint_checkpoint_save",
+      "_tgt": "tests_test_checkpoint_test_save_load_roundtrip",
       "source": "state_checkpoint_checkpoint_save",
       "target": "tests_test_checkpoint_test_save_load_roundtrip"
     },
@@ -2999,8 +2999,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L107",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_atomic_write_preserves_old_on_failure",
-      "_tgt": "state_checkpoint_checkpoint_save",
+      "_src": "state_checkpoint_checkpoint_save",
+      "_tgt": "tests_test_checkpoint_test_atomic_write_preserves_old_on_failure",
       "source": "state_checkpoint_checkpoint_save",
       "target": "tests_test_checkpoint_test_atomic_write_preserves_old_on_failure"
     },
@@ -3023,8 +3023,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L49",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_mark_completed",
-      "_tgt": "state_checkpoint_checkpoint_mark_completed",
+      "_src": "state_checkpoint_checkpoint_mark_completed",
+      "_tgt": "tests_test_checkpoint_test_mark_completed",
       "source": "state_checkpoint_checkpoint_mark_completed",
       "target": "tests_test_checkpoint_test_mark_completed"
     },
@@ -3047,8 +3047,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L65",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_mark_aborted",
-      "_tgt": "state_checkpoint_checkpoint_mark_aborted",
+      "_src": "state_checkpoint_checkpoint_mark_aborted",
+      "_tgt": "tests_test_checkpoint_test_mark_aborted",
       "source": "state_checkpoint_checkpoint_mark_aborted",
       "target": "tests_test_checkpoint_test_mark_aborted"
     },
