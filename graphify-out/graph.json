@@ -647,9 +647,9 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/pipeline/transformer.py",
       "source_location": "L10",
-      "id": "pipeline_transformer_rationale_10",
       "community": 0,
-      "norm_label": "transforms a list of source rows into a list of tuples ready for target insertio"
+      "norm_label": "transforms a list of source rows into a list of tuples ready for target insertio",
+      "id": "pipeline_transformer_rationale_10"
     },
     {
       "label": "extractor.py",
@@ -674,9 +674,9 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/pipeline/extractor.py",
       "source_location": "L13",
-      "id": "pipeline_extractor_rationale_13",
       "community": 0,
-      "norm_label": "extracts data from the source table using keyset pagination and streaming."
+      "norm_label": "extracts data from the source table using keyset pagination and streaming.",
+      "id": "pipeline_extractor_rationale_13"
     },
     {
       "label": "__init__.py",
@@ -746,36 +746,36 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/pipeline/loader.py",
       "source_location": "L11",
-      "id": "pipeline_loader_rationale_11",
       "community": 0,
-      "norm_label": "handles bulk loading of transformed data into the target table.     caches the i"
+      "norm_label": "handles bulk loading of transformed data into the target table.     caches the i",
+      "id": "pipeline_loader_rationale_11"
     },
     {
       "label": "Builds the parameterized INSERT statement once.",
       "file_type": "rationale",
       "source_file": "src/sync_mail/pipeline/loader.py",
       "source_location": "L20",
-      "id": "pipeline_loader_rationale_20",
       "community": 0,
-      "norm_label": "builds the parameterized insert statement once."
+      "norm_label": "builds the parameterized insert statement once.",
+      "id": "pipeline_loader_rationale_20"
     },
     {
       "label": "Loads a batch of transformed rows into the target database.                  Arg",
       "file_type": "rationale",
       "source_file": "src/sync_mail/pipeline/loader.py",
       "source_location": "L34",
-      "id": "pipeline_loader_rationale_34",
       "community": 5,
-      "norm_label": "loads a batch of transformed rows into the target database.                  arg"
+      "norm_label": "loads a batch of transformed rows into the target database.                  arg",
+      "id": "pipeline_loader_rationale_34"
     },
     {
       "label": "Functional wrapper for Loader.load for cases where a persistent Loader instance",
       "file_type": "rationale",
       "source_file": "src/sync_mail/pipeline/loader.py",
       "source_location": "L69",
-      "id": "pipeline_loader_rationale_69",
       "community": 1,
-      "norm_label": "functional wrapper for loader.load for cases where a persistent loader instance"
+      "norm_label": "functional wrapper for loader.load for cases where a persistent loader instance",
+      "id": "pipeline_loader_rationale_69"
     },
     {
       "label": "exceptions.py",
@@ -4019,8 +4019,8 @@
       "source_file": "tests/test_pipeline.py",
       "source_location": "L37",
       "weight": 1.0,
-      "_src": "tests_test_pipeline_testpipeline_test_transformer_success",
-      "_tgt": "pipeline_transformer_transform",
+      "_src": "pipeline_transformer_transform",
+      "_tgt": "tests_test_pipeline_testpipeline_test_transformer_success",
       "source": "pipeline_transformer_transform",
       "target": "tests_test_pipeline_testpipeline_test_transformer_success"
     },
@@ -4031,8 +4031,8 @@
       "source_file": "tests/test_pipeline.py",
       "source_location": "L59",
       "weight": 1.0,
-      "_src": "tests_test_pipeline_testpipeline_test_transformer_cast_fail",
-      "_tgt": "pipeline_transformer_transform",
+      "_src": "pipeline_transformer_transform",
+      "_tgt": "tests_test_pipeline_testpipeline_test_transformer_cast_fail",
       "source": "pipeline_transformer_transform",
       "target": "tests_test_pipeline_testpipeline_test_transformer_cast_fail"
     },
@@ -4044,9 +4044,9 @@
       "weight": 0.8,
       "_src": "pipeline_transformer_rationale_10",
       "_tgt": "config_schema_mappingdocument",
+      "confidence_score": 0.5,
       "source": "pipeline_transformer_rationale_10",
-      "target": "config_schema_mappingdocument",
-      "confidence_score": 0.5
+      "target": "config_schema_mappingdocument"
     },
     {
       "relation": "contains",
@@ -4079,8 +4079,8 @@
       "source_file": "tests/test_pipeline.py",
       "source_location": "L103",
       "weight": 1.0,
-      "_src": "tests_test_pipeline_testpipeline_test_extractor_generator",
-      "_tgt": "pipeline_extractor_extract",
+      "_src": "pipeline_extractor_extract",
+      "_tgt": "tests_test_pipeline_testpipeline_test_extractor_generator",
       "source": "pipeline_extractor_extract",
       "target": "tests_test_pipeline_testpipeline_test_extractor_generator"
     },
@@ -4092,9 +4092,9 @@
       "weight": 0.8,
       "_src": "pipeline_extractor_rationale_13",
       "_tgt": "config_schema_mappingdocument",
+      "confidence_score": 0.5,
       "source": "pipeline_extractor_rationale_13",
-      "target": "config_schema_mappingdocument",
-      "confidence_score": 0.5
+      "target": "config_schema_mappingdocument"
     },
     {
       "relation": "contains",
@@ -4188,9 +4188,9 @@
       "weight": 0.8,
       "_src": "pipeline_loader_loader",
       "_tgt": "config_schema_mappingdocument",
+      "confidence_score": 0.5,
       "source": "pipeline_loader_loader",
-      "target": "config_schema_mappingdocument",
-      "confidence_score": 0.5
+      "target": "config_schema_mappingdocument"
     },
     {
       "relation": "uses",
@@ -4198,11 +4198,11 @@
       "source_file": "tests/test_pipeline.py",
       "source_location": "L9",
       "weight": 0.8,
-      "_src": "tests_test_pipeline_testpipeline",
-      "_tgt": "pipeline_loader_loader",
+      "_src": "pipeline_loader_loader",
+      "_tgt": "tests_test_pipeline_testpipeline",
+      "confidence_score": 0.5,
       "source": "pipeline_loader_loader",
-      "target": "tests_test_pipeline_testpipeline",
-      "confidence_score": 0.5
+      "target": "tests_test_pipeline_testpipeline"
     },
     {
       "relation": "calls",
@@ -4211,8 +4211,8 @@
       "source_file": "tests/test_pipeline.py",
       "source_location": "L73",
       "weight": 1.0,
-      "_src": "tests_test_pipeline_test_loader_success",
-      "_tgt": "pipeline_loader_loader",
+      "_src": "pipeline_loader_loader",
+      "_tgt": "tests_test_pipeline_test_loader_success",
       "source": "pipeline_loader_loader",
       "target": "tests_test_pipeline_test_loader_success"
     },
@@ -4295,8 +4295,8 @@
       "source_file": "src/sync_mail/config/loader.py",
       "source_location": "L18",
       "weight": 1.0,
-      "_src": "config_loader_load_mapping",
-      "_tgt": "pipeline_loader_load",
+      "_src": "pipeline_loader_load",
+      "_tgt": "config_loader_load_mapping",
       "source": "pipeline_loader_load",
       "target": "config_loader_load_mapping"
     },
@@ -4307,8 +4307,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L16",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_load_non_existent",
-      "_tgt": "pipeline_loader_load",
+      "_src": "pipeline_loader_load",
+      "_tgt": "tests_test_checkpoint_test_load_non_existent",
       "source": "pipeline_loader_load",
       "target": "tests_test_checkpoint_test_load_non_existent"
     },
@@ -4319,8 +4319,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L30",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_save_load_roundtrip",
-      "_tgt": "pipeline_loader_load",
+      "_src": "pipeline_loader_load",
+      "_tgt": "tests_test_checkpoint_test_save_load_roundtrip",
       "source": "pipeline_loader_load",
       "target": "tests_test_checkpoint_test_save_load_roundtrip"
     },
@@ -4331,8 +4331,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L51",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_mark_completed",
-      "_tgt": "pipeline_loader_load",
+      "_src": "pipeline_loader_load",
+      "_tgt": "tests_test_checkpoint_test_mark_completed",
       "source": "pipeline_loader_load",
       "target": "tests_test_checkpoint_test_mark_completed"
     },
@@ -4343,8 +4343,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L67",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_mark_aborted",
-      "_tgt": "pipeline_loader_load",
+      "_src": "pipeline_loader_load",
+      "_tgt": "tests_test_checkpoint_test_mark_aborted",
       "source": "pipeline_loader_load",
       "target": "tests_test_checkpoint_test_mark_aborted"
     },
@@ -4355,8 +4355,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L78",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_corrupt_state_raises_resume_error",
-      "_tgt": "pipeline_loader_load",
+      "_src": "pipeline_loader_load",
+      "_tgt": "tests_test_checkpoint_test_corrupt_state_raises_resume_error",
       "source": "pipeline_loader_load",
       "target": "tests_test_checkpoint_test_corrupt_state_raises_resume_error"
     },
@@ -4367,8 +4367,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L88",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_missing_fields_raises_resume_error",
-      "_tgt": "pipeline_loader_load",
+      "_src": "pipeline_loader_load",
+      "_tgt": "tests_test_checkpoint_test_missing_fields_raises_resume_error",
       "source": "pipeline_loader_load",
       "target": "tests_test_checkpoint_test_missing_fields_raises_resume_error"
     },
@@ -4379,8 +4379,8 @@
       "source_file": "tests/test_checkpoint.py",
       "source_location": "L120",
       "weight": 1.0,
-      "_src": "tests_test_checkpoint_test_atomic_write_preserves_old_on_failure",
-      "_tgt": "pipeline_loader_load",
+      "_src": "pipeline_loader_load",
+      "_tgt": "tests_test_checkpoint_test_atomic_write_preserves_old_on_failure",
       "source": "pipeline_loader_load",
       "target": "tests_test_checkpoint_test_atomic_write_preserves_old_on_failure"
     },
@@ -4391,8 +4391,8 @@
       "source_file": "tests/test_pipeline.py",
       "source_location": "L74",
       "weight": 1.0,
-      "_src": "tests_test_pipeline_test_loader_success",
-      "_tgt": "pipeline_loader_load",
+      "_src": "pipeline_loader_load",
+      "_tgt": "tests_test_pipeline_test_loader_success",
       "source": "pipeline_loader_load",
       "target": "tests_test_pipeline_test_loader_success"
     },
@@ -4403,8 +4403,8 @@
       "source_file": "tests/test_pipeline.py",
       "source_location": "L91",
       "weight": 1.0,
-      "_src": "tests_test_pipeline_test_loader_fail",
-      "_tgt": "pipeline_loader_load",
+      "_src": "pipeline_loader_load",
+      "_tgt": "tests_test_pipeline_test_loader_fail",
       "source": "pipeline_loader_load",
       "target": "tests_test_pipeline_test_loader_fail"
     },
@@ -4416,9 +4416,9 @@
       "weight": 0.8,
       "_src": "pipeline_loader_rationale_11",
       "_tgt": "config_schema_mappingdocument",
+      "confidence_score": 0.5,
       "source": "pipeline_loader_rationale_11",
-      "target": "config_schema_mappingdocument",
-      "confidence_score": 0.5
+      "target": "config_schema_mappingdocument"
     },
     {
       "relation": "uses",
@@ -4428,9 +4428,9 @@
       "weight": 0.8,
       "_src": "pipeline_loader_rationale_20",
       "_tgt": "config_schema_mappingdocument",
+      "confidence_score": 0.5,
       "source": "pipeline_loader_rationale_20",
-      "target": "config_schema_mappingdocument",
-      "confidence_score": 0.5
+      "target": "config_schema_mappingdocument"
     },
     {
       "relation": "uses",
@@ -4440,9 +4440,9 @@
       "weight": 0.8,
       "_src": "pipeline_loader_rationale_34",
       "_tgt": "config_schema_mappingdocument",
+      "confidence_score": 0.5,
       "source": "pipeline_loader_rationale_34",
-      "target": "config_schema_mappingdocument",
-      "confidence_score": 0.5
+      "target": "config_schema_mappingdocument"
     },
     {
       "relation": "uses",
@@ -4452,9 +4452,9 @@
       "weight": 0.8,
       "_src": "pipeline_loader_rationale_69",
       "_tgt": "config_schema_mappingdocument",
+      "confidence_score": 0.5,
       "source": "pipeline_loader_rationale_69",
-      "target": "config_schema_mappingdocument",
-      "confidence_score": 0.5
+      "target": "config_schema_mappingdocument"
     },
     {
       "relation": "contains",
@@ -4643,8 +4643,8 @@
       "source_file": "tests/test_pipeline.py",
       "source_location": "L86",
       "weight": 1.0,
-      "_src": "tests_test_pipeline_test_loader_fail",
-      "_tgt": "exception",
+      "_src": "exception",
+      "_tgt": "tests_test_pipeline_test_loader_fail",
       "source": "exception",
       "target": "tests_test_pipeline_test_loader_fail"
     },
@@ -5074,11 +5074,11 @@
       "source_file": "tests/test_pipeline.py",
       "source_location": "L10",
       "weight": 0.8,
-      "_src": "tests_test_pipeline_testpipeline",
-      "_tgt": "config_schema_columnmapping",
+      "_src": "config_schema_columnmapping",
+      "_tgt": "tests_test_pipeline_testpipeline",
+      "confidence_score": 0.5,
       "source": "config_schema_columnmapping",
-      "target": "tests_test_pipeline_testpipeline",
-      "confidence_score": 0.5
+      "target": "tests_test_pipeline_testpipeline"
     },
     {
       "relation": "calls",
@@ -5099,8 +5099,8 @@
       "source_file": "tests/test_pipeline.py",
       "source_location": "L21",
       "weight": 1.0,
-      "_src": "tests_test_pipeline_testpipeline_setup",
-      "_tgt": "config_schema_columnmapping",
+      "_src": "config_schema_columnmapping",
+      "_tgt": "tests_test_pipeline_testpipeline_setup",
       "source": "config_schema_columnmapping",
       "target": "tests_test_pipeline_testpipeline_setup"
     },
@@ -5182,11 +5182,11 @@
       "source_file": "tests/test_pipeline.py",
       "source_location": "L10",
       "weight": 0.8,
-      "_src": "tests_test_pipeline_testpipeline",
-      "_tgt": "config_schema_mappingdocument",
+      "_src": "config_schema_mappingdocument",
+      "_tgt": "tests_test_pipeline_testpipeline",
+      "confidence_score": 0.5,
       "source": "config_schema_mappingdocument",
-      "target": "tests_test_pipeline_testpipeline",
-      "confidence_score": 0.5
+      "target": "tests_test_pipeline_testpipeline"
     },
     {
       "relation": "calls",
@@ -5207,8 +5207,8 @@
       "source_file": "tests/test_pipeline.py",
       "source_location": "L15",
       "weight": 1.0,
-      "_src": "tests_test_pipeline_testpipeline_setup",
-      "_tgt": "config_schema_mappingdocument",
+      "_src": "config_schema_mappingdocument",
+      "_tgt": "tests_test_pipeline_testpipeline_setup",
       "source": "config_schema_mappingdocument",
       "target": "tests_test_pipeline_testpipeline_setup"
     },
