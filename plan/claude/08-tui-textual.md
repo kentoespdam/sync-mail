@@ -65,7 +65,7 @@ Membangun antarmuka terminal interaktif berbasis library **Textual** sebagai pin
 - Test tombol Abort di tengah migrasi — pastikan engine benar-benar berhenti dan state file tersimpan.
 
 ## ✅ Kriteria Penerimaan (Acceptance Criteria)
-- [ ] `python main.py` membuka TUI dan navigasi antar layar (menu → introspect → migrate → inspect) berjalan mulus.
+- [ ] `uv run main.py` membuka TUI dan navigasi antar layar (menu → introspect → migrate → inspect) berjalan mulus.
 - [ ] Resize terminal tidak membuat TUI crash.
 - [ ] Saat migration job berjalan, progress bar & throughput update real-time dengan delay < 1 detik.
 - [ ] Tombol "Abort" di MigrateScreen menghentikan job dengan checkpoint tersimpan; layar Inspect langsung menampilkan status `aborted`.
@@ -74,4 +74,5 @@ Membangun antarmuka terminal interaktif berbasis library **Textual** sebagai pin
 - [ ] Saat orchestrator melempar exception, TUI menangkap dan menampilkan error message dengan format yang readable, bukan stack trace mentah.
 
 ## 🤖 SOP Eksekusi (Wajib Dibaca)
-PENTING: Selalu utamakan mencari referensi terbaru di internet. Jika perlu gunakan `context 7` untuk pencarian data *best practice*, dokumentasi library Python mutakhir, dan pola optimasi agar kode yang dihasilkan *up-to-date*, aman, dan berkinerja tinggi. Khusus untuk task ini, prioritaskan riset: dokumentasi Textual mutakhir (`App`, `Screen`, `Widget`, reactive attributes, `@work` decorator, `call_from_thread`), pola integrasi worker thread untuk long-running task non-async, dan widget bawaan terbaru: `ProgressBar`, `DataTable`, `RichLog`.
+PENTING: Selalu utamakan mencari referensi terbaru menggunakan `context 7` untuk pencarian data *best practice*, dokumentasi library Python mutakhir, dan pola optimasi agar kode yang dihasilkan *up-to-date*, aman, dan berkinerja tinggi
+kemudian melalui internet jika diperlukan. Khusus untuk task ini, prioritaskan riset: dokumentasi Textual mutakhir (`App`, `Screen`, `Widget`, reactive attributes, `@work` decorator, `call_from_thread`), pola integrasi worker thread untuk long-running task non-async, dan widget bawaan terbaru: `ProgressBar`, `DataTable`, `RichLog`. Prioritaskan menggunakan `context7` untuk pencarian dokumentasi eksternal, dan **prioritaskan selalu mencoba mencari informasi melalui `/graphify query` sebelum menggunakan `file_scanner`** untuk memahami konteks internal codebase.

@@ -88,7 +88,7 @@ sync-mail/
                 └── log_panel.py     # widget streaming log dari event bus
 ```
 
-> **Catatan:** layout `src/sync_mail/...` sengaja dipilih (bukan flat `sync_mail/`) supaya editable install (`pip install -e .`) tidak mencemari root, dan `pyproject.toml` cukup deklarasi `[tool.setuptools.packages.find] where = ["src"]`.
+> **Catatan:** layout `src/sync_mail/...` sengaja dipilih (bukan flat `sync_mail/`) supaya editable install (`uv sync`) tidak mencemari root, dan `pyproject.toml` cukup deklarasi `[tool.setuptools.packages.find] where = ["src"]`.
 
 ---
 
@@ -121,8 +121,8 @@ sync-mail/
 | `main.py` | Hapus boilerplate PyCharm. Buat fungsi `main()` yang hanya mendelegasikan ke `sync_mail.tui.app:run()` (TUI adalah satu-satunya entrypoint). |
 
 **Acceptance Phase 1:**
-- `pip install -e .` sukses di Python 3.14.
-- `python main.py` membuka TUI kosong (boleh blank screen, yang penting tidak crash).
+- `uv sync` sukses di Python 3.14.
+- `uv run main.py` membuka TUI kosong (boleh blank screen, yang penting tidak crash).
 - Logger menulis ke `logs/sync-mail.log` saat di-trigger; rotasi terverifikasi dengan log dummy berukuran > 50MB.
 
 ---
@@ -264,7 +264,7 @@ sync-mail/
 | `src/sync_mail/tui/widgets/log_panel.py` | Wrapper `RichLog` yang auto-scroll & filter level (INFO/ERROR). |
 
 **Acceptance Phase 8:**
-- TUI bisa launch (`python main.py`), navigasi antar screen mulus, tidak crash saat resize terminal.
+- TUI bisa launch (`uv run main.py`), navigasi antar screen mulus, tidak crash saat resize terminal.
 - Saat migration job berjalan, progress bar & throughput update real-time (delay < 1 detik).
 - Tombol abort menghentikan job dengan checkpoint tersimpan; layar inspect langsung menampilkan status `aborted`.
 
@@ -325,7 +325,7 @@ Phase 1 ──► Phase 2 ──► Phase 3 ──► Phase 4 ──► Phase 5 
 
 ## 6. Definition of Done untuk Keseluruhan Sistem
 
-1. Operator dapat menjalankan `python main.py`, masuk TUI, generate YAML, edit, eksekusi migrasi 1 juta row, resume setelah Ctrl+C, dan mendapatkan target tabel identik dengan source (verified via `COUNT(*)` & sampling).
+1. Operator dapat menjalankan `uv run main.py`, masuk TUI, generate YAML, edit, eksekusi migrasi 1 juta row, resume setelah Ctrl+C, dan mendapatkan target tabel identik dengan source (verified via `COUNT(*)` & sampling).
 2. Selama migrasi 1 juta row, peak RSS Python proses tetap di bawah 200 MB (target indikatif; konfirmasi via `psutil` atau `/proc/<pid>/status`).
 3. Tidak ada query SQL apapun yang muncul di file log — hanya event-level info & error.
 4. Setiap fase memiliki issue Beads tertutup (`bd close`) dengan referensi acceptance criteria yang terpenuhi.

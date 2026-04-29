@@ -1,0 +1,4 @@
+pymysql<1.2,>=1.1
+sqlalchemy<2.1,>=2.0
+ruamel.yaml<0.20,>=0.19
+textual<6.6,>=6.5

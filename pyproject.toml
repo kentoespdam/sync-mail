@@ -2,4 +2,15 @@
 name = "sync-mail"
 version = "0.1.0"
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "pymysql>=1.1,<1.2",
+    "sqlalchemy>=2.0,<2.1",
+    "ruamel.yaml>=0.19,<0.20",
+    "textual>=6.5,<6.6",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+sync-mail = "sync_mail.main:main"

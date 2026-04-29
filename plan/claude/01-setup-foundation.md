@@ -40,16 +40,17 @@ Tidak ada (ini adalah fondasi awal). Cukup pastikan Python 3.14 tersedia dan rep
 - Setiap event membawa payload dictionary (job_name, batch_id, rows, last_pk, throughput, error, dll. — sesuaikan tipe).
 
 **Langkah 7: Verifikasi instalasi.**
-- Jalankan `pip install -e .` di virtualenv Python 3.14 dan pastikan tidak ada error.
-- Coba `python main.py`. TUI boleh tampil blank — yang penting tidak crash.
+- Jalankan `uv sync` di virtualenv Python 3.14 dan pastikan tidak ada error.
+- Coba `uv run main.py`. TUI boleh tampil blank — yang penting tidak crash.
 
 ## ✅ Kriteria Penerimaan (Acceptance Criteria)
-- [ ] `pip install -e .` berhasil pada Python 3.14 tanpa warning kritikal.
-- [ ] `python main.py` membuka TUI tanpa error (boleh layar kosong).
+- [ ] `uv sync` berhasil pada Python 3.14 tanpa warning kritikal.
+- [ ] `uv run main.py` membuka TUI tanpa error (boleh layar kosong).
 - [ ] Logger berhasil menulis pesan ERROR ke `logs/sync-mail.log` dan rotasi terverifikasi dengan dummy data > 50 MB.
 - [ ] Tidak ada query SQL yang muncul di file log saat aplikasi startup.
 - [ ] Hierarki exception dapat di-import dari `sync_mail.errors` dan masing-masing menerima context dict.
 - [ ] `EventBus` dapat menerima `publish()` dan mengirim ke subscriber tanpa blocking di thread utama.
 
 ## 🤖 SOP Eksekusi (Wajib Dibaca)
-PENTING: Selalu utamakan mencari referensi terbaru di internet. Jika perlu gunakan `context 7` untuk pencarian data *best practice*, dokumentasi library Python mutakhir, dan pola optimasi agar kode yang dihasilkan *up-to-date*, aman, dan berkinerja tinggi. Khusus untuk task ini, prioritaskan riset: layout `src/` modern di `pyproject.toml` setuptools, konfigurasi `RotatingFileHandler` untuk Python 3.14, pola custom exception hierarchy dengan context, dan dokumentasi `queue.Queue` thread-safe pattern.
+PENTING: Selalu utamakan mencari referensi terbaru menggunakan `context 7` untuk pencarian data *best practice*, dokumentasi library Python mutakhir, dan pola optimasi agar kode yang dihasilkan *up-to-date*, aman, dan berkinerja tinggi
+kemudian melalui internet jika diperlukan. Khusus untuk task ini, prioritaskan riset: layout `src/` modern di `pyproject.toml` setuptools, konfigurasi `RotatingFileHandler` untuk Python 3.14, pola custom exception hierarchy dengan context, dan dokumentasi `queue.Queue` thread-safe pattern. Prioritaskan menggunakan `context7` untuk pencarian dokumentasi eksternal, dan **prioritaskan selalu mencoba mencari informasi melalui `/graphify query` sebelum menggunakan `file_scanner`** untuk memahami konteks internal codebase.

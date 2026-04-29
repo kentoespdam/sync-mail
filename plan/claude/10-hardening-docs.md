@@ -11,8 +11,8 @@ Mengubah aplikasi yang sudah berfungsi (Issue 01–08, opsional 09) menjadi tool
 
 **Langkah 1: Tulis `README.md` di root proyek.**
 - Bagian Quickstart (dalam Bahasa Indonesia, sesuai konvensi proyek):
-  - Cara install: clone, virtualenv Python 3.14, `pip install -e .`.
-  - Generate YAML: jalankan `python main.py` → menu Introspect → isi DSN + nama tabel.
+  - Cara install: clone, virtualenv Python 3.14, `uv sync`.
+  - Generate YAML: jalankan `uv run main.py` → menu Introspect → isi DSN + nama tabel.
   - Edit YAML: arahkan operator ke folder `mappings/`, jelaskan flag `ACTION_REQUIRED`.
   - Jalankan migrasi: menu Run migration job → pilih file YAML.
   - Resume setelah interupsi: ulangi langkah jalankan, sistem otomatis lanjut dari checkpoint.
@@ -56,7 +56,7 @@ Mengubah aplikasi yang sudah berfungsi (Issue 01–08, opsional 09) menjadi tool
 **Langkah 4: Pin dependency ke versi exact.**
 - Update `pyproject.toml`: ganti `>=` menjadi `==` untuk semua dependency utama.
 - Lock file: pertimbangkan `pip-tools` (`pip-compile pyproject.toml`) untuk menghasilkan `requirements.txt` dengan transitive dependency ter-pin.
-- Tujuan: saat migration window 6 bulan kemudian, `pip install` menghasilkan environment yang persis sama.
+- Tujuan: saat migration window 6 bulan kemudian, `uv pip install` menghasilkan environment yang persis sama.
 
 **Langkah 5: Setup logging level production.**
 - Di `logger.py`: pastikan default level ERROR untuk file, INFO untuk STDOUT (sudah dari Issue 01).
@@ -78,4 +78,5 @@ Mengubah aplikasi yang sudah berfungsi (Issue 01–08, opsional 09) menjadi tool
 - [ ] Runbook diuji ulang oleh orang lain dari awal sampai selesai tanpa intervensi penulis.
 
 ## 🤖 SOP Eksekusi (Wajib Dibaca)
-PENTING: Selalu utamakan mencari referensi terbaru di internet. Jika perlu gunakan `context 7` untuk pencarian data *best practice*, dokumentasi library Python mutakhir, dan pola optimasi agar kode yang dihasilkan *up-to-date*, aman, dan berkinerja tinggi. Khusus untuk task ini, prioritaskan riset: template README terbaik untuk CLI/TUI tool 2026, panduan operasional migrasi DB skala besar, checklist pre-flight maintenance window, dan praktik testing dengan `pytest` + `testcontainers` MariaDB di Python 3.14.
+PENTING: Selalu utamakan mencari referensi terbaru menggunakan `context 7` untuk pencarian data *best practice*, dokumentasi library Python mutakhir, dan pola optimasi agar kode yang dihasilkan *up-to-date*, aman, dan berkinerja tinggi
+kemudian melalui internet jika diperlukan. Khusus untuk task ini, prioritaskan riset: template README terbaik untuk CLI/TUI tool 2026, panduan operasional migrasi DB skala besar, checklist pre-flight maintenance window, dan praktik testing dengan `pytest` + `testcontainers` MariaDB di Python 3.14. Prioritaskan menggunakan `context7` untuk pencarian dokumentasi eksternal, dan **prioritaskan selalu mencoba mencari informasi melalui `/graphify query` sebelum menggunakan `file_scanner`** untuk memahami konteks internal codebase.

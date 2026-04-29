@@ -1,0 +1,2 @@
+[console_scripts]
+sync-mail = sync_mail.main:main
