@@ -67,6 +67,7 @@ def test_save_mapping_to_yaml(tmp_path):
     doc = MappingDocument(
         source_table='src_tbl',
         target_table='tgt_tbl',
+        pk_column='id',
         mappings=[
             ColumnMapping(target_column='id', source_column='id', transformation_type='NONE', _source_type='int(11)'),
             ColumnMapping(target_column='status', source_column='status', transformation_type='CAST', cast_target='varchar(64)', _source_type="enum('a','b')", _target_type='varchar(64)'),

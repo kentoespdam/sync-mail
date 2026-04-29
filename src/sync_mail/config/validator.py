@@ -11,7 +11,7 @@ def validate_mapping(doc: MappingDocument) -> None:
 
     # (g) Basic metadata
     if not doc.source_table:
-        errors.append("Source table name cannot be empty.")
+        errors.append("source_table name cannot be empty.")
     if not doc.target_table:
         errors.append("Target table name cannot be empty.")
     if not doc.pk_column:
@@ -19,13 +19,13 @@ def validate_mapping(doc: MappingDocument) -> None:
 
     # (d) batch_size check
     if not (5000 <= doc.batch_size <= 15000):
-        errors.append(f"batch_size ({doc.batch_size}) must be between 5,000 and 15,000 as per performance requirements.")
+        errors.append(f"batch_size ({doc.batch_size}) must be between 5.000 - 15.000 as per performance requirements.")
 
     # (e) Duplicate target_column
     target_columns = [m.target_column for m in doc.mappings]
     duplicates = [c for c in set(target_columns) if target_columns.count(c) > 1]
     if duplicates:
-        errors.append(f"Duplicate target columns found: {', '.join(duplicates)}")
+        errors.append(f"Duplikasi target_column found: {', '.join(duplicates)}")
 
     # (f) Check for ACTION_REQUIRED in any non-comment field
     def check_action_required(val, context_msg):
@@ -33,7 +33,8 @@ def validate_mapping(doc: MappingDocument) -> None:
             errors.append(f"Placeholder 'ACTION_REQUIRED' remains in {context_msg}.")
 
     for m in doc.mappings:
-        col_ctx = f"column mapping for '{m.target_column}'"
+        line_prefix = f"Baris {m._line_no}: " if m._line_no else ""
+        col_ctx = f"{line_prefix}column mapping for '{m.target_column}'"
         
         # Check specific fields for placeholders
         check_action_required(m.source_column, f"source_column of {col_ctx}")
@@ -42,15 +43,15 @@ def validate_mapping(doc: MappingDocument) -> None:
         
         # (a) CAST must have cast_target
         if m.transformation_type == "CAST" and not m.cast_target:
-            errors.append(f"Transformation CAST for '{m.target_column}' requires a 'cast_target'.")
+            errors.append(f"{line_prefix}Transformation CAST for '{m.target_column}' requires a 'cast_target'.")
             
         # (b) INJECT_DEFAULT must have default_value
         if m.transformation_type == "INJECT_DEFAULT" and m.default_value is None:
-            errors.append(f"Transformation INJECT_DEFAULT for '{m.target_column}' requires a 'default_value'.")
+            errors.append(f"{line_prefix}Transformation INJECT_DEFAULT for '{m.target_column}' requires a 'default_value'.")
             
         # (c) NONE must have source_column
         if m.transformation_type == "NONE" and not m.source_column:
-            errors.append(f"Transformation NONE for '{m.target_column}' requires a 'source_column'.")
+            errors.append(f"{line_prefix}Transformation NONE for '{m.target_column}' requires a 'source_column'.")
 
     if errors:
         error_msg = "Mapping document validation failed:\n" + "\n".join(f"- {e}" for e in errors)

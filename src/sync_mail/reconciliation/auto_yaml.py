@@ -39,8 +39,8 @@ def generate_mapping(
                     target_column=t_name,
                     source_column=t_name,
                     transformation_type="CAST",
-                    cast_target=t_type.upper(),
-                    comment=f"CAST: {s_type} -> {t_type} | ACTION_REQUIRED: Verify mapping"
+                    cast_target=t_meta["COLUMN_TYPE"],
+                    comment=f"CAST: {s_meta['COLUMN_TYPE']} -> {t_meta['COLUMN_TYPE']} | ACTION_REQUIRED: Verify mapping"
                 ))
         else:
             # Target column missing in source
@@ -53,17 +53,29 @@ def generate_mapping(
             
     unmapped_source = [s for s in source_cols if s not in mapped_source_names]
     
+    # Try to find PK (look for auto_increment in source)
+    pk_column = "id" # default
+    for s in source_meta:
+        if "auto_increment" in s.get("EXTRA", "").lower():
+            pk_column = s["COLUMN_NAME"]
+            break
+    else:
+        if source_meta:
+            pk_column = source_meta[0]["COLUMN_NAME"]
+
     return MappingDocument(
         source_table=source_table,
         target_table=target_table,
+        pk_column=pk_column,
         batch_size=10000,
         mappings=mappings,
         unmapped_source_columns=unmapped_source
     )
 
-def write_mapping_yaml(doc: MappingDocument, output_path: str):
+def save_mapping_to_yaml(doc: MappingDocument, output_dir: str = "mappings") -> str:
     """
     Writes a MappingDocument to a YAML file with comments using ruamel.yaml.
+    Returns the path to the generated file.
     """
     yaml = YAML()
     yaml.indent(mapping=2, sequence=4, offset=2)
@@ -72,6 +84,7 @@ def write_mapping_yaml(doc: MappingDocument, output_path: str):
     data["migration_job"] = CommentedMap({
         "source_table": doc.source_table,
         "target_table": doc.target_table,
+        "pk_column": doc.pk_column,
         "batch_size": doc.batch_size
     })
     
@@ -92,21 +105,23 @@ def write_mapping_yaml(doc: MappingDocument, output_path: str):
             m_map["default_value"] = m.default_value
             
         mappings_seq.append(m_map)
-        if m.comment:
-            mappings_seq.yaml_add_eol_comment(m.comment, len(mappings_seq) - 1)
+        
+        # Add comment for CAST/INJECT or generic action required
+        comment = m.comment
+        if not comment:
+            if m.transformation_type == "CAST":
+                comment = f"CAST: {getattr(m, '_source_type', '?')} -> {getattr(m, '_target_type', '?')} | ACTION_REQUIRED: verify mapping"
+            elif m.transformation_type == "INJECT_DEFAULT":
+                comment = "ACTION_REQUIRED: verify default value"
+        
+        if comment:
+            mappings_seq.yaml_add_eol_comment(comment, len(mappings_seq) - 1)
             
     data["migration_job"]["mappings"] = mappings_seq
     
-    # Add unmapped source columns as comments at the end
-    if doc.unmapped_source_columns:
-        data.yaml_set_comment_before_after_key("migration_job", after="\n# UNMAPPED SOURCE COLUMNS:")
-        for col in doc.unmapped_source_columns:
-            # Since ruamel.yaml doesn't have a direct "add comment at the very end" easily via data
-            # we'll just add it to the unmapped_source_columns key if we wanted to show them.
-            # But the plan says "catat sebagai komentar di YAML".
-            pass
-            
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    os.makedirs(output_dir, exist_ok=True)
+    output_path = os.path.join(output_dir, f"{doc.source_table}_to_{doc.target_table}.yaml")
+    
     with open(output_path, "w") as f:
         # Add header comment
         f.write("# Auto-generated mapping template\n")
@@ -116,3 +131,5 @@ def write_mapping_yaml(doc: MappingDocument, output_path: str):
                 f.write(f"# - {col}\n")
             f.write("\n")
         yaml.dump(data, f)
+        
+    return output_path

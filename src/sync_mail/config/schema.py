@@ -15,6 +15,9 @@ class ColumnMapping:
     default_value: Optional[str] = None
     # metadata/comments for the YAML output
     comment: Optional[str] = None
+    _source_type: Optional[str] = None
+    _target_type: Optional[str] = None
+    _line_no: Optional[int] = None
 
 @dataclass
 class MappingDocument:
