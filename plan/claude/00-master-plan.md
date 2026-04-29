@@ -94,9 +94,14 @@ sync-mail/
 
 ## 3. SOP Delegasi (Wajib Dibaca di Awal Setiap Fase)
 
-> **PENTING: Sebelum mengeksekusi penulisan kode untuk task ini, Anda wajib mencari referensi terbaru di internet. Gunakan `context 7` untuk pencarian data *best practice*, dokumentasi library Python mutakhir, dan pola optimasi agar kode yang dihasilkan *up-to-date* dan berkinerja tinggi.**
+> **PENTING: Sebelum mengeksekusi penulisan kode untuk task ini, Anda wajib mencari referensi terbaru. Ikuti urutan prioritas berikut:**
 >
-> Aturan tambahan yang berlaku lintas-fase:
+> **Aturan Pengunjungan Informasi (Wajib Diikuti):**
+> 1. **JALAN PERTAMA: `/graphify query`** — Gunakan selalu untuk pemindaian file atau mencari logika aplikasi. Hindari pemindaian file secara rekursif (`find`, `ls -R`, dll).
+> 2. **JALAN KEDUA: `context7`** — Selalu utamakan `context7` untuk mendapatkan *best practice*, dokumentasi library Python mutakhir, dan pola optimasi agar kode yang dihasilkan *up-to-date*, aman, dan berkinerja tinggi.
+> 3. **JALAN KETIGA: Pencarian Internet** — Gunakan pencarian internet hanya jika `context7` tidak memberikan informasi yang cukup.
+>
+> **Aturan tambahan yang berlaku lintas-fase:**
 > - **Patuhi non-negotiable di `CLAUDE.md`**: server-side cursor, generator streaming, keyset pagination (no `OFFSET`), `executemany`, tidak ada ORM/Pandas tanpa alasan kuat, transaksi atomic per batch, resume via state, profiler/query log dimatikan.
 > - **Buat issue Beads** (`bd create`) untuk setiap task sebelum mulai coding; klaim dengan `bd update <id> --claim`; tutup dengan `bd close <id>` setelah acceptance terpenuhi.
 > - **Dilarang menyentuh source code di dokumen plan**. Plan adalah panduan logika, bukan implementasi.

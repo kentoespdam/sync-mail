@@ -78,5 +78,15 @@ Mengubah aplikasi yang sudah berfungsi (Issue 01–08, opsional 09) menjadi tool
 - [ ] Runbook diuji ulang oleh orang lain dari awal sampai selesai tanpa intervensi penulis.
 
 ## 🤖 SOP Eksekusi (Wajib Dibaca)
-PENTING: Selalu utamakan mencari referensi terbaru menggunakan `context 7` untuk pencarian data *best practice*, dokumentasi library Python mutakhir, dan pola optimasi agar kode yang dihasilkan *up-to-date*, aman, dan berkinerja tinggi
-kemudian melalui internet jika diperlukan. Khusus untuk task ini, prioritaskan riset: template README terbaik untuk CLI/TUI tool 2026, panduan operasional migrasi DB skala besar, checklist pre-flight maintenance window, dan praktik testing dengan `pytest` + `testcontainers` MariaDB di Python 3.14. Prioritaskan menggunakan `context7` untuk pencarian dokumentasi eksternal, dan **prioritaskan selalu mencoba mencari informasi melalui `/graphify query` sebelum menggunakan `file_scanner`** untuk memahami konteks internal codebase.
+
+**PENTING: Sebelum mengeksekusi penulisan kode untuk task ini, Anda wajib mencari referensi terbaru. Ikuti urutan prioritas berikut:**
+
+1. **JALAN PERTAMA: `/graphify query`** — Gunakan selalu untuk pemindaian file atau mencari logika aplikasi. Hindari pemindaian file secara rekursif (`find`, `ls -R`, dll).
+2. **JALAN KEDUA: `context7`** — Selalu utamakan `context7` untuk mendapatkan *best practice*, dokumentasi library Python mutakhir, dan pola optimasi agar kode yang dihasilkan *up-to-date*, aman, dan berkinerja tinggi.
+3. **JALAN KETIGA: Pencarian Internet** — Gunakan pencarian internet hanya jika `context7` tidak memberikan informasi yang cukup.
+
+**Prioritas riset untuk task ini:**
+- Template README terbaik untuk CLI/TUI tool 2026
+- Panduan operasional migrasi DB skala besar
+- Checklist pre-flight maintenance window
+- Praktik testing dengan `pytest` + `testcontainers` MariaDB di Python 3.14

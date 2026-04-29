@@ -55,5 +55,14 @@ Menyediakan mekanisme penyimpanan **state migrasi** (terutama `last_evaluated_pk
 - [ ] (Jika locking diimplementasi) Dua proses sekaligus mencoba claim job yang sama → proses kedua gagal dengan `ResumeError`.
 
 ## 🤖 SOP Eksekusi (Wajib Dibaca)
-PENTING: Selalu utamakan mencari referensi terbaru menggunakan `context 7` untuk pencarian data *best practice*, dokumentasi library Python mutakhir, dan pola optimasi agar kode yang dihasilkan *up-to-date*, aman, dan berkinerja tinggi
-kemudian melalui internet jika diperlukan. Khusus untuk task ini, prioritaskan riset: pola atomic file write di Python (write-temp + `os.replace` + `os.fsync` semantics), praktik file locking (`fcntl` vs `portalocker`), dan format JSON serialization dengan timestamp ISO 8601 yang lossless. Prioritaskan menggunakan `context7` untuk pencarian dokumentasi eksternal, dan **prioritaskan selalu mencoba mencari informasi melalui `/graphify query` sebelum menggunakan `file_scanner`** untuk memahami konteks internal codebase.
+
+**PENTING: Sebelum mengeksekusi penulisan kode untuk task ini, Anda wajib mencari referensi terbaru. Ikuti urutan prioritas berikut:**
+
+1. **JALAN PERTAMA: `/graphify query`** — Gunakan selalu untuk pemindaian file atau mencari logika aplikasi. Hindari pemindaian file secara rekursif (`find`, `ls -R`, dll).
+2. **JALAN KEDUA: `context7`** — Selalu utamakan `context7` untuk mendapatkan *best practice*, dokumentasi library Python mutakhir, dan pola optimasi agar kode yang dihasilkan *up-to-date*, aman, dan berkinerja tinggi.
+3. **JALAN KETIGA: Pencarian Internet** — Gunakan pencarian internet hanya jika `context7` tidak memberikan informasi yang cukup.
+
+**Prioritas riset untuk task ini:**
+- Pola atomic file write di Python (write-temp + `os.replace` + `os.fsync` semantics)
+- Praktik file locking (`fcntl` vs `portalocker`)
+- Format JSON serialization dengan timestamp ISO 8601 yang lossless

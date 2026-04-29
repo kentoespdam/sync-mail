@@ -43,5 +43,14 @@ Menyediakan satu pintu masuk koneksi database yang **selalu** menggunakan server
 - [ ] Verifikasi memori kasar (mis. dengan `psutil`): fetch satu baris dari tabel `information_schema` tidak menyebabkan lonjakan RAM proporsional ukuran tabel.
 
 ## 🤖 SOP Eksekusi (Wajib Dibaca)
-PENTING: Selalu utamakan mencari referensi terbaru menggunakan `context 7` untuk pencarian data *best practice*, dokumentasi library Python mutakhir, dan pola optimasi agar kode yang dihasilkan *up-to-date*, aman, dan berkinerja tinggi
-kemudian melalui internet jika diperlukan. Khusus untuk task ini, prioritaskan riset: dokumentasi mutakhir `PyMySQL` `SSDictCursor`, opsi koneksi MariaDB 11.x untuk menonaktifkan query log/profiling driver-side, dan praktik connection lifecycle (context manager, ConnectionPool jika relevan) di Python 3.14. Prioritaskan menggunakan `context7` untuk pencarian dokumentasi eksternal, dan **prioritaskan selalu mencoba mencari informasi melalui `/graphify query` sebelum menggunakan `file_scanner`** untuk memahami konteks internal codebase.
+
+**PENTING: Sebelum mengeksekusi penulisan kode untuk task ini, Anda wajib mencari referensi terbaru. Ikuti urutan prioritas berikut:**
+
+1. **JALAN PERTAMA: `/graphify query`** — Gunakan selalu untuk pemindaian file atau mencari logika aplikasi. Hindari pemindaian file secara rekursif (`find`, `ls -R`, dll).
+2. **JALAN KEDUA: `context7`** — Selalu utamakan `context7` untuk mendapatkan *best practice*, dokumentasi library Python mutakhir, dan pola optimasi agar kode yang dihasilkan *up-to-date*, aman, dan berkinerja tinggi.
+3. **JALAN KETIGA: Pencarian Internet** — Gunakan pencarian internet hanya jika `context7` tidak memberikan informasi yang cukup.
+
+**Prioritas riset untuk task ini:**
+- Dokumentasi mutakhir `PyMySQL` `SSDictCursor`
+- Opsi koneksi MariaDB 11.x untuk menonaktifkan query log/profiling driver-side
+- Praktik connection lifecycle (context manager, ConnectionPool jika relevan) di Python 3.14

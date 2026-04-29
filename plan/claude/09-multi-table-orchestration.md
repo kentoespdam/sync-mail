@@ -52,5 +52,14 @@ Mengangkat batasan single-table dari rilis pertama: memungkinkan operator melaku
 - [ ] Mode single-table dari Issue 07 masih bekerja tanpa regresi.
 
 ## 🤖 SOP Eksekusi (Wajib Dibaca)
-PENTING: Selalu utamakan mencari referensi terbaru menggunakan `context 7` untuk pencarian data *best practice*, dokumentasi library Python mutakhir, dan pola optimasi agar kode yang dihasilkan *up-to-date*, aman, dan berkinerja tinggi
-kemudian melalui internet jika diperlukan. Khusus untuk task ini, prioritaskan riset: implementasi topological sort sederhana di Python (pertimbangkan `graphlib.TopologicalSorter` di stdlib Python 3.9+), query `information_schema.key_column_usage` untuk MariaDB, dan praktik concurrent migration (apakah aman parallel — biasanya tidak karena bottleneck network). Prioritaskan menggunakan `context7` untuk pencarian dokumentasi eksternal, dan **prioritaskan selalu mencoba mencari informasi melalui `/graphify query` sebelum menggunakan `file_scanner`** untuk memahami konteks internal codebase.
+
+**PENTING: Sebelum mengeksekusi penulisan kode untuk task ini, Anda wajib mencari referensi terbaru. Ikuti urutan prioritas berikut:**
+
+1. **JALAN PERTAMA: `/graphify query`** — Gunakan selalu untuk pemindaian file atau mencari logika aplikasi. Hindari pemindaian file secara rekursif (`find`, `ls -R`, dll).
+2. **JALAN KEDUA: `context7`** — Selalu utamakan `context7` untuk mendapatkan *best practice*, dokumentasi library Python mutakhir, dan pola optimasi agar kode yang dihasilkan *up-to-date*, aman, dan berkinerja tinggi.
+3. **JALAN KETIGA: Pencarian Internet** — Gunakan pencarian internet hanya jika `context7` tidak memberikan informasi yang cukup.
+
+**Prioritas riset untuk task ini:**
+- Implementasi topological sort sederhana di Python (pertimbangkan `graphlib.TopologicalSorter` di stdlib Python 3.9+)
+- Query `information_schema.key_column_usage` untuk MariaDB
+- Praktik concurrent migration (apakah aman parallel — biasanya tidak karena bottleneck network)

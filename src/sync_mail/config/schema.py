@@ -13,6 +13,7 @@ class ColumnMapping:
     # metadata for internal use (e.g., original type info for comments)
     _source_type: Optional[str] = None
     _target_type: Optional[str] = None
+    _line_no: Optional[int] = None
 
 @dataclass
 class MappingDocument:
@@ -21,3 +22,4 @@ class MappingDocument:
     mappings: List[ColumnMapping]
     batch_size: int = 10000
     unmapped_source_columns: List[str] = field(default_factory=list)
+    _line_no: Optional[int] = None

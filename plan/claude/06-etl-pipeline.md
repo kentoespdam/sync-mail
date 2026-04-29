@@ -82,5 +82,15 @@ Membangun tiga modul inti yang menjadi jantung sistem migrasi: **Extractor** (me
 - [ ] **Loader**: SQL INSERT statement di-cache, tidak di-rebuild per batch.
 
 ## 🤖 SOP Eksekusi (Wajib Dibaca)
-PENTING: Selalu utamakan mencari referensi terbaru menggunakan `context 7` untuk pencarian data *best practice*, dokumentasi library Python mutakhir, dan pola optimasi agar kode yang dihasilkan *up-to-date*, aman, dan berkinerja tinggi
-kemudian melalui internet jika diperlukan. Khusus untuk task ini, prioritaskan riset: praktik `cursor.executemany()` MariaDB & kalkulasi `max_allowed_packet`, pola generator + context manager Python 3.14, idiom keyset pagination single-column dan komposit, serta perbandingan strategi cast ENUM→VARCHAR (apakah `str()` cukup atau perlu lookup tabel mapping). Prioritaskan menggunakan `context7` untuk pencarian dokumentasi eksternal, dan **prioritaskan selalu mencoba mencari informasi melalui `/graphify query` sebelum menggunakan `file_scanner`** untuk memahami konteks internal codebase.
+
+**PENTING: Sebelum mengeksekusi penulisan kode untuk task ini, Anda wajib mencari referensi terbaru. Ikuti urutan prioritas berikut:**
+
+1. **JALAN PERTAMA: `/graphify query`** — Gunakan selalu untuk pemindaian file atau mencari logika aplikasi. Hindari pemindaian file secara rekursif (`find`, `ls -R`, dll).
+2. **JALAN KEDUA: `context7`** — Selalu utamakan `context7` untuk mendapatkan *best practice*, dokumentasi library Python mutakhir, dan pola optimasi agar kode yang dihasilkan *up-to-date*, aman, dan berkinerja tinggi.
+3. **JALAN KETIGA: Pencarian Internet** — Gunakan pencarian internet hanya jika `context7` tidak memberikan informasi yang cukup.
+
+**Prioritas riset untuk task ini:**
+- Praktik `cursor.executemany()` MariaDB & kalkulasi `max_allowed_packet`
+- Pola generator + context manager Python 3.14
+- Idiom keyset pagination single-column dan komposit
+- Perbandingan strategi cast ENUM→VARCHAR (apakah `str()` cukup atau perlu lookup tabel mapping)
