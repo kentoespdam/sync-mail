@@ -1,12 +1,12 @@
 # Graph Report - sync-mail  (2026-04-29)
 
 ## Corpus Check
-- 44 files · ~32,479 words
+- 45 files · ~35,146 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 358 nodes · 607 edges · 46 communities detected
-- Extraction: 54% EXTRACTED · 46% INFERRED · 0% AMBIGUOUS · INFERRED: 279 edges (avg confidence: 0.69)
+- 375 nodes · 634 edges · 47 communities detected
+- Extraction: 56% EXTRACTED · 44% INFERRED · 0% AMBIGUOUS · INFERRED: 281 edges (avg confidence: 0.69)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -22,6 +22,7 @@
 - [[_COMMUNITY_Community 9|Community 9]]
 - [[_COMMUNITY_Community 10|Community 10]]
 - [[_COMMUNITY_Community 11|Community 11]]
+- [[_COMMUNITY_Community 12|Community 12]]
 - [[_COMMUNITY_Community 19|Community 19]]
 - [[_COMMUNITY_Community 20|Community 20]]
 - [[_COMMUNITY_Community 21|Community 21]]
@@ -70,8 +71,6 @@
 10. `ThroughputCalculator` - 14 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Main entry point for the sync-mail CLI application.     Launches the Textual TUI` --uses--> `SyncMailApp`  [INFERRED]
-  main.py → src/sync_mail/tui/app.py
 - `MappingConfigLoader` --uses--> `Orchestrates the Extract, Transform, Load (ETL) process for data migration.`  [INFERRED]
   src/sync_mail/mapping.py → pipeline/etl_pipeline.py
 - `MappingConfigLoader` --uses--> `Initializes the ETL pipeline with configuration.          Args:             conf`  [INFERRED]
@@ -80,56 +79,62 @@
   src/sync_mail/mapping.py → pipeline/etl_pipeline.py
 - `MappingConfigLoader` --uses--> `Helper to find the primary key column name for a table from mapping.`  [INFERRED]
   src/sync_mail/mapping.py → pipeline/etl_pipeline.py
+- `MappingConfigLoader` --uses--> `Extracts data from the source table, using server-side cursors and yielding rows`  [INFERRED]
+  src/sync_mail/mapping.py → pipeline/etl_pipeline.py
 
 ## Communities
 
 ### Community 0 - "Community 0"
-Cohesion: 0.08
-Nodes (31): get_foreign_keys(), list_tables(), Retrieves all table names in a schema., Retrieves all foreign key relationships in a schema.     Returns list of {'table, IntrospectionError, Raised when reading database schema from information_schema fails., Exception, Event (+23 more)
+Cohesion: 0.07
+Nodes (30): compute_eta(), Records a completed batch., Calculates rows per second based on the sliding window., Calculates rows per second since the start of the job., Computes Estimated Time of Arrival based on remaining rows and throughput., Calculates moving average throughput (rows/sec).     Uses a sliding window of re, ThroughputCalculator, load() (+22 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.09
-Nodes (29): Loads a YAML mapping file into a MappingDocument dataclass and validates it., ColumnMapping, MappingDocument, Root configuration for a migration job between two tables., Metadata for a single column mapping., Helper to format line number prefix if available., Checks if any field contains 'ACTION_REQUIRED'., Validates a MappingDocument for semantic correctness.     Raises MappingError wi (+21 more)
+Nodes (36): Loads a YAML mapping file, parses it into a MappingDocument, and validates it., Loads a YAML mapping file into a MappingDocument dataclass and validates it., ColumnMapping, MappingDocument, Root configuration for a migration job between two tables., Metadata for a single column mapping., Helper to format line number prefix if available., Checks if any field contains 'ACTION_REQUIRED'. (+28 more)
 
 ### Community 2 - "Community 2"
-Cohesion: 0.08
-Nodes (21): compute_eta(), Records a completed batch., Calculates rows per second based on the sliding window., Calculates rows per second since the start of the job., Computes Estimated Time of Arrival based on remaining rows and throughput., Calculates moving average throughput (rows/sec).     Uses a sliding window of re, ThroughputCalculator, JobBatch (+13 more)
+Cohesion: 0.07
+Nodes (21): Enum, Event, EventBus, EventType, A migration event with a type and a structured payload., A thread-safe event bus for communication between worker threads and the UI., Internal loop to process and dispatch events from the queue., Starts the background dispatch thread. (+13 more)
 
 ### Community 3 - "Community 3"
 Cohesion: 0.08
-Nodes (8): RichLog, Vertical, LogPanel, Custom RichLog with bindings and auto-scroll., BatchProgress, MigrationProgress, Overall progress for a batch of jobs., Combined progress bar and metrics widget.
+Nodes (17): App, Screen, InspectScreen, Screen for inspecting state files., IntrospectScreen, Screen for database introspection and mapping generation., run_schema_introspection(), run_single_introspection() (+9 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.11
-Nodes (18): describe_table(), Introspects a table and returns its column metadata from information_schema., generate_mapping(), generate_mappings_for_schema(), Reconciles source and target metadata to generate a MappingDocument., Performs topological sort on tables based on foreign key relationships., Generates mapping files for all tables in the source schema.     Returns list of, Writes a MappingDocument to a YAML file with comments using ruamel.yaml.     Ret (+10 more)
+Cohesion: 0.08
+Nodes (21): BatchFailedError, ConfigError, MigrationError, Raised when a data batch transaction fails to commit., Raised when resuming from a checkpoint fails (e.g., corrupt state.json)., Raised when there are issues with general configuration files (e.g., connection., Base exception for all migration-related errors., ResumeError (+13 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.1
-Nodes (13): App, Screen, InspectScreen, Screen for inspecting state files., MenuScreen, Main menu screen for sync-mail., main(), Main entry point for the sync-mail CLI application.     Launches the Textual TUI (+5 more)
+Cohesion: 0.12
+Nodes (5): Vertical, BatchProgress, MigrationProgress, Overall progress for a batch of jobs., Combined progress bar and metrics widget.
 
 ### Community 6 - "Community 6"
-Cohesion: 0.09
-Nodes (14): Enum, EventBus, EventType, A thread-safe event bus for communication between worker threads and the UI., Internal loop to process and dispatch events from the queue., Starts the background dispatch thread., Stops the background dispatch thread., Types of events that can be published to the EventBus. (+6 more)
+Cohesion: 0.12
+Nodes (15): connect(), connection_scope(), create_db_engine(), Establishes a low-memory MariaDB connection using SSDictCursor.          Args:, Context manager for database connection lifecycle., Context manager for atomic transactions.     Ensures BEGIN is sent at start, COM, Creates a SQLAlchemy engine for introspection with low-memory settings., transaction() (+7 more)
 
 ### Community 7 - "Community 7"
-Cohesion: 0.13
-Nodes (14): load(), Functional wrapper for Loader.load for cases where a persistent Loader instance, Checkpoint, Saves the state atomically using a temporary file and os.replace()., Manages migration state persistence and process locking.     Uses an atomic writ, Marks the job as completed., Marks the job as aborted with a reason., Acquires an exclusive lock on the lock file to prevent multiple processes (+6 more)
+Cohesion: 0.14
+Nodes (18): describe_table(), get_foreign_keys(), list_tables(), Retrieves all table names in a schema., Retrieves all foreign key relationships in a schema.     Returns list of {'table, Introspects a table and returns its column metadata from information_schema., IntrospectionError, Raised when reading database schema from information_schema fails. (+10 more)
 
 ### Community 8 - "Community 8"
-Cohesion: 0.15
-Nodes (12): connect(), connection_scope(), create_db_engine(), Establishes a low-memory MariaDB connection using SSDictCursor.          Args:, Context manager for database connection lifecycle., Context manager for atomic transactions.     Ensures BEGIN is sent at start, COM, Creates a SQLAlchemy engine for introspection with low-memory settings., transaction() (+4 more)
+Cohesion: 0.17
+Nodes (13): _ask(), _check_gitignore(), _load_from_yaml(), _prompt_block(), _prompt_for_config(), Prompts for missing fields in source and/or target blocks., Prompts for host, port, user, password, database., Resolves database connection configuration from YAML or interactive input.     F (+5 more)
 
 ### Community 9 - "Community 9"
-Cohesion: 0.19
-Nodes (9): BatchFailedError, ConnectionError, MigrationError, Raised when database connection fails (source or target)., Raised when a data batch transaction fails to commit., Raised when resuming from a checkpoint fails (e.g., corrupt state.json)., Base exception for all migration-related errors., ResumeError (+1 more)
+Cohesion: 0.17
+Nodes (5): extract(), Extracts data from the source table using keyset pagination and streaming., Loader, Handles bulk loading of transformed data into the target table.     Caches the I, Builds the parameterized INSERT statement once.
 
 ### Community 10 - "Community 10"
 Cohesion: 0.15
 Nodes (13): Per-batch atomic transactions, Beads, Bulk insert, Resume via state, Generator-based streaming, Keyset pagination, MariaDB, plan/prd.md (+5 more)
 
 ### Community 11 - "Community 11"
-Cohesion: 0.36
-Nodes (10): load_mapping(), Loads a YAML mapping file, parses it into a MappingDocument, and validates it., temp_yaml(), test_aggregate_errors(), test_error_line_numbers(), test_load_action_required_remaining(), test_load_duplicate_target(), test_load_invalid_batch_size() (+2 more)
+Cohesion: 0.49
+Nodes (9): load_mapping(), temp_yaml(), test_aggregate_errors(), test_error_line_numbers(), test_load_action_required_remaining(), test_load_duplicate_target(), test_load_invalid_batch_size(), test_load_missing_cast_target() (+1 more)
+
+### Community 12 - "Community 12"
+Cohesion: 0.33
+Nodes (4): configure_logging(), ContextFormatter, Custom formatter that ensures 'batch_id' and 'primary_key' exist in the record, Configures the root logger with STDOUT (INFO) and RotatingFileHandler (ERROR).
 
 ### Community 19 - "Community 19"
 Cohesion: 1.0
@@ -268,7 +273,7 @@ Cohesion: 1.0
 Nodes (1): plan/extract-prd.md
 
 ## Knowledge Gaps
-- **93 isolated node(s):** `Retrieves schema information for a specific table.      Args:         engine (En`, `Retrieves schema information for all tables in a given schema.      Args:`, `Maps SQLAlchemy type string representations to a simplified YAML type string.`, `Converts introspected schema information into a YAML string format using ruamel.`, `Manages migration state persistence and process locking.     Uses an atomic writ` (+88 more)
+- **100 isolated node(s):** `Retrieves schema information for a specific table.      Args:         engine (En`, `Retrieves schema information for all tables in a given schema.      Args:`, `Maps SQLAlchemy type string representations to a simplified YAML type string.`, `Converts introspected schema information into a YAML string format using ruamel.`, `Manages migration state persistence and process locking.     Uses an atomic writ` (+95 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **Thin community `Community 19`** (1 nodes): `A migration event with a type and a structured payload.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
@@ -342,12 +347,12 @@ Nodes (1): plan/extract-prd.md
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `MigrateScreen` connect `Community 2` to `Community 0`, `Community 3`, `Community 5`, `Community 6`?**
-  _High betweenness centrality (0.135) - this node is a cross-community bridge._
-- **Why does `Event` connect `Community 0` to `Community 8`, `Community 2`, `Community 6`?**
-  _High betweenness centrality (0.121) - this node is a cross-community bridge._
-- **Why does `MigrationJob` connect `Community 2` to `Community 0`, `Community 6`, `Community 7`?**
-  _High betweenness centrality (0.092) - this node is a cross-community bridge._
+- **Why does `MigrateScreen` connect `Community 2` to `Community 0`, `Community 3`, `Community 5`?**
+  _High betweenness centrality (0.132) - this node is a cross-community bridge._
+- **Why does `Event` connect `Community 2` to `Community 0`, `Community 1`, `Community 4`, `Community 6`, `Community 7`?**
+  _High betweenness centrality (0.116) - this node is a cross-community bridge._
+- **Why does `MappingDocument` connect `Community 1` to `Community 0`, `Community 9`, `Community 11`, `Community 6`?**
+  _High betweenness centrality (0.088) - this node is a cross-community bridge._
 - **Are the 34 inferred relationships involving `MappingDocument` (e.g. with `MappingConfigLoader` and `Handles loading and validating YAML mapping configurations.`) actually correct?**
   _`MappingDocument` has 34 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 27 inferred relationships involving `ColumnMapping` (e.g. with `MappingConfigLoader` and `Handles loading and validating YAML mapping configurations.`) actually correct?**

@@ -7,4 +7,5 @@ from .exceptions import (
     IntrospectionError,
     BatchFailedError,
     ResumeError,
+    ConfigError,
 )

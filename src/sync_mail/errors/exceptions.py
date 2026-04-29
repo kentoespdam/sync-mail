@@ -28,3 +28,7 @@ class BatchFailedError(MigrationError):
 class ResumeError(MigrationError):
     """Raised when resuming from a checkpoint fails (e.g., corrupt state.json)."""
     pass
+
+class ConfigError(MigrationError):
+    """Raised when there are issues with general configuration files (e.g., connection.yaml)."""
+    pass

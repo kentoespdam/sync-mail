@@ -38,6 +38,21 @@ class IntrospectScreen(Screen):
                 yield Button("Back", id="btn-back")
         yield Footer()
 
+    def on_mount(self) -> None:
+        # Pre-fill connection details if available
+        if hasattr(self.app, "connection_config"):
+            config = self.app.connection_config
+            s = config.get("source", {})
+            t = config.get("target", {})
+            
+            if s:
+                s_dsn = f"mysql+pymysql://{s.get('user')}:{s.get('password')}@{s.get('host')}:{s.get('port')}/{s.get('database')}"
+                self.query_one("#source-dsn", Input).value = s_dsn
+            
+            if t:
+                t_dsn = f"mysql+pymysql://{t.get('user')}:{t.get('password')}@{t.get('host')}:{t.get('port')}/{t.get('database')}"
+                self.query_one("#target-dsn", Input).value = t_dsn
+
     def on_checkbox_changed(self, event: Checkbox.Changed) -> None:
         if event.checkbox.id == "chk-schema":
             if event.value:
