@@ -305,18 +305,18 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/reconciliation/auto_yaml.py",
       "source_location": "L11",
-      "id": "reconciliation_auto_yaml_rationale_11",
       "community": 2,
-      "norm_label": "generates a mappingdocument based on source and target metadata.          logic:"
+      "norm_label": "generates a mappingdocument based on source and target metadata.          logic:",
+      "id": "reconciliation_auto_yaml_rationale_11"
     },
     {
       "label": "Saves MappingDocument to a YAML file using ruamel.yaml to preserve comments and",
       "file_type": "rationale",
       "source_file": "src/sync_mail/reconciliation/auto_yaml.py",
       "source_location": "L73",
-      "id": "reconciliation_auto_yaml_rationale_73",
       "community": 2,
-      "norm_label": "saves mappingdocument to a yaml file using ruamel.yaml to preserve comments and"
+      "norm_label": "saves mappingdocument to a yaml file using ruamel.yaml to preserve comments and",
+      "id": "reconciliation_auto_yaml_rationale_73"
     },
     {
       "label": "etl_pipeline.py",
@@ -935,9 +935,9 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/db/introspect.py",
       "source_location": "L6",
-      "id": "db_introspect_rationale_6",
       "community": 2,
-      "norm_label": "introspects a table and returns its column metadata from information_schema."
+      "norm_label": "introspects a table and returns its column metadata from information_schema.",
+      "id": "db_introspect_rationale_6"
     },
     {
       "label": "__init__.py",
@@ -1976,8 +1976,8 @@
       "source_file": "tests/test_introspection_auto_yaml.py",
       "source_location": "L39",
       "weight": 1.0,
-      "_src": "tests_test_introspection_auto_yaml_test_generate_mapping_scenarios",
-      "_tgt": "reconciliation_auto_yaml_generate_mapping",
+      "_src": "reconciliation_auto_yaml_generate_mapping",
+      "_tgt": "tests_test_introspection_auto_yaml_test_generate_mapping_scenarios",
       "source": "reconciliation_auto_yaml_generate_mapping",
       "target": "tests_test_introspection_auto_yaml_test_generate_mapping_scenarios"
     },
@@ -1988,8 +1988,8 @@
       "source_file": "tests/test_introspection_auto_yaml.py",
       "source_location": "L95",
       "weight": 1.0,
-      "_src": "tests_test_introspection_auto_yaml_test_generate_mapping_identical",
-      "_tgt": "reconciliation_auto_yaml_generate_mapping",
+      "_src": "reconciliation_auto_yaml_generate_mapping",
+      "_tgt": "tests_test_introspection_auto_yaml_test_generate_mapping_identical",
       "source": "reconciliation_auto_yaml_generate_mapping",
       "target": "tests_test_introspection_auto_yaml_test_generate_mapping_identical"
     },
@@ -2012,8 +2012,8 @@
       "source_file": "tests/test_introspection_auto_yaml.py",
       "source_location": "L78",
       "weight": 1.0,
-      "_src": "tests_test_introspection_auto_yaml_test_save_mapping_to_yaml",
-      "_tgt": "reconciliation_auto_yaml_save_mapping_to_yaml",
+      "_src": "reconciliation_auto_yaml_save_mapping_to_yaml",
+      "_tgt": "tests_test_introspection_auto_yaml_test_save_mapping_to_yaml",
       "source": "reconciliation_auto_yaml_save_mapping_to_yaml",
       "target": "tests_test_introspection_auto_yaml_test_save_mapping_to_yaml"
     },
@@ -2025,9 +2025,9 @@
       "weight": 0.8,
       "_src": "reconciliation_auto_yaml_rationale_11",
       "_tgt": "config_schema_mappingdocument",
+      "confidence_score": 0.5,
       "source": "reconciliation_auto_yaml_rationale_11",
-      "target": "config_schema_mappingdocument",
-      "confidence_score": 0.5
+      "target": "config_schema_mappingdocument"
     },
     {
       "relation": "uses",
@@ -2037,9 +2037,9 @@
       "weight": 0.8,
       "_src": "reconciliation_auto_yaml_rationale_11",
       "_tgt": "config_schema_columnmapping",
+      "confidence_score": 0.5,
       "source": "reconciliation_auto_yaml_rationale_11",
-      "target": "config_schema_columnmapping",
-      "confidence_score": 0.5
+      "target": "config_schema_columnmapping"
     },
     {
       "relation": "uses",
@@ -2049,9 +2049,9 @@
       "weight": 0.8,
       "_src": "reconciliation_auto_yaml_rationale_73",
       "_tgt": "config_schema_mappingdocument",
+      "confidence_score": 0.5,
       "source": "reconciliation_auto_yaml_rationale_73",
-      "target": "config_schema_mappingdocument",
-      "confidence_score": 0.5
+      "target": "config_schema_mappingdocument"
     },
     {
       "relation": "uses",
@@ -2061,9 +2061,9 @@
       "weight": 0.8,
       "_src": "reconciliation_auto_yaml_rationale_73",
       "_tgt": "config_schema_columnmapping",
+      "confidence_score": 0.5,
       "source": "reconciliation_auto_yaml_rationale_73",
-      "target": "config_schema_columnmapping",
-      "confidence_score": 0.5
+      "target": "config_schema_columnmapping"
     },
     {
       "relation": "contains",
@@ -2768,8 +2768,8 @@
       "source_file": "src/sync_mail/db/introspect.py",
       "source_location": "L43",
       "weight": 1.0,
-      "_src": "db_introspect_describe_table",
-      "_tgt": "errors_exceptions_introspectionerror",
+      "_src": "errors_exceptions_introspectionerror",
+      "_tgt": "db_introspect_describe_table",
       "source": "errors_exceptions_introspectionerror",
       "target": "db_introspect_describe_table"
     },
@@ -2828,8 +2828,8 @@
       "source_file": "tests/test_introspection_auto_yaml.py",
       "source_location": "L71",
       "weight": 1.0,
-      "_src": "tests_test_introspection_auto_yaml_test_save_mapping_to_yaml",
-      "_tgt": "config_schema_columnmapping",
+      "_src": "config_schema_columnmapping",
+      "_tgt": "tests_test_introspection_auto_yaml_test_save_mapping_to_yaml",
       "source": "config_schema_columnmapping",
       "target": "tests_test_introspection_auto_yaml_test_save_mapping_to_yaml"
     },
@@ -2840,8 +2840,8 @@
       "source_file": "tests/test_introspection_auto_yaml.py",
       "source_location": "L67",
       "weight": 1.0,
-      "_src": "tests_test_introspection_auto_yaml_test_save_mapping_to_yaml",
-      "_tgt": "config_schema_mappingdocument",
+      "_src": "config_schema_mappingdocument",
+      "_tgt": "tests_test_introspection_auto_yaml_test_save_mapping_to_yaml",
       "source": "config_schema_mappingdocument",
       "target": "tests_test_introspection_auto_yaml_test_save_mapping_to_yaml"
     },
@@ -3296,8 +3296,8 @@
       "source_file": "tests/test_introspection_auto_yaml.py",
       "source_location": "L21",
       "weight": 1.0,
-      "_src": "tests_test_introspection_auto_yaml_test_describe_table_success",
-      "_tgt": "db_introspect_describe_table",
+      "_src": "db_introspect_describe_table",
+      "_tgt": "tests_test_introspection_auto_yaml_test_describe_table_success",
       "source": "db_introspect_describe_table",
       "target": "tests_test_introspection_auto_yaml_test_describe_table_success"
     },
