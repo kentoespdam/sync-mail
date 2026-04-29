@@ -1,0 +1,3 @@
+/mnt/DATA/python/sync-mail/GEMINI.md
+/mnt/DATA/python/sync-mail/plan/extract-prd.md
+/mnt/DATA/python/sync-mail/plan/prd.md

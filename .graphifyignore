@@ -1,0 +1,19 @@
+# .graphifyignore
+# Ignore virtual environments
+.venv/
+
+# Ignore IDE configurations
+.idea/
+
+# Ignore cached and build artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore Graphify's own output directory to prevent re-processing
+graphify-out/
+
+# Ignore temporary files and logs
+*.log
+*.tmp
