@@ -20,14 +20,16 @@ class ContextFormatter(logging.Formatter):
             record.primary_key = "N/A"
         return super().format(record)
 
-def configure_logging(level: str = "INFO", log_dir: str = "logs"):
+def configure_logging():
     """
-    Configures the root logger with STDOUT (INFO) and RotatingFileHandler (ERROR).
+    Configures the root logger with STDOUT and RotatingFileHandler.
+    Settings are pulled from environment variables:
+    - SYNC_MAIL_LOG_LEVEL: Default root level (default: INFO)
+    - SYNC_MAIL_LOG_DIR: Directory for logs (default: logs)
+    """
+    level = os.environ.get("SYNC_MAIL_LOG_LEVEL", "INFO").upper()
+    log_dir = os.environ.get("SYNC_MAIL_LOG_DIR", "logs")
     
-    Args:
-        level (str): Default logging level for the root logger.
-        log_dir (str): Directory where log files will be stored.
-    """
     os.makedirs(log_dir, exist_ok=True)
     
     root_logger = logging.getLogger()

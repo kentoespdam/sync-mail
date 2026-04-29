@@ -1,12 +1,12 @@
 # Graph Report - sync-mail  (2026-04-29)
 
 ## Corpus Check
-- 43 files · ~29,234 words
+- 44 files · ~30,099 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 356 nodes · 607 edges · 45 communities detected
-- Extraction: 54% EXTRACTED · 46% INFERRED · 0% AMBIGUOUS · INFERRED: 279 edges (avg confidence: 0.69)
+- 357 nodes · 604 edges · 46 communities detected
+- Extraction: 54% EXTRACTED · 46% INFERRED · 0% AMBIGUOUS · INFERRED: 277 edges (avg confidence: 0.69)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -21,7 +21,7 @@
 - [[_COMMUNITY_Community 8|Community 8]]
 - [[_COMMUNITY_Community 9|Community 9]]
 - [[_COMMUNITY_Community 10|Community 10]]
-- [[_COMMUNITY_Community 18|Community 18]]
+- [[_COMMUNITY_Community 11|Community 11]]
 - [[_COMMUNITY_Community 19|Community 19]]
 - [[_COMMUNITY_Community 20|Community 20]]
 - [[_COMMUNITY_Community 21|Community 21]]
@@ -55,18 +55,19 @@
 - [[_COMMUNITY_Community 49|Community 49]]
 - [[_COMMUNITY_Community 50|Community 50]]
 - [[_COMMUNITY_Community 51|Community 51]]
+- [[_COMMUNITY_Community 52|Community 52]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `MappingDocument` - 31 edges
-2. `Checkpoint` - 27 edges
-3. `ColumnMapping` - 24 edges
+1. `MappingDocument` - 36 edges
+2. `ColumnMapping` - 29 edges
+3. `Checkpoint` - 23 edges
 4. `MappingConfigLoader` - 22 edges
 5. `MigrateScreen` - 19 edges
-6. `load()` - 17 edges
-7. `load_mapping()` - 17 edges
-8. `Event` - 17 edges
-9. `MigrationJob` - 16 edges
-10. `ThroughputCalculator` - 14 edges
+6. `load_mapping()` - 17 edges
+7. `Event` - 17 edges
+8. `MigrationJob` - 16 edges
+9. `ThroughputCalculator` - 14 edges
+10. `SyncMailApp` - 13 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Main entry point for the sync-mail CLI application.     Launches the Textual TUI` --uses--> `SyncMailApp`  [INFERRED]
@@ -88,266 +89,270 @@ Nodes (34): create_db_engine(), Creates a SQLAlchemy engine for introspection wi
 
 ### Community 1 - "Community 1"
 Cohesion: 0.08
-Nodes (21): compute_eta(), Records a completed batch., Calculates rows per second based on the sliding window., Calculates rows per second since the start of the job., Computes Estimated Time of Arrival based on remaining rows and throughput., Calculates moving average throughput (rows/sec).     Uses a sliding window of re, ThroughputCalculator, JobBatch (+13 more)
+Nodes (31): Loads a YAML mapping file into a MappingDocument dataclass and validates it., ColumnMapping, MappingDocument, Root configuration for a migration job between two tables., Metadata for a single column mapping., Helper to format line number prefix if available., Checks if any field contains 'ACTION_REQUIRED'., Validates a MappingDocument for semantic correctness.     Raises MappingError wi (+23 more)
 
 ### Community 2 - "Community 2"
-Cohesion: 0.09
-Nodes (33): Loads a YAML mapping file, parses it into a MappingDocument, and validates it., Loads a YAML mapping file into a MappingDocument dataclass and validates it., ColumnMapping, MappingDocument, Root configuration for a migration job between two tables., Metadata for a single column mapping., Helper to format line number prefix if available., Checks if any field contains 'ACTION_REQUIRED'. (+25 more)
+Cohesion: 0.1
+Nodes (22): Raised when resuming from a checkpoint fails (e.g., corrupt state.json)., ResumeError, load(), Functional wrapper for Loader.load for cases where a persistent Loader instance, Executes the migration job., Checkpoint, Saves the state atomically using a temporary file and os.replace()., Manages migration state persistence and process locking.     Uses an atomic writ (+14 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.08
-Nodes (16): App, Screen, InspectScreen, Screen for inspecting state files., IntrospectScreen, Screen for database introspection and mapping generation., run_schema_introspection(), run_single_introspection() (+8 more)
+Cohesion: 0.09
+Nodes (17): compute_eta(), Records a completed batch., Calculates rows per second based on the sliding window., Calculates rows per second since the start of the job., Computes Estimated Time of Arrival based on remaining rows and throughput., Calculates moving average throughput (rows/sec).     Uses a sliding window of re, ThroughputCalculator, JobBatch (+9 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.13
-Nodes (22): Raised when resuming from a checkpoint fails (e.g., corrupt state.json)., ResumeError, load(), Functional wrapper for Loader.load for cases where a persistent Loader instance, Checkpoint, Saves the state atomically using a temporary file and os.replace()., Manages migration state persistence and process locking.     Uses an atomic writ, Marks the job as completed. (+14 more)
+Cohesion: 0.09
+Nodes (20): describe_table(), list_tables(), Retrieves all table names in a schema., Introspects a table and returns its column metadata from information_schema., generate_mapping(), generate_mappings_for_schema(), Reconciles source and target metadata to generate a MappingDocument., Performs topological sort on tables based on foreign key relationships. (+12 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.08
-Nodes (8): RichLog, Vertical, LogPanel, Custom RichLog with bindings and auto-scroll., BatchProgress, MigrationProgress, Overall progress for a batch of jobs., Combined progress bar and metrics widget.
+Cohesion: 0.11
+Nodes (12): App, Screen, InspectScreen, Screen for inspecting state files., MenuScreen, Main menu screen for sync-mail., main(), Main entry point for the sync-mail CLI application.     Launches the Textual TUI (+4 more)
 
 ### Community 6 - "Community 6"
 Cohesion: 0.09
 Nodes (14): Enum, EventBus, EventType, A thread-safe event bus for communication between worker threads and the UI., Internal loop to process and dispatch events from the queue., Starts the background dispatch thread., Stops the background dispatch thread., Types of events that can be published to the EventBus. (+6 more)
 
 ### Community 7 - "Community 7"
-Cohesion: 0.13
-Nodes (10): extract(), Extracts data from the source table using keyset pagination and streaming., Loader, Handles bulk loading of transformed data into the target table.     Caches the I, Builds the parameterized INSERT statement once., Transforms a list of source rows into a list of tuples ready for target insertio, transform(), test_loader_fail() (+2 more)
+Cohesion: 0.12
+Nodes (5): Vertical, BatchProgress, MigrationProgress, Overall progress for a batch of jobs., Combined progress bar and metrics widget.
 
 ### Community 8 - "Community 8"
-Cohesion: 0.15
-Nodes (11): connect(), connection_scope(), Establishes a low-memory MariaDB connection using SSDictCursor.          Args:, Context manager for database connection lifecycle., Context manager for atomic transactions.     Ensures BEGIN is sent at start, COM, transaction(), Loads a batch of transformed rows into the target database.                  Arg, test_connect_failure_wraps_exception() (+3 more)
+Cohesion: 0.18
+Nodes (10): connect(), connection_scope(), Establishes a low-memory MariaDB connection using SSDictCursor.          Args:, Context manager for database connection lifecycle., Context manager for atomic transactions.     Ensures BEGIN is sent at start, COM, transaction(), test_connect_failure_wraps_exception(), test_connect_success() (+2 more)
 
 ### Community 9 - "Community 9"
 Cohesion: 0.15
 Nodes (13): Per-batch atomic transactions, Beads, Bulk insert, Resume via state, Generator-based streaming, Keyset pagination, MariaDB, plan/prd.md (+5 more)
 
 ### Community 10 - "Community 10"
-Cohesion: 0.42
-Nodes (9): load_mapping(), temp_yaml(), test_aggregate_errors(), test_error_line_numbers(), test_load_action_required_remaining(), test_load_duplicate_target(), test_load_invalid_batch_size(), test_load_missing_cast_target() (+1 more)
+Cohesion: 0.36
+Nodes (10): load_mapping(), Loads a YAML mapping file, parses it into a MappingDocument, and validates it., temp_yaml(), test_aggregate_errors(), test_error_line_numbers(), test_load_action_required_remaining(), test_load_duplicate_target(), test_load_invalid_batch_size() (+2 more)
 
-### Community 18 - "Community 18"
-Cohesion: 1.0
-Nodes (1): A migration event with a type and a structured payload.
+### Community 11 - "Community 11"
+Cohesion: 0.28
+Nodes (3): RichLog, LogPanel, Custom RichLog with bindings and auto-scroll.
 
 ### Community 19 - "Community 19"
 Cohesion: 1.0
-Nodes (1): A thread-safe event bus for communication between worker threads and the UI.
+Nodes (1): A migration event with a type and a structured payload.
 
 ### Community 20 - "Community 20"
 Cohesion: 1.0
-Nodes (1): Internal loop to process and dispatch events from the queue.
+Nodes (1): A thread-safe event bus for communication between worker threads and the UI.
 
 ### Community 21 - "Community 21"
 Cohesion: 1.0
-Nodes (1): Starts the background dispatch thread.
+Nodes (1): Internal loop to process and dispatch events from the queue.
 
 ### Community 22 - "Community 22"
 Cohesion: 1.0
-Nodes (1): Stops the background dispatch thread.
+Nodes (1): Starts the background dispatch thread.
 
 ### Community 23 - "Community 23"
 Cohesion: 1.0
-Nodes (1): Publishes an event to the bus.
+Nodes (1): Stops the background dispatch thread.
 
 ### Community 24 - "Community 24"
 Cohesion: 1.0
-Nodes (1): Subscribes a callback handler to receive events.
+Nodes (1): Publishes an event to the bus.
 
 ### Community 25 - "Community 25"
 Cohesion: 1.0
-Nodes (1): A Textual app to manage and monitor the sync-mail migration.
+Nodes (1): Subscribes a callback handler to receive events.
 
 ### Community 26 - "Community 26"
 Cohesion: 1.0
-Nodes (1): Create child widgets for the app.
+Nodes (1): A Textual app to manage and monitor the sync-mail migration.
 
 ### Community 27 - "Community 27"
 Cohesion: 1.0
-Nodes (1): An action to toggle dark mode.
+Nodes (1): Create child widgets for the app.
 
 ### Community 28 - "Community 28"
 Cohesion: 1.0
-Nodes (1): Root configuration for a migration job between two tables.
+Nodes (1): An action to toggle dark mode.
 
 ### Community 29 - "Community 29"
 Cohesion: 1.0
-Nodes (1): Handles loading and validating YAML mapping configurations.
+Nodes (1): Root configuration for a migration job between two tables.
 
 ### Community 30 - "Community 30"
 Cohesion: 1.0
-Nodes (1): Loads and validates the YAML mapping configuration from the specified path.
+Nodes (1): Handles loading and validating YAML mapping configurations.
 
 ### Community 31 - "Community 31"
 Cohesion: 1.0
-Nodes (1): Raised when there are issues with the YAML mapping configuration.
+Nodes (1): Loads and validates the YAML mapping configuration from the specified path.
 
 ### Community 32 - "Community 32"
 Cohesion: 1.0
-Nodes (1): Raised when a database connection fails.
+Nodes (1): Raised when there are issues with the YAML mapping configuration.
 
 ### Community 33 - "Community 33"
 Cohesion: 1.0
-Nodes (1): Raised when schema introspection fails.
+Nodes (1): Raised when a database connection fails.
 
 ### Community 34 - "Community 34"
 Cohesion: 1.0
-Nodes (1): Raised when a batch of data fails to commit.
+Nodes (1): Raised when schema introspection fails.
 
 ### Community 35 - "Community 35"
 Cohesion: 1.0
-Nodes (1): Raised when resuming a migration fails due to state issues.
+Nodes (1): Raised when a batch of data fails to commit.
 
 ### Community 36 - "Community 36"
 Cohesion: 1.0
-Nodes (1): Configures the root logger with StreamHandler and RotatingFileHandler.      Args
+Nodes (1): Raised when resuming a migration fails due to state issues.
 
 ### Community 37 - "Community 37"
 Cohesion: 1.0
-Nodes (1): Represents an event published by the migration engine.
+Nodes (1): Configures the root logger with StreamHandler and RotatingFileHandler.      Args
 
 ### Community 38 - "Community 38"
 Cohesion: 1.0
-Nodes (1): A minimal event bus for inter-module communication, especially between worker th
+Nodes (1): Represents an event published by the migration engine.
 
 ### Community 39 - "Community 39"
 Cohesion: 1.0
-Nodes (1): Publishes an event to the bus.         Events are added to an internal queue to
+Nodes (1): A minimal event bus for inter-module communication, especially between worker th
 
 ### Community 40 - "Community 40"
 Cohesion: 1.0
-Nodes (1): Subscribes a handler function to receive events.         The handler function mu
+Nodes (1): Publishes an event to the bus.         Events are added to an internal queue to
 
 ### Community 41 - "Community 41"
 Cohesion: 1.0
-Nodes (1): Internal method to process events from the queue and dispatch to subscribers.
+Nodes (1): Subscribes a handler function to receive events.         The handler function mu
 
 ### Community 42 - "Community 42"
 Cohesion: 1.0
-Nodes (1): Establishes a low-memory MariaDB connection using SSDictCursor.          Args:
+Nodes (1): Internal method to process events from the queue and dispatch to subscribers.
 
 ### Community 43 - "Community 43"
 Cohesion: 1.0
-Nodes (1): Context manager to ensure database connection is closed properly.
+Nodes (1): Establishes a low-memory MariaDB connection using SSDictCursor.          Args:
 
 ### Community 44 - "Community 44"
 Cohesion: 1.0
-Nodes (1): Context manager for atomic transactions on the database.
+Nodes (1): Context manager to ensure database connection is closed properly.
 
 ### Community 45 - "Community 45"
 Cohesion: 1.0
-Nodes (1): Creates a SQLAlchemy engine configured for MariaDB with server-side cursors.
+Nodes (1): Context manager for atomic transactions on the database.
 
 ### Community 46 - "Community 46"
 Cohesion: 1.0
-Nodes (1): Retrieves schema information for a specific table.      Args:         engine (En
+Nodes (1): Creates a SQLAlchemy engine configured for MariaDB with server-side cursors.
 
 ### Community 47 - "Community 47"
 Cohesion: 1.0
-Nodes (1): Retrieves schema information for all tables in a given schema.      Args:
+Nodes (1): Retrieves schema information for a specific table.      Args:         engine (En
 
 ### Community 48 - "Community 48"
 Cohesion: 1.0
-Nodes (1): Maps SQLAlchemy type string representations to a simplified YAML type string.
+Nodes (1): Retrieves schema information for all tables in a given schema.      Args:
 
 ### Community 49 - "Community 49"
 Cohesion: 1.0
-Nodes (1): Converts introspected schema information into a YAML string format using ruamel.
+Nodes (1): Maps SQLAlchemy type string representations to a simplified YAML type string.
 
 ### Community 50 - "Community 50"
 Cohesion: 1.0
-Nodes (1): Creates a SQLAlchemy engine configured for MariaDB with server-side cursors.
+Nodes (1): Converts introspected schema information into a YAML string format using ruamel.
 
 ### Community 51 - "Community 51"
+Cohesion: 1.0
+Nodes (1): Creates a SQLAlchemy engine configured for MariaDB with server-side cursors.
+
+### Community 52 - "Community 52"
 Cohesion: 1.0
 Nodes (1): plan/extract-prd.md
 
 ## Knowledge Gaps
-- **92 isolated node(s):** `Retrieves schema information for a specific table.      Args:         engine (En`, `Retrieves schema information for all tables in a given schema.      Args:`, `Maps SQLAlchemy type string representations to a simplified YAML type string.`, `Converts introspected schema information into a YAML string format using ruamel.`, `Manages migration state persistence and process locking.     Uses an atomic writ` (+87 more)
+- **93 isolated node(s):** `Retrieves schema information for a specific table.      Args:         engine (En`, `Retrieves schema information for all tables in a given schema.      Args:`, `Maps SQLAlchemy type string representations to a simplified YAML type string.`, `Converts introspected schema information into a YAML string format using ruamel.`, `Manages migration state persistence and process locking.     Uses an atomic writ` (+88 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **Thin community `Community 18`** (1 nodes): `A migration event with a type and a structured payload.`
+- **Thin community `Community 19`** (1 nodes): `A migration event with a type and a structured payload.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 19`** (1 nodes): `A thread-safe event bus for communication between worker threads and the UI.`
+- **Thin community `Community 20`** (1 nodes): `A thread-safe event bus for communication between worker threads and the UI.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 20`** (1 nodes): `Internal loop to process and dispatch events from the queue.`
+- **Thin community `Community 21`** (1 nodes): `Internal loop to process and dispatch events from the queue.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 21`** (1 nodes): `Starts the background dispatch thread.`
+- **Thin community `Community 22`** (1 nodes): `Starts the background dispatch thread.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 22`** (1 nodes): `Stops the background dispatch thread.`
+- **Thin community `Community 23`** (1 nodes): `Stops the background dispatch thread.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 23`** (1 nodes): `Publishes an event to the bus.`
+- **Thin community `Community 24`** (1 nodes): `Publishes an event to the bus.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 24`** (1 nodes): `Subscribes a callback handler to receive events.`
+- **Thin community `Community 25`** (1 nodes): `Subscribes a callback handler to receive events.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 25`** (1 nodes): `A Textual app to manage and monitor the sync-mail migration.`
+- **Thin community `Community 26`** (1 nodes): `A Textual app to manage and monitor the sync-mail migration.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 26`** (1 nodes): `Create child widgets for the app.`
+- **Thin community `Community 27`** (1 nodes): `Create child widgets for the app.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 27`** (1 nodes): `An action to toggle dark mode.`
+- **Thin community `Community 28`** (1 nodes): `An action to toggle dark mode.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 28`** (1 nodes): `Root configuration for a migration job between two tables.`
+- **Thin community `Community 29`** (1 nodes): `Root configuration for a migration job between two tables.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 29`** (1 nodes): `Handles loading and validating YAML mapping configurations.`
+- **Thin community `Community 30`** (1 nodes): `Handles loading and validating YAML mapping configurations.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 30`** (1 nodes): `Loads and validates the YAML mapping configuration from the specified path.`
+- **Thin community `Community 31`** (1 nodes): `Loads and validates the YAML mapping configuration from the specified path.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 31`** (1 nodes): `Raised when there are issues with the YAML mapping configuration.`
+- **Thin community `Community 32`** (1 nodes): `Raised when there are issues with the YAML mapping configuration.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 32`** (1 nodes): `Raised when a database connection fails.`
+- **Thin community `Community 33`** (1 nodes): `Raised when a database connection fails.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 33`** (1 nodes): `Raised when schema introspection fails.`
+- **Thin community `Community 34`** (1 nodes): `Raised when schema introspection fails.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 34`** (1 nodes): `Raised when a batch of data fails to commit.`
+- **Thin community `Community 35`** (1 nodes): `Raised when a batch of data fails to commit.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 35`** (1 nodes): `Raised when resuming a migration fails due to state issues.`
+- **Thin community `Community 36`** (1 nodes): `Raised when resuming a migration fails due to state issues.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 36`** (1 nodes): `Configures the root logger with StreamHandler and RotatingFileHandler.      Args`
+- **Thin community `Community 37`** (1 nodes): `Configures the root logger with StreamHandler and RotatingFileHandler.      Args`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 37`** (1 nodes): `Represents an event published by the migration engine.`
+- **Thin community `Community 38`** (1 nodes): `Represents an event published by the migration engine.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 38`** (1 nodes): `A minimal event bus for inter-module communication, especially between worker th`
+- **Thin community `Community 39`** (1 nodes): `A minimal event bus for inter-module communication, especially between worker th`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 39`** (1 nodes): `Publishes an event to the bus.         Events are added to an internal queue to`
+- **Thin community `Community 40`** (1 nodes): `Publishes an event to the bus.         Events are added to an internal queue to`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 40`** (1 nodes): `Subscribes a handler function to receive events.         The handler function mu`
+- **Thin community `Community 41`** (1 nodes): `Subscribes a handler function to receive events.         The handler function mu`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 41`** (1 nodes): `Internal method to process events from the queue and dispatch to subscribers.`
+- **Thin community `Community 42`** (1 nodes): `Internal method to process events from the queue and dispatch to subscribers.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 42`** (1 nodes): `Establishes a low-memory MariaDB connection using SSDictCursor.          Args:`
+- **Thin community `Community 43`** (1 nodes): `Establishes a low-memory MariaDB connection using SSDictCursor.          Args:`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 43`** (1 nodes): `Context manager to ensure database connection is closed properly.`
+- **Thin community `Community 44`** (1 nodes): `Context manager to ensure database connection is closed properly.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 44`** (1 nodes): `Context manager for atomic transactions on the database.`
+- **Thin community `Community 45`** (1 nodes): `Context manager for atomic transactions on the database.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 45`** (1 nodes): `Creates a SQLAlchemy engine configured for MariaDB with server-side cursors.`
+- **Thin community `Community 46`** (1 nodes): `Creates a SQLAlchemy engine configured for MariaDB with server-side cursors.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 46`** (1 nodes): `Retrieves schema information for a specific table.      Args:         engine (En`
+- **Thin community `Community 47`** (1 nodes): `Retrieves schema information for a specific table.      Args:         engine (En`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 47`** (1 nodes): `Retrieves schema information for all tables in a given schema.      Args:`
+- **Thin community `Community 48`** (1 nodes): `Retrieves schema information for all tables in a given schema.      Args:`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 48`** (1 nodes): `Maps SQLAlchemy type string representations to a simplified YAML type string.`
+- **Thin community `Community 49`** (1 nodes): `Maps SQLAlchemy type string representations to a simplified YAML type string.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 49`** (1 nodes): `Converts introspected schema information into a YAML string format using ruamel.`
+- **Thin community `Community 50`** (1 nodes): `Converts introspected schema information into a YAML string format using ruamel.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 50`** (1 nodes): `Creates a SQLAlchemy engine configured for MariaDB with server-side cursors.`
+- **Thin community `Community 51`** (1 nodes): `Creates a SQLAlchemy engine configured for MariaDB with server-side cursors.`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 51`** (1 nodes): `plan/extract-prd.md`
+- **Thin community `Community 52`** (1 nodes): `plan/extract-prd.md`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Event` connect `Community 0` to `Community 1`, `Community 2`, `Community 6`?**
-  _High betweenness centrality (0.140) - this node is a cross-community bridge._
-- **Why does `MigrateScreen` connect `Community 1` to `Community 0`, `Community 3`, `Community 5`, `Community 6`?**
-  _High betweenness centrality (0.137) - this node is a cross-community bridge._
-- **Why does `MigrationJob` connect `Community 1` to `Community 0`, `Community 4`, `Community 6`?**
+- **Why does `MigrateScreen` connect `Community 3` to `Community 0`, `Community 5`, `Community 6`, `Community 7`, `Community 11`?**
+  _High betweenness centrality (0.134) - this node is a cross-community bridge._
+- **Why does `Event` connect `Community 0` to `Community 2`, `Community 3`, `Community 6`?**
+  _High betweenness centrality (0.121) - this node is a cross-community bridge._
+- **Why does `MigrationJob` connect `Community 3` to `Community 0`, `Community 1`, `Community 2`, `Community 6`?**
   _High betweenness centrality (0.092) - this node is a cross-community bridge._
-- **Are the 29 inferred relationships involving `MappingDocument` (e.g. with `MappingConfigLoader` and `Handles loading and validating YAML mapping configurations.`) actually correct?**
-  _`MappingDocument` has 29 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 17 inferred relationships involving `Checkpoint` (e.g. with `MigrationJob` and `JobBatch`) actually correct?**
-  _`Checkpoint` has 17 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 22 inferred relationships involving `ColumnMapping` (e.g. with `MappingConfigLoader` and `Handles loading and validating YAML mapping configurations.`) actually correct?**
-  _`ColumnMapping` has 22 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 34 inferred relationships involving `MappingDocument` (e.g. with `MappingConfigLoader` and `Handles loading and validating YAML mapping configurations.`) actually correct?**
+  _`MappingDocument` has 34 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 27 inferred relationships involving `ColumnMapping` (e.g. with `MappingConfigLoader` and `Handles loading and validating YAML mapping configurations.`) actually correct?**
+  _`ColumnMapping` has 27 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 13 inferred relationships involving `Checkpoint` (e.g. with `MigrationJob` and `JobBatch`) actually correct?**
+  _`Checkpoint` has 13 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 18 inferred relationships involving `MappingConfigLoader` (e.g. with `MappingDocument` and `ColumnMapping`) actually correct?**
   _`MappingConfigLoader` has 18 INFERRED edges - model-reasoned connections that need verification._

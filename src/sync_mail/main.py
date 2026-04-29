@@ -5,6 +5,9 @@ def main():
     Main entry point for the sync-mail CLI application.
     Launches the Textual TUI.
     """
+    from sync_mail.observability import configure_logging
+    configure_logging()
+    
     try:
         from sync_mail.tui.app import SyncMailApp
         app = SyncMailApp()
