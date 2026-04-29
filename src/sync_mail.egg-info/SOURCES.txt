@@ -10,8 +10,12 @@ src/sync_mail.egg-info/entry_points.txt
 src/sync_mail.egg-info/requires.txt
 src/sync_mail.egg-info/top_level.txt
 src/sync_mail/config/__init__.py
+src/sync_mail/config/loader.py
+src/sync_mail/config/schema.py
+src/sync_mail/config/validator.py
 src/sync_mail/db/__init__.py
 src/sync_mail/db/connection.py
+src/sync_mail/db/introspect.py
 src/sync_mail/errors/__init__.py
 src/sync_mail/errors/exceptions.py
 src/sync_mail/observability/__init__.py
@@ -20,6 +24,12 @@ src/sync_mail/observability/logger.py
 src/sync_mail/pipeline/__init__.py
 src/sync_mail/pipeline/etl_pipeline.py
 src/sync_mail/reconciliation/__init__.py
+src/sync_mail/reconciliation/auto_yaml.py
 src/sync_mail/state/__init__.py
+src/sync_mail/state/checkpoint.py
 src/sync_mail/tui/__init__.py
 src/sync_mail/tui/app.py
+tests/test_checkpoint.py
+tests/test_db_connection.py
+tests/test_introspection_auto_yaml.py
+tests/test_mapping_loader.py
