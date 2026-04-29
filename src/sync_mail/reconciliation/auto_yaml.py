@@ -133,3 +133,69 @@ def save_mapping_to_yaml(doc: MappingDocument, output_dir: str = "mappings") -> 
         yaml.dump(data, f)
         
     return output_path
+
+def sort_tables_by_dependencies(tables: List[str], foreign_keys: List[Dict[str, str]]) -> List[str]:
+    """
+    Performs topological sort on tables based on foreign key relationships.
+    """
+    try:
+        from graphlib import TopologicalSorter
+    except ImportError:
+        # Fallback for Python < 3.9 (though project says >= 3.14)
+        return sorted(tables)
+
+    ts = TopologicalSorter()
+    table_set = set(tables)
+    
+    # Initialize all tables in the graph
+    for t in tables:
+        ts.add(t)
+        
+    # Add dependencies
+    for fk in foreign_keys:
+        child = fk["table"]
+        parent = fk["parent_table"]
+        if child in table_set and parent in table_set:
+            ts.add(child, parent)
+            
+    try:
+        return list(ts.static_order())
+    except Exception:
+        # Circular dependency fallback
+        return sorted(tables)
+
+def generate_mappings_for_schema(
+    source_conn, 
+    target_conn, 
+    source_db: str, 
+    target_db: str,
+    output_dir: str = "mappings"
+) -> List[str]:
+    """
+    Generates mapping files for all tables in the source schema.
+    Returns list of generated file paths in topological order.
+    """
+    from sync_mail.db.introspect import list_tables, describe_table, get_foreign_keys
+    
+    s_tables = list_tables(source_conn, source_db)
+    t_tables = list_tables(target_conn, target_db)
+    t_set = set(t_tables)
+    
+    # Only process tables that exist in both
+    common_tables = [t for t in s_tables if t in t_set]
+    
+    # Get FKs from target (where we enforce constraints)
+    fks = get_foreign_keys(target_conn, target_db)
+    
+    sorted_tables = sort_tables_by_dependencies(common_tables, fks)
+    
+    generated_paths = []
+    for table in sorted_tables:
+        source_meta = describe_table(source_conn, source_db, table)
+        target_meta = describe_table(target_conn, target_db, table)
+        
+        doc = generate_mapping(source_meta, target_meta, table, table)
+        path = save_mapping_to_yaml(doc, output_dir=output_dir)
+        generated_paths.append(path)
+        
+    return generated_paths

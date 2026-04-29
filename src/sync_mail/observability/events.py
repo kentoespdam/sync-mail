@@ -10,6 +10,7 @@ class EventType(Enum):
     BATCH_FAILED = "BatchFailed"
     JOB_COMPLETED = "JobCompleted"
     JOB_ABORTED = "JobAborted"
+    MULTI_JOB_PROGRESS = "MultiJobProgress"
 
 class Event:
     """A migration event with a type and a structured payload."""

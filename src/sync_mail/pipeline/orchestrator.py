@@ -1,7 +1,7 @@
 import signal
 import time
 import logging
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List
 from datetime import datetime, timezone
 
 from sync_mail.config.loader import load_mapping
@@ -195,3 +195,45 @@ class MigrationJob:
             if conn_target:
                 conn_target.close()
             self._restore_signals()
+
+class JobBatch:
+    """
+    Executes multiple MigrationJobs sequentially.
+    """
+    def __init__(self, jobs: List[MigrationJob], stop_on_failure: bool = False):
+        self.jobs = jobs
+        self.stop_on_failure = stop_on_failure
+
+    def run(self):
+        total_jobs = len(self.jobs)
+        success_count = 0
+        failure_count = 0
+        
+        for idx, job in enumerate(self.jobs):
+            event_bus.publish(Event(EventType.MULTI_JOB_PROGRESS, {
+                "current_job_index": idx + 1,
+                "total_jobs": total_jobs,
+                "current_job_name": job.job_name,
+                "success_count": success_count,
+                "failure_count": failure_count
+            }))
+            
+            try:
+                job.run()
+                success_count += 1
+            except Exception as e:
+                failure_count += 1
+                if self.stop_on_failure:
+                    logger.error(f"Batch aborted due to failure in job '{job.job_name}': {e}")
+                    raise
+                else:
+                    logger.warning(f"Job '{job.job_name}' failed, continuing batch: {e}")
+                    
+        event_bus.publish(Event(EventType.MULTI_JOB_PROGRESS, {
+            "current_job_index": total_jobs,
+            "total_jobs": total_jobs,
+            "current_job_name": "Completed",
+            "success_count": success_count,
+            "failure_count": failure_count,
+            "is_done": True
+        }))

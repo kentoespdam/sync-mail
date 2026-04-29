@@ -1,34 +1,38 @@
 from textual.app import ComposeResult
 from textual.screen import Screen
-from textual.widgets import Header, Footer, Button, Static, Label, Input
+from textual.widgets import Header, Footer, Button, Static, Label, Input, Checkbox
 from textual.containers import Vertical, Horizontal
 from textual import work
 from sqlalchemy.engine import make_url
 import os
+from pathlib import Path
 
-from sync_mail.pipeline.orchestrator import MigrationJob
+from sync_mail.pipeline.orchestrator import MigrationJob, JobBatch
 from sync_mail.observability.events import event_bus, Event, EventType
-from sync_mail.tui.widgets.progress import MigrationProgress
+from sync_mail.tui.widgets.progress import MigrationProgress, BatchProgress
 from sync_mail.tui.widgets.log_panel import LogPanel
 
 class MigrateScreen(Screen):
-    """Screen for monitoring migration job."""
+    """Screen for monitoring migration job (Single or Batch)."""
 
     def compose(self) -> ComposeResult:
         yield Header()
         with Vertical():
             with Vertical(id="config-panel"):
                 yield Label("Job Configuration")
-                yield Input(placeholder="Job Name", id="job-name", value="migration-01")
-                yield Input(placeholder="Mapping YAML Path", id="mapping-path", value="mappings/test.yaml")
+                yield Input(placeholder="Job Name / Batch Name", id="job-name", value="migration-01")
+                yield Input(placeholder="Mapping YAML Path OR Directory", id="mapping-path", value="mappings/")
                 yield Input(placeholder="Source DSN", id="source-dsn")
                 yield Input(placeholder="Target DSN", id="target-dsn")
-                yield Button("Start Migration", id="btn-start", variant="success")
+                with Horizontal():
+                    yield Checkbox("Batch Mode (Directory)", id="chk-batch")
+                    yield Checkbox("Stop on Failure", id="chk-stop-on-failure")
+                yield Button("Start", id="btn-start", variant="success")
 
             with Vertical(id="running-panel", classes="hidden"):
-                yield Label("Migration Progress", id="progress-label")
+                yield BatchProgress(id="batch-metrics", classes="hidden")
+                yield Label("Current Job Progress", id="progress-label")
                 yield MigrationProgress(id="migration-metrics")
-                
                 yield LogPanel(id="log-panel")
                 
                 with Horizontal():
@@ -54,51 +58,65 @@ class MigrateScreen(Screen):
             
             log = self.query_one("#log-panel", LogPanel)
             log.write_info(f"Job '{event.payload['job_name']}' started.")
-            log.write(f"Source: {event.payload['source_table']} -> Target: {event.payload['target_table']}")
 
         elif event.type == EventType.BATCH_COMMITTED:
             metrics = self.query_one("#migration-metrics", MigrationProgress)
             metrics.rows_done += event.payload['rows']
             metrics.throughput = event.payload['throughput']
             metrics.eta = event.payload['eta']
+
+        elif event.type == EventType.MULTI_JOB_PROGRESS:
+            batch_metrics = self.query_one("#batch-metrics", BatchProgress)
+            batch_metrics.remove_class("hidden")
+            batch_metrics.total_jobs = event.payload['total_jobs']
+            batch_metrics.current_index = event.payload['current_job_index']
+            batch_metrics.success_count = event.payload['success_count']
+            batch_metrics.failure_count = event.payload['failure_count']
+            batch_metrics.current_job_name = event.payload['current_job_name']
             
-            self.query_one("#log-panel", LogPanel).write(
-                f"Batch {event.payload['batch_id']} committed: {event.payload['rows']} rows. Last PK: {event.payload['last_pk']}"
-            )
+            if event.payload.get("is_done"):
+                self.query_one("#log-panel", LogPanel).write_success("Batch Migration Completed.")
 
         elif event.type == EventType.JOB_COMPLETED:
             self.query_one("#log-panel", LogPanel).write_success(
-                f"Job Completed! Total rows: {event.payload.get('total_rows')}"
+                f"Job '{event.payload.get('job_name', 'N/A')}' Completed."
             )
-            self.query_one("#btn-abort").add_class("hidden")
-            self.query_one("#btn-finish").remove_class("hidden")
-            self.notify("Migration completed successfully!", severity="information")
+            # Only show finish button if not in batch or if it's the last job
+            # Actually BatchProgress.is_done will handle the final message.
+            if not self.query_one("#chk-batch", Checkbox).value:
+                self.query_one("#btn-abort").add_class("hidden")
+                self.query_one("#btn-finish").remove_class("hidden")
 
         elif event.type == EventType.JOB_ABORTED:
             self.query_one("#log-panel", LogPanel).write_error(
                 f"Job Aborted: {event.payload.get('reason')}"
             )
-            self.query_one("#btn-abort").add_class("hidden")
-            self.query_one("#btn-finish").remove_class("hidden")
-            self.notify(f"Migration aborted: {event.payload.get('reason')}", severity="error")
+            if not self.query_one("#chk-batch", Checkbox).value:
+                self.query_one("#btn-abort").add_class("hidden")
+                self.query_one("#btn-finish").remove_class("hidden")
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "btn-back":
             self.app.pop_screen()
         elif event.button.id == "btn-start":
-            self.start_job()
+            self.start_process()
         elif event.button.id == "btn-abort":
-            if hasattr(self, "job"):
-                self.job._should_abort = True
-                self.notify("Aborting job...", severity="warning")
+            if hasattr(self, "current_job"):
+                self.current_job._should_abort = True
+            if hasattr(self, "batch"):
+                for job in self.batch.jobs:
+                    job._should_abort = True
+            self.notify("Aborting...", severity="warning")
         elif event.button.id == "btn-finish":
             self.app.pop_screen()
 
-    def start_job(self) -> None:
+    def start_process(self) -> None:
         job_name = self.query_one("#job-name", Input).value
         mapping_path = self.query_one("#mapping-path", Input).value
         source_dsn = self.query_one("#source-dsn", Input).value
         target_dsn = self.query_one("#target-dsn", Input).value
+        is_batch = self.query_one("#chk-batch", Checkbox).value
+        stop_on_failure = self.query_one("#chk-stop-on-failure", Checkbox).value
 
         if not all([job_name, mapping_path, source_dsn, target_dsn]):
             self.notify("All fields are required!", severity="error")
@@ -107,31 +125,52 @@ class MigrateScreen(Screen):
         try:
             s_url = make_url(source_dsn)
             t_url = make_url(target_dsn)
+            s_params = {"host": s_url.host, "port": s_url.port or 3306, "user": s_url.username, "password": s_url.password, "database": s_url.database}
+            t_params = {"host": t_url.host, "port": t_url.port or 3306, "user": t_url.username, "password": t_url.password, "database": t_url.database}
             
-            s_params = {
-                "host": s_url.host,
-                "port": s_url.port or 3306,
-                "user": s_url.username,
-                "password": s_url.password,
-                "database": s_url.database
-            }
-            
-            t_params = {
-                "host": t_url.host,
-                "port": t_url.port or 3306,
-                "user": t_url.username,
-                "password": t_url.password,
-                "database": t_url.database
-            }
-            
-            self.job = MigrationJob(job_name, mapping_path, s_params, t_params)
-            self.run_migration()
+            if is_batch:
+                mapping_dir = Path(mapping_path)
+                if not mapping_dir.is_dir():
+                    self.notify("Mapping path must be a directory in Batch Mode", severity="error")
+                    return
+                
+                jobs = []
+                for yaml_file in sorted(mapping_dir.glob("*.yaml")):
+                    # Job name per table
+                    table_name = yaml_file.stem
+                    jobs.append(MigrationJob(f"{job_name}-{table_name}", str(yaml_file), s_params, t_params))
+                
+                if not jobs:
+                    self.notify("No YAML files found in directory", severity="error")
+                    return
+                
+                self.batch = JobBatch(jobs, stop_on_failure=stop_on_failure)
+                self.run_batch_worker()
+            else:
+                self.current_job = MigrationJob(job_name, mapping_path, s_params, t_params)
+                self.run_single_worker()
+                
         except Exception as e:
             self.notify(f"Configuration error: {e}", severity="error")
 
     @work(thread=True)
-    def run_migration(self) -> None:
+    def run_single_worker(self) -> None:
         try:
-            self.job.run()
+            self.current_job.run()
         except Exception as e:
             self.app.call_from_thread(self.notify, f"Runtime error: {e}", severity="error")
+        finally:
+            self.app.call_from_thread(self._show_finish)
+
+    @work(thread=True)
+    def run_batch_worker(self) -> None:
+        try:
+            self.batch.run()
+        except Exception as e:
+            self.app.call_from_thread(self.notify, f"Batch error: {e}", severity="error")
+        finally:
+            self.app.call_from_thread(self._show_finish)
+
+    def _show_finish(self) -> None:
+        self.query_one("#btn-abort").add_class("hidden")
+        self.query_one("#btn-finish").remove_class("hidden")
