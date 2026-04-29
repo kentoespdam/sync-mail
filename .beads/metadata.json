@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "sync_mail",
+  "project_id": "6ee5f9ea-eadc-4a3d-abd2-8536cc68f7c7"
+}
