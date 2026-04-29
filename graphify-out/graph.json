@@ -395,9 +395,9 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/tui/app.py",
       "source_location": "L8",
-      "id": "tui_app_rationale_8",
       "community": 4,
-      "norm_label": "a textual app to manage and monitor the sync-mail migration."
+      "norm_label": "a textual app to manage and monitor the sync-mail migration.",
+      "id": "tui_app_rationale_8"
     },
     {
       "label": "__init__.py",
@@ -476,9 +476,9 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/tui/widgets/log_panel.py",
       "source_location": "L5",
-      "id": "widgets_log_panel_rationale_5",
       "community": 1,
-      "norm_label": "custom richlog with bindings and auto-scroll."
+      "norm_label": "custom richlog with bindings and auto-scroll.",
+      "id": "widgets_log_panel_rationale_5"
     },
     {
       "label": "progress.py",
@@ -557,9 +557,9 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/tui/widgets/progress.py",
       "source_location": "L7",
-      "id": "widgets_progress_rationale_7",
       "community": 1,
-      "norm_label": "combined progress bar and metrics widget."
+      "norm_label": "combined progress bar and metrics widget.",
+      "id": "widgets_progress_rationale_7"
     },
     {
       "label": "inspect.py",
@@ -638,9 +638,9 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/tui/screens/inspect.py",
       "source_location": "L10",
-      "id": "screens_inspect_rationale_10",
       "community": 4,
-      "norm_label": "screen for inspecting state files."
+      "norm_label": "screen for inspecting state files.",
+      "id": "screens_inspect_rationale_10"
     },
     {
       "label": "migrate.py",
@@ -728,9 +728,9 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L15",
-      "id": "screens_migrate_rationale_15",
       "community": 1,
-      "norm_label": "screen for monitoring migration job."
+      "norm_label": "screen for monitoring migration job.",
+      "id": "screens_migrate_rationale_15"
     },
     {
       "label": "introspect.py",
@@ -809,9 +809,9 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/tui/screens/introspect.py",
       "source_location": "L14",
-      "id": "screens_introspect_rationale_14",
       "community": 4,
-      "norm_label": "screen for database introspection and mapping generation."
+      "norm_label": "screen for database introspection and mapping generation.",
+      "id": "screens_introspect_rationale_14"
     },
     {
       "label": "menu.py",
@@ -854,9 +854,9 @@
       "file_type": "rationale",
       "source_file": "src/sync_mail/tui/screens/menu.py",
       "source_location": "L7",
-      "id": "screens_menu_rationale_7",
       "community": 4,
-      "norm_label": "main menu screen for sync-mail."
+      "norm_label": "main menu screen for sync-mail.",
+      "id": "screens_menu_rationale_7"
     },
     {
       "label": "__init__.py",
@@ -2405,6 +2405,24 @@
       "id": "tests_test_introspection_auto_yaml_test_generate_mapping_identical",
       "community": 2,
       "norm_label": "test_generate_mapping_identical()"
+    },
+    {
+      "label": "smoke_tui.py",
+      "file_type": "code",
+      "source_file": "tests/smoke_tui.py",
+      "source_location": "L1",
+      "id": "tests_smoke_tui_py",
+      "community": 4,
+      "norm_label": "smoke_tui.py"
+    },
+    {
+      "label": "test_imports()",
+      "file_type": "code",
+      "source_file": "tests/smoke_tui.py",
+      "source_location": "L9",
+      "id": "tests_smoke_tui_test_imports",
+      "community": 4,
+      "norm_label": "test_imports()"
     },
     {
       "label": "test_pipeline.py",
@@ -4440,9 +4458,9 @@
       "weight": 0.8,
       "_src": "tui_app_syncmailapp",
       "_tgt": "screens_menu_menuscreen",
+      "confidence_score": 0.5,
       "source": "tui_app_syncmailapp",
-      "target": "screens_menu_menuscreen",
-      "confidence_score": 0.5
+      "target": "screens_menu_menuscreen"
     },
     {
       "relation": "uses",
@@ -4452,9 +4470,9 @@
       "weight": 0.8,
       "_src": "tui_app_syncmailapp",
       "_tgt": "screens_introspect_introspectscreen",
+      "confidence_score": 0.5,
       "source": "tui_app_syncmailapp",
-      "target": "screens_introspect_introspectscreen",
-      "confidence_score": 0.5
+      "target": "screens_introspect_introspectscreen"
     },
     {
       "relation": "uses",
@@ -4464,9 +4482,9 @@
       "weight": 0.8,
       "_src": "tui_app_syncmailapp",
       "_tgt": "screens_migrate_migratescreen",
+      "confidence_score": 0.5,
       "source": "tui_app_syncmailapp",
-      "target": "screens_migrate_migratescreen",
-      "confidence_score": 0.5
+      "target": "screens_migrate_migratescreen"
     },
     {
       "relation": "uses",
@@ -4476,9 +4494,21 @@
       "weight": 0.8,
       "_src": "tui_app_syncmailapp",
       "_tgt": "screens_inspect_inspectscreen",
+      "confidence_score": 0.5,
       "source": "tui_app_syncmailapp",
-      "target": "screens_inspect_inspectscreen",
-      "confidence_score": 0.5
+      "target": "screens_inspect_inspectscreen"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/smoke_tui.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "tests_smoke_tui_test_imports",
+      "_tgt": "tui_app_syncmailapp",
+      "source": "tui_app_syncmailapp",
+      "target": "tests_smoke_tui_test_imports"
     },
     {
       "relation": "calls",
@@ -4500,9 +4530,9 @@
       "weight": 0.8,
       "_src": "tui_app_rationale_8",
       "_tgt": "screens_menu_menuscreen",
+      "confidence_score": 0.5,
       "source": "tui_app_rationale_8",
-      "target": "screens_menu_menuscreen",
-      "confidence_score": 0.5
+      "target": "screens_menu_menuscreen"
     },
     {
       "relation": "uses",
@@ -4512,9 +4542,9 @@
       "weight": 0.8,
       "_src": "tui_app_rationale_8",
       "_tgt": "screens_introspect_introspectscreen",
+      "confidence_score": 0.5,
       "source": "tui_app_rationale_8",
-      "target": "screens_introspect_introspectscreen",
-      "confidence_score": 0.5
+      "target": "screens_introspect_introspectscreen"
     },
     {
       "relation": "uses",
@@ -4524,9 +4554,9 @@
       "weight": 0.8,
       "_src": "tui_app_rationale_8",
       "_tgt": "screens_migrate_migratescreen",
+      "confidence_score": 0.5,
       "source": "tui_app_rationale_8",
-      "target": "screens_migrate_migratescreen",
-      "confidence_score": 0.5
+      "target": "screens_migrate_migratescreen"
     },
     {
       "relation": "uses",
@@ -4536,9 +4566,9 @@
       "weight": 0.8,
       "_src": "tui_app_rationale_8",
       "_tgt": "screens_inspect_inspectscreen",
+      "confidence_score": 0.5,
       "source": "tui_app_rationale_8",
-      "target": "screens_inspect_inspectscreen",
-      "confidence_score": 0.5
+      "target": "screens_inspect_inspectscreen"
     },
     {
       "relation": "contains",
@@ -4630,11 +4660,11 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L12",
       "weight": 0.8,
-      "_src": "screens_migrate_migratescreen",
-      "_tgt": "widgets_log_panel_logpanel",
+      "_src": "widgets_log_panel_logpanel",
+      "_tgt": "screens_migrate_migratescreen",
+      "confidence_score": 0.5,
       "source": "widgets_log_panel_logpanel",
-      "target": "screens_migrate_migratescreen",
-      "confidence_score": 0.5
+      "target": "screens_migrate_migratescreen"
     },
     {
       "relation": "uses",
@@ -4642,11 +4672,11 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L12",
       "weight": 0.8,
-      "_src": "screens_migrate_rationale_15",
-      "_tgt": "widgets_log_panel_logpanel",
+      "_src": "widgets_log_panel_logpanel",
+      "_tgt": "screens_migrate_rationale_15",
+      "confidence_score": 0.5,
       "source": "widgets_log_panel_logpanel",
-      "target": "screens_migrate_rationale_15",
-      "confidence_score": 0.5
+      "target": "screens_migrate_rationale_15"
     },
     {
       "relation": "calls",
@@ -4655,8 +4685,8 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L32",
       "weight": 1.0,
-      "_src": "screens_migrate_migratescreen_compose",
-      "_tgt": "widgets_log_panel_logpanel",
+      "_src": "widgets_log_panel_logpanel",
+      "_tgt": "screens_migrate_migratescreen_compose",
       "source": "widgets_log_panel_logpanel",
       "target": "screens_migrate_migratescreen_compose"
     },
@@ -4667,8 +4697,8 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L56",
       "weight": 1.0,
-      "_src": "screens_migrate_migratescreen_handle_event_ui",
-      "_tgt": "widgets_log_panel_logpanel_write_info",
+      "_src": "widgets_log_panel_logpanel_write_info",
+      "_tgt": "screens_migrate_migratescreen_handle_event_ui",
       "source": "widgets_log_panel_logpanel_write_info",
       "target": "screens_migrate_migratescreen_handle_event_ui"
     },
@@ -4679,8 +4709,8 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L78",
       "weight": 1.0,
-      "_src": "screens_migrate_migratescreen_handle_event_ui",
-      "_tgt": "widgets_log_panel_logpanel_write_error",
+      "_src": "widgets_log_panel_logpanel_write_error",
+      "_tgt": "screens_migrate_migratescreen_handle_event_ui",
       "source": "widgets_log_panel_logpanel_write_error",
       "target": "screens_migrate_migratescreen_handle_event_ui"
     },
@@ -4691,8 +4721,8 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L70",
       "weight": 1.0,
-      "_src": "screens_migrate_migratescreen_handle_event_ui",
-      "_tgt": "widgets_log_panel_logpanel_write_success",
+      "_src": "widgets_log_panel_logpanel_write_success",
+      "_tgt": "screens_migrate_migratescreen_handle_event_ui",
       "source": "widgets_log_panel_logpanel_write_success",
       "target": "screens_migrate_migratescreen_handle_event_ui"
     },
@@ -4798,11 +4828,11 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L11",
       "weight": 0.8,
-      "_src": "screens_migrate_migratescreen",
-      "_tgt": "widgets_progress_migrationprogress",
+      "_src": "widgets_progress_migrationprogress",
+      "_tgt": "screens_migrate_migratescreen",
+      "confidence_score": 0.5,
       "source": "widgets_progress_migrationprogress",
-      "target": "screens_migrate_migratescreen",
-      "confidence_score": 0.5
+      "target": "screens_migrate_migratescreen"
     },
     {
       "relation": "uses",
@@ -4810,11 +4840,11 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L11",
       "weight": 0.8,
-      "_src": "screens_migrate_rationale_15",
-      "_tgt": "widgets_progress_migrationprogress",
+      "_src": "widgets_progress_migrationprogress",
+      "_tgt": "screens_migrate_rationale_15",
+      "confidence_score": 0.5,
       "source": "widgets_progress_migrationprogress",
-      "target": "screens_migrate_rationale_15",
-      "confidence_score": 0.5
+      "target": "screens_migrate_rationale_15"
     },
     {
       "relation": "calls",
@@ -4823,8 +4853,8 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L30",
       "weight": 1.0,
-      "_src": "screens_migrate_migratescreen_compose",
-      "_tgt": "widgets_progress_migrationprogress",
+      "_src": "widgets_progress_migrationprogress",
+      "_tgt": "screens_migrate_migratescreen_compose",
       "source": "widgets_progress_migrationprogress",
       "target": "screens_migrate_migratescreen_compose"
     },
@@ -4835,8 +4865,8 @@
       "source_file": "src/sync_mail/tui/screens/inspect.py",
       "source_location": "L14",
       "weight": 1.0,
-      "_src": "screens_inspect_inspectscreen_compose",
-      "_tgt": "vertical",
+      "_src": "vertical",
+      "_tgt": "screens_inspect_inspectscreen_compose",
       "source": "vertical",
       "target": "screens_inspect_inspectscreen_compose"
     },
@@ -4847,8 +4877,8 @@
       "source_file": "src/sync_mail/tui/screens/migrate.py",
       "source_location": "L19",
       "weight": 1.0,
-      "_src": "screens_migrate_migratescreen_compose",
-      "_tgt": "vertical",
+      "_src": "vertical",
+      "_tgt": "screens_migrate_migratescreen_compose",
       "source": "vertical",
       "target": "screens_migrate_migratescreen_compose"
     },
@@ -4859,8 +4889,8 @@
       "source_file": "src/sync_mail/tui/screens/introspect.py",
       "source_location": "L18",
       "weight": 1.0,
-      "_src": "screens_introspect_introspectscreen_compose",
-      "_tgt": "vertical",
+      "_src": "vertical",
+      "_tgt": "screens_introspect_introspectscreen_compose",
       "source": "vertical",
       "target": "screens_introspect_introspectscreen_compose"
     },
@@ -4871,8 +4901,8 @@
       "source_file": "src/sync_mail/tui/screens/menu.py",
       "source_location": "L12",
       "weight": 1.0,
-      "_src": "screens_menu_menuscreen_compose",
-      "_tgt": "vertical",
+      "_src": "vertical",
+      "_tgt": "screens_menu_menuscreen_compose",
       "source": "vertical",
       "target": "screens_menu_menuscreen_compose"
     },
@@ -5160,9 +5190,9 @@
       "weight": 0.8,
       "_src": "screens_migrate_migratescreen",
       "_tgt": "pipeline_orchestrator_migrationjob",
+      "confidence_score": 0.5,
       "source": "screens_migrate_migratescreen",
-      "target": "pipeline_orchestrator_migrationjob",
-      "confidence_score": 0.5
+      "target": "pipeline_orchestrator_migrationjob"
     },
     {
       "relation": "uses",
@@ -5172,9 +5202,9 @@
       "weight": 0.8,
       "_src": "screens_migrate_migratescreen",
       "_tgt": "observability_events_event",
+      "confidence_score": 0.5,
       "source": "screens_migrate_migratescreen",
-      "target": "observability_events_event",
-      "confidence_score": 0.5
+      "target": "observability_events_event"
     },
     {
       "relation": "uses",
@@ -5184,9 +5214,9 @@
       "weight": 0.8,
       "_src": "screens_migrate_migratescreen",
       "_tgt": "observability_events_eventtype",
+      "confidence_score": 0.5,
       "source": "screens_migrate_migratescreen",
-      "target": "observability_events_eventtype",
-      "confidence_score": 0.5
+      "target": "observability_events_eventtype"
     },
     {
       "relation": "calls",
@@ -5256,9 +5286,9 @@
       "weight": 0.8,
       "_src": "screens_migrate_rationale_15",
       "_tgt": "pipeline_orchestrator_migrationjob",
+      "confidence_score": 0.5,
       "source": "screens_migrate_rationale_15",
-      "target": "pipeline_orchestrator_migrationjob",
-      "confidence_score": 0.5
+      "target": "pipeline_orchestrator_migrationjob"
     },
     {
       "relation": "uses",
@@ -5268,9 +5298,9 @@
       "weight": 0.8,
       "_src": "screens_migrate_rationale_15",
       "_tgt": "observability_events_event",
+      "confidence_score": 0.5,
       "source": "screens_migrate_rationale_15",
-      "target": "observability_events_event",
-      "confidence_score": 0.5
+      "target": "observability_events_event"
     },
     {
       "relation": "uses",
@@ -5280,9 +5310,9 @@
       "weight": 0.8,
       "_src": "screens_migrate_rationale_15",
       "_tgt": "observability_events_eventtype",
+      "confidence_score": 0.5,
       "source": "screens_migrate_rationale_15",
-      "target": "observability_events_eventtype",
-      "confidence_score": 0.5
+      "target": "observability_events_eventtype"
     },
     {
       "relation": "contains",
@@ -9182,6 +9212,18 @@
       "_tgt": "tests_test_introspection_auto_yaml_test_generate_mapping_identical",
       "source": "tests_test_introspection_auto_yaml_py",
       "target": "tests_test_introspection_auto_yaml_test_generate_mapping_identical",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/smoke_tui.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "tests_smoke_tui_py",
+      "_tgt": "tests_smoke_tui_test_imports",
+      "source": "tests_smoke_tui_py",
+      "target": "tests_smoke_tui_test_imports",
       "confidence_score": 1.0
     },
     {

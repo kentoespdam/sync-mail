@@ -1,12 +1,12 @@
 # Graph Report - sync-mail  (2026-04-29)
 
 ## Corpus Check
-- 42 files · ~28,356 words
+- 43 files · ~28,397 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 321 nodes · 538 edges · 38 communities detected
-- Extraction: 55% EXTRACTED · 45% INFERRED · 0% AMBIGUOUS · INFERRED: 244 edges (avg confidence: 0.69)
+- 323 nodes · 540 edges · 38 communities detected
+- Extraction: 55% EXTRACTED · 45% INFERRED · 0% AMBIGUOUS · INFERRED: 245 edges (avg confidence: 0.69)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -59,7 +59,7 @@
 7. `MigrateScreen` - 16 edges
 8. `MigrationJob` - 15 edges
 9. `Event` - 15 edges
-10. `SyncMailApp` - 12 edges
+10. `SyncMailApp` - 13 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Main entry point for the sync-mail CLI application.     Launches the Textual TUI` --uses--> `SyncMailApp`  [INFERRED]
@@ -93,7 +93,7 @@ Nodes (22): Raised when resuming from a checkpoint fails (e.g., corrupt state.js
 
 ### Community 4 - "Community 4"
 Cohesion: 0.09
-Nodes (13): App, Screen, InspectScreen, Screen for inspecting state files., IntrospectScreen, Screen for database introspection and mapping generation., MenuScreen, Main menu screen for sync-mail. (+5 more)
+Nodes (14): App, Screen, InspectScreen, Screen for inspecting state files., IntrospectScreen, Screen for database introspection and mapping generation., MenuScreen, Main menu screen for sync-mail. (+6 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.11
@@ -291,9 +291,9 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `Event` connect `Community 0` to `Community 1`, `Community 2`, `Community 5`, `Community 9`?**
   _High betweenness centrality (0.133) - this node is a cross-community bridge._
 - **Why does `MigrateScreen` connect `Community 1` to `Community 0`, `Community 9`, `Community 4`, `Community 5`?**
-  _High betweenness centrality (0.128) - this node is a cross-community bridge._
+  _High betweenness centrality (0.131) - this node is a cross-community bridge._
 - **Why does `MigrationJob` connect `Community 5` to `Community 0`, `Community 1`, `Community 3`, `Community 6`?**
-  _High betweenness centrality (0.098) - this node is a cross-community bridge._
+  _High betweenness centrality (0.099) - this node is a cross-community bridge._
 - **Are the 27 inferred relationships involving `MappingDocument` (e.g. with `MappingConfigLoader` and `Handles loading and validating YAML mapping configurations.`) actually correct?**
   _`MappingDocument` has 27 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 15 inferred relationships involving `Checkpoint` (e.g. with `MigrationJob` and `Orchestrates the end-to-end migration process.     Handles loading mapping, chec`) actually correct?**
