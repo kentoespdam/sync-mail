@@ -4,12 +4,13 @@
 
 **Pembaruan Fitur Kritis:** Master Plan harus diperbarui untuk mencakup fase/modul **"Dry Run & Validation Mode"**. Mode ini menyimulasikan proses Extract dan Transform berdasarkan konfigurasi YAML *tanpa* mengeksekusi `INSERT/COMMIT` ke database target. Jika ditemukan anomali (misal: *type mismatch*, *data truncation*, atau constraint gagal), sistem tidak boleh sekadar *crash*, melainkan harus mengumpulkan daftar *error* tersebut, mengidentifikasi detail kerusakannya, dan menampilkan log beserta **rekomendasi cara penanganannya** (misal: "Sesuaikan panjang varchar di YAML", "Tambahkan default value untuk kolom X").
 
-**Task:** Ekstrak dan terjemahkan Master Plan yang sudah diperbarui dengan fitur *Dry Run* ini menjadi sekumpulan dokumen "Issue Ticket" berformat Markdown. Tiket-tiket ini dirancang sebagai panduan kerja mandiri untuk Junior Developer yang masih baru mengenal Python, atau untuk dieksekusi secara otonom oleh AI Agent berukuran kecil.
+**Task:** Ekstrak dan terjemahkan Master Plan yang sudah diperbarui dengan fitur *Dry Run* ini menjadi sekumpulan dokumen "Issue Ticket" berformat Markdown file kedalam folder `plan/claude/`, skip/abaikan issue file yang sudah terbentuk. Tiket-tiket ini dirancang sebagai panduan kerja mandiri untuk Junior Developer yang masih baru mengenal Python, atau untuk dieksekusi secara otonom oleh AI Agent berukuran kecil.
 
 **Batasan & Aturan Penulisan (Constraints):**
 1. **Beginner-Friendly & High-Level:** Gunakan bahasa Indonesia yang jelas dan terurut. Jelaskan logika sistem dengan cara yang intuitif.
 2. **STRICTLY NO SOURCE CODE:** DILARANG KERAS menuliskan implementasi *source code* (Python, YAML, atau SQL). Fokus murni pada instruksi alur logika.
 3. **Urutan Kronologis:** Pastikan penomoran *issue* jelas. Buatkan setidaknya satu tiket *issue* khusus yang fokus murni pada pembangunan *engine Dry Run* dan *Error Reporting* ini.
+4. **Scan File & Logic:** Pastikan menggunakan `/graphify query` untuk mencari file dan logic, gunakan `scanfile` jika data yang dibutuhkan tidak ketemu.
  
 **Format Wajib untuk Setiap Issue File:**
 ```markdown

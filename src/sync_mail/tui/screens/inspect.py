@@ -1,12 +1,13 @@
 from textual.app import ComposeResult
-from textual.screen import Screen
 from textual.widgets import Header, Footer, Button, DataTable, Static, Label
 from textual.containers import Vertical, Horizontal
 import os
 import json
 from pathlib import Path
 
-class InspectScreen(Screen):
+from sync_mail.tui.screens.base import BaseNavigationScreen
+
+class InspectScreen(BaseNavigationScreen):
     """Screen for inspecting state files."""
 
     def compose(self) -> ComposeResult:
@@ -20,6 +21,8 @@ class InspectScreen(Screen):
                 yield Static("", id="details-content")
                 yield Button("Close Details", id="btn-close-details")
             
+            yield Static("Type 'B' and press Enter to go back to the previous step.", id="back-instruction", classes="nav-hint")
+
             with Horizontal():
                 yield Button("Refresh", id="btn-refresh")
                 yield Button("Back", id="btn-back")
@@ -69,7 +72,7 @@ class InspectScreen(Screen):
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "btn-back":
-            self.app.pop_screen()
+            self.app.pop_screen_with_snapshot()
         elif event.button.id == "btn-refresh":
             self.refresh_states()
         elif event.button.id == "btn-close-details":

@@ -1,7 +1,9 @@
 {
   "skills": {
     "disabled": [
-      "context7-cli"
+      "context7-cli",
+      "context7-mcp",
+      "find-docs"
     ]
   },
   "hooks": {

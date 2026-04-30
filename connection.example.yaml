@@ -1,17 +1,17 @@
-# Connection configuration for sync-mail
-# Copy this file to connection.yaml and fill in your credentials.
-# DO NOT commit connection.yaml to the repository.
+# connection.example.yaml
+# Copy this file to connection.yaml and fill in your database credentials.
+# DO NOT COMMIT connection.yaml to the repository.
 
 source:
-  host: your-source-db-host
+  host: "your-source-host"
   port: 3306
-  user: your-source-user
-  password: your-source-password
-  database: your-source-database
+  user: "your-source-user"
+  password: "your-source-password"
+  database: "your-source-db"
 
 target:
-  host: your-target-db-host
+  host: "your-target-host"
   port: 3306
-  user: your-target-user
-  password: your-target-password
-  database: your-target-database
+  user: "your-target-user"
+  password: "your-target-password"
+  database: "your-target-db"

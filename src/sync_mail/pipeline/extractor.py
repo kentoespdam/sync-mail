@@ -8,7 +8,8 @@ from sync_mail.observability import logger
 def extract(
     conn_source: pymysql.connections.Connection,
     mapping: MappingDocument,
-    last_pk: Any
+    last_pk: Any,
+    limit_override: Optional[int] = None
 ) -> Generator[List[Dict[str, Any]], None, None]:
     """
     Extracts data from the source table using keyset pagination and streaming.
@@ -17,6 +18,7 @@ def extract(
         conn_source: PyMySQL connection to the source database.
         mapping: The mapping configuration.
         last_pk: The last processed primary key value (for resumption).
+        limit_override: If provided, total rows extracted will not exceed this limit.
         
     Yields:
         A list of dictionaries representing a chunk of rows.
@@ -38,11 +40,18 @@ def extract(
     cols_str = ", ".join(f"`{c}`" for c in source_columns)
     
     current_last_pk = last_pk
+    total_yielded = 0
     
     while True:
+        # Determine current batch size
+        current_batch_size = batch_size
+        if limit_override is not None:
+            remaining = limit_override - total_yielded
+            if remaining <= 0:
+                break
+            current_batch_size = min(batch_size, remaining)
+
         # Build query for keyset pagination
-        # Note: We use string formatting for table and column names (safe if from validated config)
-        # and parameters for the variable last_pk value.
         query = f"""
             SELECT {cols_str}
             FROM `{source_table}`
@@ -53,7 +62,7 @@ def extract(
         
         with conn_source.cursor() as cursor:
             logger.debug(f"Extracting batch starting from {pk_col} > {current_last_pk}")
-            cursor.execute(query, (current_last_pk, batch_size))
+            cursor.execute(query, (current_last_pk, current_batch_size))
             rows = cursor.fetchall()
             
             if not rows:
@@ -61,10 +70,13 @@ def extract(
                 break
             
             yield rows
+            total_yielded += len(rows)
             
             # Update current_last_pk for next iteration
             current_last_pk = rows[-1][pk_col]
             
-            if len(rows) < batch_size:
-                logger.info("Extraction complete: reached end of stream.")
+            if len(rows) < current_batch_size or (limit_override and total_yielded >= limit_override):
+                logger.info(f"Extraction complete: yielded {total_yielded} rows.")
                 break
+
+from typing import Optional

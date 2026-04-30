@@ -22,3 +22,8 @@ if command -v bd >/dev/null 2>&1; then
   if [ $_bd_exit -ne 0 ]; then exit $_bd_exit; fi
 fi
 # --- END BEADS INTEGRATION v1.0.3 ---
+
+# Check for incorrect event bus usage pattern
+if [ -f "scripts/check_event_bus_pattern.sh" ]; then
+  ./scripts/check_event_bus_pattern.sh
+fi

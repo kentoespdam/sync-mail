@@ -1,115 +1,89 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guidance for Claude Code in this repo.
 
-## Project context
+## Project
 
-`sync-mail` is a one-time batch **MariaDB → MariaDB** data migration & schema transformation engine. Goals: stream millions of rows with a low memory footprint, apply YAML-driven schema rules (type casts, default injection, missing-column handling), and resume from checkpoints after interruption.
+`sync-mail`: one-time batch **MariaDB → MariaDB** migration & schema transformation engine. Streams millions of rows with low memory, applies YAML-driven schema rules (CAST, INJECT_DEFAULT, missing-column handling), resumes from checkpoints. Authoritative spec: `plan/prd.md` (Indonesian).
 
-The implementation is **greenfield**: `main.py` is still a PyCharm placeholder, `pyproject.toml` has no dependencies declared, and there is no CLI yet. Treat `plan/prd.md` as the authoritative spec — it describes architecture and rules in detail (mostly in Indonesian). `plan/extract-prd.md` is the prompt template the user uses to elaborate the PRD into phased tasks.
+## Architectural rules (non-negotiable, from PRD)
 
-## Architectural rules (non-negotiable, from the PRD)
+- **Server-side cursors only** (PyMySQL `SSDictCursor` or SQLAlchemy Core `yield_per()`). Never load full result sets.
+- **Generator-based streaming** (`yield`) so chunk refs drop and GC releases RAM.
+- **Keyset pagination only**: `WHERE pk > :last_id ORDER BY pk LIMIT :batch_size`. `OFFSET` is forbidden.
+- **Bulk insert via `executemany()`**, batch 5,000–15,000 (tune to target `max_allowed_packet`).
+- **No ORM, no Pandas by default.** SQLAlchemy Core only. Pandas only with strict `chunksize`.
+- **Per-batch atomic txn**: `BEGIN` → `executemany` → `COMMIT`. On failure: `ROLLBACK`, optional row-by-row fallback.
+- **Resume via state**: persist last evaluated PK to `state.json` or target state table after each commit.
+- **Disable query/profiler logging** in driver and SQLAlchemy during runs.
 
-These constraints must hold for any new code; they are the reason the project exists:
-
-- **Server-side cursors only.** Use PyMySQL's `SSDictCursor` (or SQLAlchemy Core with `yield_per()`). Never load a full result set into client memory.
-- **Generator-based streaming.** Wrap cursor reads in generators (`yield`) so each chunk's references drop and Python's GC can release RAM.
-- **Keyset pagination, never `OFFSET`.** Extract uses `WHERE pk > :last_id ORDER BY pk LIMIT :batch_size`. `OFFSET` is forbidden — it forces MariaDB to rescan prior rows.
-- **Bulk insert via `executemany()`** with batch size 5,000–15,000, tuned against target's `max_allowed_packet`.
-- **No ORM, no Pandas by default.** SQLAlchemy is allowed only at Core level. Pandas only with strict `chunksize` if matrix transforms are unavoidable.
-- **Per-batch atomic transactions.** `BEGIN` → `executemany` → `COMMIT`. On batch failure, `ROLLBACK`, then optionally fall back to row-by-row insert to isolate the bad row.
-- **Resume via state.** After each successful batch commit, persist the last evaluated primary key (to `state.json` or a state table on the target) so a restart continues exactly where it stopped.
-- **Disable query/profiler logging** in driver and SQLAlchemy during runs — no SQL text retention in memory.
-
-## YAML mapping shape
-
-The mapping file is the single source of truth for schema resolution. Top-level shape (see `plan/prd.md` §3):
+## YAML mapping shape (see `plan/prd.md` §3)
 
 ```
 migration_job:
   source_table, target_table, batch_size
-  mappings: list of { source_column, target_column, transformation_type, ... }
+  mappings: [ { source_column, target_column, transformation_type, ... } ]
 ```
 
-Supported `transformation_type` values: `NONE` (direct), `CAST` (with `cast_target`, e.g. ENUM→VARCHAR), `INJECT_DEFAULT` (with `default_value`, including `CURRENT_TIMESTAMP`). Auto-generated templates from introspection should mark fields needing human review with an `ACTION_REQUIRED` flag.
+`transformation_type`: `NONE` | `CAST` (with `cast_target`) | `INJECT_DEFAULT` (with `default_value`, e.g. `CURRENT_TIMESTAMP`). Introspection-generated templates flag review fields with `ACTION_REQUIRED`.
 
 ## Tooling
 
-- **Python ≥ 3.14** (declared in `pyproject.toml`). Install in a venv with `pip install -e .`.
-- **Dependencies are not yet pinned.** When adding the first real code, add `PyMySQL`, `SQLAlchemy>=2.0`, and a YAML lib (`PyYAML` or `ruamel.yaml`) to `pyproject.toml`.
-- **No tests yet.** When adding tests, use `pytest`.
+- **Python ≥ 3.14**. Use **`uv`** (`uv run`, `uv add`, `uv sync`) — never raw `python`/`pip`.
+- Core deps: `PyMySQL`, `SQLAlchemy>=2.0`, YAML lib (`PyYAML` or `ruamel.yaml`).
+- Tests: `pytest` via `uv run pytest`.
+- `plan/` docs are Indonesian — preserve language unless asked otherwise.
+- `GEMINI.md` may be stale; this file + `plan/prd.md` win.
+
+## MANDATORY: graphify-first for code understanding
+
+Before reading raw files, scanning, or grepping for application logic:
+
+1. Read `graphify-out/GRAPH_REPORT.md` for god nodes and communities.
+2. If `graphify-out/wiki/index.md` exists, navigate it instead of raw files.
+3. For any "how does X work / relate to Y" question, use:
+   - `graphify query "<question>"` — semantic traversal over EXTRACTED + INFERRED edges
+   - `graphify path "<A>" "<B>"` — relationship between two concepts
+   - `graphify explain "<concept>"` — concept summary
+4. **Always use `graphify` to locate source-code symbols** — function names, method names, class names, attributes, callers/callees, or anything tied to project code. Start with `graphify query "<name>"` / `graphify explain "<name>"` / `graphify path "<A>" "<B>"` before reaching for Glob/Grep/Read.
+5. After modifying code, run `graphify update .` to refresh the graph (AST-only, no API cost).
+
+**Forbidden**: recursive folder scanning, broad Glob/Grep sweeps for conceptual/logic questions or symbol lookups. Use Grep only for exact-string textual lookups (a known error message, log literal, or file-path string).
+
+## MANDATORY: context7 for library/framework docs
+
+When coding against any library, framework, SDK, API, CLI, or cloud service — even well-known ones (React, SQLAlchemy, PyMySQL, Textual, pytest, etc.) — fetch current docs via **context7** before writing code. Training data may be stale.
+
+- Use the `context7` MCP tools (`resolve-library-id` then `query-docs`) **or** the `ctx7` CLI (`npx ctx7@latest library <name> "<question>"` → `npx ctx7@latest docs <id> "<question>"`).
+- **Prefer context7 over web search** for library docs, API syntax, version migration, setup, and CLI usage.
+- Skip context7 for: refactoring, business logic debugging, code review, general programming concepts.
 
 ## Issue tracking: Beads (`bd`)
 
-This repo uses [Beads](https://github.com/steveyegge/beads) for in-repo issue tracking (data lives in `.beads/`, Dolt-backed). Use it for tasks/bugs instead of TODO comments:
+In-repo tracking lives in `.beads/` (Dolt-backed). Use `bd` for ALL task tracking — never TodoWrite/TaskCreate/markdown TODOs. Run `bd prime` for full command reference.
 
-- `bd list` — view issues
-- `bd create "..."` — new issue
-- `bd show <id>` / `bd update <id> --claim` / `bd update <id> --status done`
-- `bd dolt push` — sync Dolt remote
+Quick: `bd ready` · `bd show <id>` · `bd update <id> --claim` · `bd close <id>` · `bd dolt push`
 
-## Notes for future work
+Persistent knowledge: `bd remember "<insight>"` (not MEMORY.md).
 
-- A `GEMINI.md` exists with overlapping but partially out-of-date guidance; prefer this file and `plan/prd.md` when they disagree.
-- The PRD is written in Indonesian — preserve that when editing `plan/` docs unless asked otherwise.
+## Session close protocol — work is NOT done until `git push` succeeds
 
-
-<!-- BEGIN BEADS INTEGRATION v:1 profile:minimal hash:ca08a54f -->
-## Beads Issue Tracker
-
-This project uses **bd (beads)** for issue tracking. Run `bd prime` to see full workflow context and commands.
-
-### Quick Reference
-
-```bash
-bd ready              # Find available work
-bd show <id>          # View issue details
-bd update <id> --claim  # Claim work
-bd close <id>         # Complete work
-```
-
-### Rules
-
-- Use `bd` for ALL task tracking — do NOT use TodoWrite, TaskCreate, or markdown TODO lists
-- Run `bd prime` for detailed command reference and session close protocol
-- Use `bd remember` for persistent knowledge — do NOT use MEMORY.md files
-
-## Session Completion
-
-**When ending a work session**, you MUST complete ALL steps below. Work is NOT complete until `git push` succeeds.
-
-**MANDATORY WORKFLOW:**
-
-1. **File issues for remaining work** - Create issues for anything that needs follow-up
-2. **Run quality gates** (if code changed) - Tests, linters, builds
-3. **Update issue status** - Close finished work, update in-progress items
-4. **PUSH TO REMOTE** - This is MANDATORY:
+1. File `bd` issues for follow-ups.
+2. Run quality gates if code changed (`uv run pytest`, linters).
+3. Update issue status (`bd close`).
+4. Push:
    ```bash
    git pull --rebase
    bd dolt push
    git push
-   git status  # MUST show "up to date with origin"
+   git status   # must show "up to date with origin"
    ```
-5. **Clean up** - Clear stashes, prune remote branches
-6. **Verify** - All changes committed AND pushed
-7. **Hand off** - Provide context for next session
+5. Clean stashes, prune branches.
+6. Verify all committed AND pushed.
+7. Hand off context for next session.
 
-**CRITICAL RULES:**
-- Work is NOT complete until `git push` succeeds
-- NEVER stop before pushing - that leaves work stranded locally
-- NEVER say "ready to push when you are" - YOU must push
-- If push fails, resolve and retry until it succeeds
-<!-- END BEADS INTEGRATION -->
+Never stop before pushing. Never say "ready to push when you are" — YOU push.
 
-## graphify
+## Shell hygiene
 
-This project has a graphify knowledge graph at graphify-out/.
-
-**Rules:**
-- Before answering architecture or codebase questions, read graphify-out/GRAPH_REPORT.md for god nodes and community structure
-- If graphify-out/wiki/index.md exists, navigate it instead of reading raw files
-- For cross-module "how does X relate to Y" questions, prefer `graphify query "<question>"`, `graphify path "<A>" "<B>"`, or `graphify explain "<concept>"` over grep — these traverse the graph's EXTRACTED + INFERRED edges instead of scanning files
-- After modifying code files in this session, run `graphify update .` to keep the graph current (AST-only, no API cost)
-
-**CRITICAL RULES**
-- DO NOT perform recursive folder scanning if the information sought is conceptual or related to application logic. Use Graphify to understand such logic.
+Use non-interactive flags: `cp -f`, `mv -f`, `rm -f`, `rm -rf`, `apt-get -y`, `ssh -o BatchMode=yes`. Aliased `-i` mode will hang the agent.

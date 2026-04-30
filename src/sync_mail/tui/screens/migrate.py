@@ -1,5 +1,4 @@
 from textual.app import ComposeResult
-from textual.screen import Screen
 from textual.widgets import Header, Footer, Button, Static, Label, Input, Checkbox
 from textual.containers import Vertical, Horizontal
 from textual import work
@@ -12,7 +11,9 @@ from sync_mail.observability.events import event_bus, Event, EventType
 from sync_mail.tui.widgets.progress import MigrationProgress, BatchProgress
 from sync_mail.tui.widgets.log_panel import LogPanel
 
-class MigrateScreen(Screen):
+from sync_mail.tui.screens.base import BaseNavigationScreen
+
+class MigrateScreen(BaseNavigationScreen):
     """Screen for monitoring migration job (Single or Batch)."""
 
     def compose(self) -> ComposeResult:
@@ -27,6 +28,8 @@ class MigrateScreen(Screen):
                 with Horizontal():
                     yield Checkbox("Batch Mode (Directory)", id="chk-batch")
                     yield Checkbox("Stop on Failure", id="chk-stop-on-failure")
+                
+                yield Static("Type 'B' and press Enter to go back to the previous step.", id="back-instruction", classes="nav-hint")
                 yield Button("Start", id="btn-start", variant="success")
 
             with Vertical(id="running-panel", classes="hidden"):
@@ -91,6 +94,11 @@ class MigrateScreen(Screen):
             if event.payload.get("is_done"):
                 self.query_one("#log-panel", LogPanel).write_success("Batch Migration Completed.")
 
+        elif event.type == EventType.REPORT_GENERATED:
+            self.query_one("#log-panel", LogPanel).write_success(
+                f"Laporan tersimpan di: {event.payload['filepath']}"
+            )
+
         elif event.type == EventType.JOB_COMPLETED:
             self.query_one("#log-panel", LogPanel).write_success(
                 f"Job '{event.payload.get('job_name', 'N/A')}' Completed."
@@ -111,7 +119,7 @@ class MigrateScreen(Screen):
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "btn-back":
-            self.app.pop_screen()
+            self.app.pop_screen_with_snapshot()
         elif event.button.id == "btn-start":
             self.start_process()
         elif event.button.id == "btn-abort":
@@ -122,7 +130,7 @@ class MigrateScreen(Screen):
                     job._should_abort = True
             self.notify("Aborting...", severity="warning")
         elif event.button.id == "btn-finish":
-            self.app.pop_screen()
+            self.app.pop_screen_with_snapshot()
 
     def start_process(self) -> None:
         job_name = self.query_one("#job-name", Input).value

@@ -112,7 +112,12 @@ class MigrationJob:
                 "source_table": mapping.source_table,
                 "target_table": mapping.target_table,
                 "total_rows_est": total_rows_est,
-                "last_pk": state["last_pk"]
+                "last_pk": state["last_pk"],
+                "source_host": self.source_dsn.get("host"),
+                "source_db": self.source_dsn.get("database"),
+                "target_host": self.target_dsn.get("host"),
+                "target_db": self.target_dsn.get("database"),
+                "mapping_path": self.mapping_path
             }))
 
             self._start_time = time.monotonic()
@@ -209,31 +214,32 @@ class JobBatch:
         success_count = 0
         failure_count = 0
         
-        for idx, job in enumerate(self.jobs):
+        try:
+            for idx, job in enumerate(self.jobs):
+                event_bus.publish(Event(EventType.MULTI_JOB_PROGRESS, {
+                    "current_job_index": idx + 1,
+                    "total_jobs": total_jobs,
+                    "current_job_name": job.job_name,
+                    "success_count": success_count,
+                    "failure_count": failure_count
+                }))
+                
+                try:
+                    job.run()
+                    success_count += 1
+                except Exception as e:
+                    failure_count += 1
+                    if self.stop_on_failure:
+                        logger.error(f"Batch aborted due to failure in job '{job.job_name}': {e}")
+                        raise
+                    else:
+                        logger.warning(f"Job '{job.job_name}' failed, continuing batch: {e}")
+        finally:
             event_bus.publish(Event(EventType.MULTI_JOB_PROGRESS, {
-                "current_job_index": idx + 1,
+                "current_job_index": total_jobs,
                 "total_jobs": total_jobs,
-                "current_job_name": job.job_name,
+                "current_job_name": "Completed",
                 "success_count": success_count,
-                "failure_count": failure_count
+                "failure_count": failure_count,
+                "is_done": True
             }))
-            
-            try:
-                job.run()
-                success_count += 1
-            except Exception as e:
-                failure_count += 1
-                if self.stop_on_failure:
-                    logger.error(f"Batch aborted due to failure in job '{job.job_name}': {e}")
-                    raise
-                else:
-                    logger.warning(f"Job '{job.job_name}' failed, continuing batch: {e}")
-                    
-        event_bus.publish(Event(EventType.MULTI_JOB_PROGRESS, {
-            "current_job_index": total_jobs,
-            "total_jobs": total_jobs,
-            "current_job_name": "Completed",
-            "success_count": success_count,
-            "failure_count": failure_count,
-            "is_done": True
-        }))

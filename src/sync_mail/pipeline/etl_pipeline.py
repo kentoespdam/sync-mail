@@ -10,7 +10,7 @@ from sync_mail.db.connection import create_db_engine
 from sync_mail.errors import MigrationError, MappingError, ConnectionError, IntrospectionError, ResumeError, BatchFailedError
 from sync_mail.mapping import MappingConfigLoader
 from sync_mail.state import MigrationState
-from sync_mail.observability import event_bus, EventType
+from sync_mail.observability import event_bus, Event, EventType
 
 # Get a logger instance for this module
 logger = logging.getLogger(__name__)
@@ -72,7 +72,7 @@ class ETLPipeline:
         except (MigrationError, ConnectionError, MappingError, ResumeError) as e:
             logger.error(f"Failed to initialize ETL pipeline: {e}")
             event_bus.publish(
-                event_bus.Event(
+                Event(
                     event_type=EventType.JOB_ABORTED,
                     payload={"error": str(e), "component": "ETL Pipeline Initialization"}
                 )
@@ -82,7 +82,7 @@ class ETLPipeline:
             error_message = f"An unexpected error occurred during pipeline initialization: {e}"
             logger.exception(error_message) # Log with traceback
             event_bus.publish(
-                event_bus.Event(
+                Event(
                     event_type=EventType.JOB_ABORTED,
                     payload={"error": error_message, "component": "ETL Pipeline Initialization"}
                 )
@@ -147,7 +147,7 @@ class ETLPipeline:
             error_message = f"Database error during data extraction for table '{table_name}': {e}"
             logger.error(error_message)
             event_bus.publish(
-                event_bus.Event(
+                Event(
                     event_type=EventType.JOB_ABORTED,
                     payload={"error": error_message, "table_name": table_name, "last_pk": last_pk}
                 )
@@ -157,7 +157,7 @@ class ETLPipeline:
             error_message = f"An unexpected error occurred during data extraction for table '{table_name}': {e}"
             logger.exception(error_message) # Log with traceback
             event_bus.publish(
-                event_bus.Event(
+                Event(
                     event_type=EventType.JOB_ABORTED,
                     payload={"error": error_message, "table_name": table_name, "last_pk": last_pk}
                 )
@@ -253,7 +253,7 @@ class ETLPipeline:
 
         logger.info("Starting data migration process.")
         event_bus.publish(
-            event_bus.Event(
+            Event(
                 event_type=EventType.JOB_STARTED,
                 payload={"message": "ETL pipeline initiated."}
             )
@@ -268,7 +268,7 @@ class ETLPipeline:
             if not tables_to_migrate:
                 logger.warning("No tables found in mapping configuration. Nothing to migrate.")
                 event_bus.publish(
-                    event_bus.Event(
+                    Event(
                         event_type=EventType.JOB_COMPLETED,
                         payload={"message": "No tables to migrate as per mapping configuration."}
                     )
@@ -306,7 +306,7 @@ class ETLPipeline:
                 
                 logger.info(f"Processing table: '{table_name}'" + (f" starting from PK: {last_pk}" if last_pk is not None else ""))
                 event_bus.publish(
-                    event_bus.Event(
+                    Event(
                         event_type=EventType.JOB_STARTED,
                         payload={"message": f"Processing table '{table_name}'", "table_name": table_name, "last_pk": last_pk}
                     )
@@ -350,7 +350,7 @@ class ETLPipeline:
                                             self.state_manager.update_state(f"{table_name}_last_pk", current_row_pk)
                                         
                                         event_bus.publish(
-                                            event_bus.Event(
+                                            Event(
                                                 event_type=EventType.BATCH_COMMITTED,
                                                 payload={"table_name": table_name, "rows_loaded": loaded_count, "last_pk_processed": current_row_pk}
                                             )
@@ -361,7 +361,7 @@ class ETLPipeline:
                                 except BatchFailedError as bfe:
                                     logger.error(f"Batch failed for table {table_name}. Aborting migration for this table. Error: {bfe}")
                                     event_bus.publish(
-                                        event_bus.Event(
+                                        Event(
                                             event_type=EventType.BATCH_FAILED,
                                             payload={"table_name": table_name, "last_pk_processed": row.get(pk_column_name), "error": str(bfe)}
                                         )
@@ -371,7 +371,7 @@ class ETLPipeline:
                                 except SQLAlchemyError as sae:
                                     logger.error(f"Database error during batch load for table {table_name}: {sae}")
                                     event_bus.publish(
-                                        event_bus.Event(
+                                        Event(
                                             event_type=EventType.BATCH_FAILED,
                                             payload={"table_name": table_name, "last_pk_processed": row.get(pk_column_name), "error": str(sae)}
                                         )
@@ -381,7 +381,7 @@ class ETLPipeline:
                                 except Exception as e: # Catch any other unexpected errors during batch load
                                     logger.exception(f"Unexpected error during batch load for table {table_name}: {e}")
                                     event_bus.publish(
-                                        event_bus.Event(
+                                        Event(
                                             event_type=EventType.BATCH_FAILED,
                                             payload={"table_name": table_name, "last_pk_processed": row.get(pk_column_name), "error": str(e)}
                                         )
@@ -401,7 +401,7 @@ class ETLPipeline:
                                         self.state_manager.update_state(f"{table_name}_last_pk", current_row_pk)
                                     
                                     event_bus.publish(
-                                        event_bus.Event(
+                                        Event(
                                             event_type=EventType.BATCH_COMMITTED,
                                             payload={"table_name": table_name, "rows_loaded": loaded_count, "last_pk_processed": current_row_pk}
                                         )
@@ -411,7 +411,7 @@ class ETLPipeline:
                             except BatchFailedError as bfe:
                                 logger.error(f"Final batch failed for table {table_name}. Error: {bfe}")
                                 event_bus.publish(
-                                    event_bus.Event(
+                                    Event(
                                         event_type=EventType.BATCH_FAILED,
                                         payload={"table_name": table_name, "last_pk_processed": row.get(pk_column_name), "error": str(bfe)}
                                     )
@@ -420,7 +420,7 @@ class ETLPipeline:
                             except SQLAlchemyError as sae:
                                 logger.error(f"Database error during final batch load for table {table_name}: {sae}")
                                 event_bus.publish(
-                                    event_bus.Event(
+                                    Event(
                                         event_type=EventType.BATCH_FAILED,
                                         payload={"table_name": table_name, "last_pk_processed": row.get(pk_column_name), "error": str(sae)}
                                     )
@@ -429,7 +429,7 @@ class ETLPipeline:
                             except Exception as e: # Catch any other unexpected errors during final batch load
                                 logger.exception(f"Unexpected error during final batch load for table {table_name}: {e}")
                                 event_bus.publish(
-                                    event_bus.Event(
+                                    Event(
                                         event_type=EventType.BATCH_FAILED,
                                         payload={"table_name": table_name, "last_pk_processed": row.get(pk_column_name), "error": str(e)}
                                     )
@@ -439,7 +439,7 @@ class ETLPipeline:
 
             logger.info("Data migration process completed.")
             event_bus.publish(
-                event_bus.Event(
+                Event(
                     event_type=EventType.JOB_COMPLETED,
                     payload={"message": "ETL pipeline finished successfully."}
                 )
@@ -448,7 +448,7 @@ class ETLPipeline:
         except MigrationError as me:
             logger.error(f"Migration process aborted due to error: {me}")
             event_bus.publish(
-                event_bus.Event(
+                Event(
                     event_type=EventType.JOB_ABORTED,
                     payload={"error": str(me), "migration_error": True}
                 )
@@ -458,7 +458,7 @@ class ETLPipeline:
             error_message = f"An unhandled error occurred during the migration process: {e}"
             logger.exception(error_message) # Log with traceback
             event_bus.publish(
-                event_bus.Event(
+                Event(
                     event_type=EventType.JOB_ABORTED,
                     payload={"error": error_message, "unhandled_error": True}
                 )

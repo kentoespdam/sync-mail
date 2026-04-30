@@ -11,6 +11,10 @@ class EventType(Enum):
     JOB_COMPLETED = "JobCompleted"
     JOB_ABORTED = "JobAborted"
     MULTI_JOB_PROGRESS = "MultiJobProgress"
+    DRY_RUN_STARTED = "DryRunStarted"
+    DRY_RUN_ROW_EVALUATED = "DryRunRowEvaluated"
+    DRY_RUN_COMPLETED = "DryRunCompleted"
+    REPORT_GENERATED = "ReportGenerated"
 
 class Event:
     """A migration event with a type and a structured payload."""

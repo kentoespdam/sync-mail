@@ -1,0 +1,18 @@
+{
+  "job_name": "area_publik -> area_publik",
+  "source": "area_publik",
+  "target": "area_publik",
+  "sample_limit": 100,
+  "source_host": "192.168.230.84",
+  "source_db": "smartoffice",
+  "target_host": "localhost",
+  "target_db": "smartoffice_mail",
+  "mapping_path": "mappings/area_publik_to_area_publik.yaml",
+  "rows_extracted": 100,
+  "status": "PASS",
+  "summary": {},
+  "recommendations": [],
+  "start_time": "2026-04-30T08:29:02.510212",
+  "end_time": "2026-04-30T08:29:02.569712",
+  "anomalies": []
+}

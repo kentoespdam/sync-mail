@@ -1,0 +1,5 @@
+┌─ DRY RUN REPORT ───────────────────────────┐
+│ Job:        area_publik -> area_publik        │
+│ Sample:     100 rows extracted / 100 limit    │
+│ Status:     ✅ PASS (0 blocker, 0 advisory)   │
+└─────────────────────────────────────────────┘

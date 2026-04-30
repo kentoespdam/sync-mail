@@ -1,108 +1,79 @@
 # Agent Instructions
 
-This project uses **bd** (beads) for issue tracking. Run `bd prime` for full workflow context.
+Companion to `CLAUDE.md`. Read both. `plan/prd.md` is the authoritative spec (Indonesian).
 
-## Quick Reference
+## MANDATORY: graphify-first
 
-```bash
-bd ready              # Find available work
-bd show <id>          # View issue details
-bd update <id> --claim  # Claim work atomically
-bd close <id>         # Complete work
-bd dolt push          # Push beads data to remote
-```
+Before reading raw files or grepping for logic:
 
-## Python / UV
+- Read `graphify-out/GRAPH_REPORT.md` first; navigate `graphify-out/wiki/index.md` if present.
+- Use `graphify query "<question>"`, `graphify path "<A>" "<B>"`, `graphify explain "<concept>"` for any conceptual / cross-module / "how does X work" question.
+- **Symbol lookups go through graphify too** — finding a function, method, class, attribute, caller, or callee in this project starts with `graphify query "<name>"` / `graphify explain "<name>"` / `graphify path "<A>" "<B>"`, never Glob/Grep.
+- After code changes: `graphify update .`
+- **Do NOT** recursively scan folders or broad-Glob/Grep for application logic or symbol discovery. Grep is for exact-string textual lookups only (known error literal, log message, file-path string).
 
-This project uses **`uv`** for Python package and environment management. Always prefer `uv` over `python` for execution.
+## MANDATORY: context7 for library docs
 
-```bash
-uv run <command> # Run a command in the project environment
-uv pip install <package> # Install packages
-uv sync # Sync dependencies
-uv add <package> # Add a dependency
-```
+When writing code against any library/framework/SDK/API/CLI (PyMySQL, SQLAlchemy, Textual, pytest, etc.):
 
-## Non-Interactive Shell Commands
+- Resolve + fetch via `context7` MCP (`resolve-library-id` → `query-docs`) or `ctx7` CLI (`npx ctx7@latest library <name> "<q>"` → `npx ctx7@latest docs <id> "<q>"`).
+- **Prefer context7 over web search** for API syntax, setup, version migration, best practices, source examples.
+- Skip for: refactoring, business-logic debugging, general programming concepts.
 
-**ALWAYS use non-interactive flags** with file operations to avoid hanging on confirmation prompts.
-
-Shell commands like `cp`, `mv`, and `rm` may be aliased to include `-i` (interactive) mode on some systems, causing the agent to hang indefinitely waiting for y/n input.
-
-**Use these forms instead:**
-```bash
-# Force overwrite without prompting
-cp -f source dest           # NOT: cp source dest
-mv -f source dest           # NOT: mv source dest
-rm -f file                  # NOT: rm file
-
-# For recursive operations
-rm -rf directory            # NOT: rm -r directory
-cp -rf source dest          # NOT: cp -r source dest
-```
-
-**Other commands that may prompt:**
-- `scp` - use `-o BatchMode=yes` for non-interactive
-- `ssh` - use `-o BatchMode=yes` to fail instead of prompting
-- `apt-get` - use `-y` flag
-- `brew` - use `HOMEBREW_NO_AUTO_UPDATE=1` env var
-
-<!-- BEGIN BEADS INTEGRATION v:1 profile:minimal hash:ca08a54f -->
-## Beads Issue Tracker
-
-This project uses **bd (beads)** for issue tracking. Run `bd prime` to see full workflow context and commands.
-
-### Quick Reference
+## Beads (`bd`) — sole task tracker
 
 ```bash
-bd ready              # Find available work
-bd show <id>          # View issue details
-bd update <id> --claim  # Claim work
-bd close <id>         # Complete work
+bd ready                  # available work
+bd show <id>              # details
+bd update <id> --claim    # claim atomically
+bd close <id>             # complete
+bd dolt push              # sync remote
+bd remember "<insight>"   # persistent knowledge (not MEMORY.md)
 ```
 
-### Rules
+Run `bd prime` for full reference. Never use TodoWrite/TaskCreate/markdown TODOs.
 
-- Use `bd` for ALL task tracking — do NOT use TodoWrite, TaskCreate, or markdown TODO lists
-- Run `bd prime` for detailed command reference and session close protocol
-- Use `bd remember` for persistent knowledge — do NOT use MEMORY.md files
+## Python / uv
 
-## Session Completion
+Always use `uv`, never raw `python`/`pip`:
 
-**When ending a work session**, you MUST complete ALL steps below. Work is NOT complete until `git push` succeeds.
+```bash
+uv run <cmd>        # execute in project env
+uv run pytest       # tests
+uv add <pkg>        # add dep
+uv sync             # sync env
+```
 
-**MANDATORY WORKFLOW:**
+## Architectural constraints (from PRD — non-negotiable)
 
-1. **File issues for remaining work** - Create issues for anything that needs follow-up
-2. **Run quality gates** (if code changed) - Tests, linters, builds
-3. **Update issue status** - Close finished work, update in-progress items
-4. **PUSH TO REMOTE** - This is MANDATORY:
+Server-side cursors (`SSDictCursor`) · generator streaming · keyset pagination (no `OFFSET`) · `executemany()` batches 5k–15k · per-batch atomic txn · resume via persisted last PK · no ORM / no Pandas by default · query logging disabled.
+
+YAML mapping: `migration_job { source_table, target_table, batch_size, mappings: [...] }` with `transformation_type` ∈ `NONE | CAST | INJECT_DEFAULT`.
+
+## Shell hygiene (avoid hangs)
+
+Always non-interactive:
+
+```bash
+cp -f / mv -f / rm -f / rm -rf
+apt-get -y
+ssh -o BatchMode=yes
+scp -o BatchMode=yes
+HOMEBREW_NO_AUTO_UPDATE=1 brew ...
+```
+
+## Session close — push or it didn't happen
+
+1. File `bd` issues for follow-ups.
+2. Quality gates if code changed (`uv run pytest`, linters).
+3. Update/close `bd` issues.
+4. **Push (mandatory)**:
    ```bash
    git pull --rebase
    bd dolt push
    git push
-   git status  # MUST show "up to date with origin"
+   git status   # "up to date with origin"
    ```
-5. **Clean up** - Clear stashes, prune remote branches
-6. **Verify** - All changes committed AND pushed
-7. **Hand off** - Provide context for next session
+5. Clean stashes, prune branches. Verify all pushed. Hand off.
 
-**CRITICAL RULES:**
-- Work is NOT complete until `git push` succeeds
-- NEVER stop before pushing - that leaves work stranded locally
-- NEVER say "ready to push when you are" - YOU must push
-- If push fails, resolve and retry until it succeeds
-<!-- END BEADS INTEGRATION -->
-
-
-## graphify
-This project has a graphify knowledge graph at `graphify-out/`.
-
-**RULES:**
-- Before answering architecture or codebase questions, read graphify-out/GRAPH_REPORT.md for god nodes and community structure
-- If graphify-out/wiki/index.md exists, navigate it instead of reading raw files
-- For cross-module "how does X relate to Y" questions, prefer `graphify query "<question>"`, `graphify path "<A>" "<B>"`, or `graphify explain "<concept>"` over grep — these traverse the graph's EXTRACTED + INFERRED edges instead of scanning files
-- After modifying code files in this session, run `graphify update .` to keep the graph current (AST-only, no API cost)
-
-**CRITICAL RULES**
-- DO NOT perform recursive folder scanning if the information sought is conceptual or related to application logic. Use Graphify to understand such logic.
+Never stop before push. Never defer to the user — YOU push.

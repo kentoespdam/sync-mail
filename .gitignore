@@ -4,6 +4,7 @@
 *.db
 .beads-credential-key
 
+# Graphify outputs
 # keep graph outputs, skip heavy/local-only files
 # optional: commit for shared extraction speed, skip to keep repo small
 graphify-out/cache/
@@ -13,9 +14,70 @@ graphify-out/manifest.json
 
 # local token tracking, not useful to share
 graphify-out/cost.json
+
+# Project specific files
 /dummy_plan.md
 connection.yaml
 *.connection.yaml
 
-__pycache__
+# Generated HTML reports (output of Automated HTML Reporting Engine)
+/reports/*
+
+# Generatet Mapping files (output of Automated Mapping Engine)
+/mappings/*
+
+# uv / Virtual Environments
+.venv/
+# If you use a custom name for your venv, add it here
+# venv/
+# env/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Testing / Coverage
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py.cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Environment Variables / Secrets
+.env
 .venv
+env.bak
+*.env
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo

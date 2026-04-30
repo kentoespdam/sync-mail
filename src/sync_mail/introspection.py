@@ -8,7 +8,7 @@ from ruamel.yaml import YAML
 
 from sync_mail.db.connection import create_db_engine
 from sync_mail.errors import IntrospectionError
-from sync_mail.observability import event_bus, EventType
+from sync_mail.observability import event_bus, Event, EventType
 
 def get_table_schema(engine: Engine, table_name: str) -> Dict[str, Any]:
     """
@@ -75,7 +75,7 @@ def get_table_schema(engine: Engine, table_name: str) -> Dict[str, Any]:
             }
             
             event_bus.publish(
-                event_bus.Event(
+                Event(
                     event_type=EventType.JOB_STARTED, # Using a generic event for now
                     payload={"message": f"Schema introspection for table '{table_name}' completed."}
                 )
@@ -85,7 +85,7 @@ def get_table_schema(engine: Engine, table_name: str) -> Dict[str, Any]:
     except Exception as e:
         error_message = f"Failed to introspect schema for table '{table_name}': {e}"
         event_bus.publish(
-            event_bus.Event(
+            Event(
                 event_type=EventType.JOB_ABORTED, # Indicate failure
                 payload={"error": error_message, "table_name": table_name}
             )
@@ -117,7 +117,7 @@ def get_all_table_schemas(engine: Engine, schema_name: str = None) -> Dict[str, 
             all_schemas[table_name] = get_table_schema(engine, table_name)
         
         event_bus.publish(
-            event_bus.Event(
+            Event(
                 event_type=EventType.JOB_STARTED, # Generic event type for now
                 payload={"message": f"Successfully introspected schemas for {len(table_names)} tables."}
             )
@@ -127,7 +127,7 @@ def get_all_table_schemas(engine: Engine, schema_name: str = None) -> Dict[str, 
     except Exception as e:
         error_message = f"Failed to introspect all table schemas for schema '{schema_name or 'default'}': {e}"
         event_bus.publish(
-            event_bus.Event(
+            Event(
                 event_type=EventType.JOB_ABORTED, # Indicate failure
                 payload={"error": error_message, "schema_name": schema_name}
             )
@@ -219,7 +219,7 @@ def convert_schema_to_yaml(all_schemas: Dict[str, Dict[str, Any]], schema_name: 
         yaml_output = string_stream.getvalue()
 
         event_bus.publish(
-            event_bus.Event(
+            Event(
                 event_type=EventType.JOB_STARTED, # Generic event
                 payload={"message": "Schema data successfully converted to YAML format."}
             )
@@ -229,7 +229,7 @@ def convert_schema_to_yaml(all_schemas: Dict[str, Dict[str, Any]], schema_name: 
     except Exception as e:
         error_message = f"Failed to convert schema information to YAML: {e}"
         event_bus.publish(
-            event_bus.Event(
+            Event(
                 event_type=EventType.JOB_ABORTED,
                 payload={"error": error_message, "context": "YAML Conversion"}
             )

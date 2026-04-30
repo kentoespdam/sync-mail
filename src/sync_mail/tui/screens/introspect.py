@@ -1,5 +1,4 @@
 from textual.app import ComposeResult
-from textual.screen import Screen
 from textual.widgets import Header, Footer, Label, Button, Input, Static, Checkbox
 from textual.containers import Vertical, Horizontal
 from textual import work
@@ -10,7 +9,9 @@ from sync_mail.db.connection import connection_scope
 from sync_mail.db.introspect import describe_table, list_tables
 from sync_mail.reconciliation.auto_yaml import generate_mapping, save_mapping_to_yaml, generate_mappings_for_schema
 
-class IntrospectScreen(Screen):
+from sync_mail.tui.screens.base import BaseNavigationScreen
+
+class IntrospectScreen(BaseNavigationScreen):
     """Screen for database introspection and mapping generation."""
 
     def compose(self) -> ComposeResult:
@@ -33,6 +34,8 @@ class IntrospectScreen(Screen):
             yield Label("Output Path/Directory")
             yield Input(value="mappings/", id="output-path")
             
+            yield Static("Type 'B' and press Enter to go back to the previous step.", id="back-instruction", classes="nav-hint")
+
             with Horizontal():
                 yield Button("Generate Mapping(s)", id="btn-generate", variant="primary")
                 yield Button("Back", id="btn-back")
@@ -62,7 +65,7 @@ class IntrospectScreen(Screen):
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "btn-back":
-            self.app.pop_screen()
+            self.app.pop_screen_with_snapshot()
         elif event.button.id == "btn-generate":
             self.start_introspection()
 
